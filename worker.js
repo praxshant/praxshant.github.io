@@ -13,7 +13,7 @@
  */
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const HF_URL   = 'https://api-inference.huggingface.co/models/dima806/133_dog_breeds_image_detection';
+const HF_URL   = 'https://router.huggingface.co/hf-inference/models/dima806/133_dog_breeds_image_detection';
 
 function corsHeaders(env) {
   return {
