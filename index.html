@@ -1,0 +1,2813 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="pokemon-dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prashant Gagneja — AI/ML Engineer specializing in end-to-end intelligent systems, from model training to deployment using FastAPI, Docker, and React.">
+<meta name="keywords" content="Prashant Gagneja, AI Engineer, Machine Learning, Deep Learning, NLP, PyTorch, FastAPI, React, Thapar Institute">
+<meta name="author" content="Prashant Gagneja">
+<meta property="og:title" content="Prashant Gagneja — AI/ML Engineer">
+<meta property="og:description" content="AI/ML Engineer focused on building end-to-end intelligent systems — from model training to deployment using FastAPI, Docker, and React.">
+<meta property="og:image" content="photo.jpeg">
+<meta property="og:url" content="https://praxshant.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prashant Gagneja — AI/ML Engineer">
+<meta name="twitter:description" content="AI/ML Engineer. Deep Learning. NLP. Full-Stack. Thapar Institute 2027.">
+<title>Prashant Gagneja — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   THEME SYSTEM
+═══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* POKEMON DARK */
+[data-theme="pokemon-dark"]{
+  --bg:#0a0e1a;--bg2:#0d1220;--surface:#111827;--surface2:#1a2235;
+  --border:#1e3a5f;--border2:#2a4a7f;--text:#e8f4ff;--muted:#6b8caf;--muted2:#1e3a5f;
+  --accent:#ffcc00;--accent2:#ef4444;--accent3:#3b82f6;--accent4:#22c55e;--accent5:#a855f7;
+  --card-glow:rgba(255,204,0,.08);--nav-blur:rgba(10,14,26,.95);
+  --scanline:rgba(0,0,0,.28);--noise:.35;
+  --font-head:'Press Start 2P',monospace;--font-body:'DM Sans',sans-serif;--font-mono:'Share Tech Mono',monospace;
+  --pixel-shadow:4px 4px 0;--btn-shadow:4px 4px 0 #000;
+}
+/* POKEMON LIGHT */
+[data-theme="pokemon-light"]{
+  --bg:#fef9e7;--bg2:#fff8dc;--surface:#ffffff;--surface2:#fff3cd;
+  --border:#fbbf24;--border2:#f59e0b;--text:#1a1a2e;--muted:#6b7280;--muted2:#fde68a;
+  --accent:#d97706;--accent2:#dc2626;--accent3:#2563eb;--accent4:#16a34a;--accent5:#7c3aed;
+  --card-glow:rgba(217,119,6,.07);--nav-blur:rgba(254,249,231,.97);
+  --scanline:rgba(0,0,0,.04);--noise:.12;
+  --font-head:'Press Start 2P',monospace;--font-body:'DM Sans',sans-serif;--font-mono:'Share Tech Mono',monospace;
+  --pixel-shadow:4px 4px 0;--btn-shadow:4px 4px 0 #000;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font-body);overflow-x:hidden;cursor:none;
+  transition:background .4s,color .4s;
+}
+body::after{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,var(--scanline) 0px,transparent 1px,transparent 3px);
+  pointer-events:none;z-index:9990;opacity:.2;
+}
+
+/* ── CURSOR ── */
+#cursor{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);width:24px;height:24px}
+#cursor-ring{position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);width:40px;height:40px;border:2px solid var(--accent);border-radius:50%;transition:width .15s,height .15s,border-color .15s}
+.cursor-big #cursor-ring{width:56px!important;height:56px!important;border-color:var(--accent2)!important}
+.cursor-attract #cursor-ring{border-color:var(--accent3)!important; transform:translate(-50%,-50%) scale(0.8);}
+
+/* ── THEME SWITCHER ── */
+#theme-panel{position:fixed;bottom:2rem;right:1.5rem;z-index:400;display:flex;flex-direction:column;gap:.5rem;align-items:flex-end}
+.theme-pill{font-family:var(--font-head);font-size:.38rem;background:var(--surface);border:2px solid var(--border);color:var(--muted);padding:.45rem .8rem;cursor:pointer;transition:all .15s;box-shadow:var(--pixel-shadow) var(--border);letter-spacing:.05em;white-space:nowrap}
+.theme-pill:hover,.theme-pill.active{border-color:var(--accent);color:var(--accent);box-shadow:var(--pixel-shadow) var(--accent)}
+.theme-toggle-btn{font-family:var(--font-head);font-size:.42rem;background:var(--accent2);color:#fff;border:2px solid #000;padding:.5rem .9rem;cursor:pointer;box-shadow:3px 3px 0 #000;transition:all .15s}
+.theme-toggle-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+.theme-dropdown{display:none;flex-direction:column;gap:.4rem;margin-bottom:.5rem}
+.theme-dropdown.open{display:flex}
+
+/* ── NAV ── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;transition:background .3s,border .3s}
+#navbar.scrolled{background:var(--nav-blur);border-bottom:2px solid var(--border);backdrop-filter:blur(16px)}
+.logo{font-family:var(--font-head);font-size:.7rem;color:var(--accent);text-decoration:none;text-shadow:0 0 10px var(--accent)}
+.nav-links{display:flex;gap:1.2rem;list-style:none}
+.nav-links a{color:var(--muted);font-family:var(--font-head);font-size:.38rem;text-decoration:none;letter-spacing:.04em;transition:all .2s;padding:.25rem 0;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--accent);transition:width .25s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:.5rem}
+.nav-cta{background:var(--accent2);color:#fff;padding:.4rem .9rem;font-family:var(--font-head);font-size:.42rem;text-decoration:none;border:2px solid #000;box-shadow:3px 3px 0 #000;transition:all .15s}
+.nav-cta:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+.icon-btn{background:var(--surface2);border:2px solid var(--border);color:var(--text);cursor:pointer;font-size:.8rem;padding:.35rem .55rem;box-shadow:2px 2px 0 var(--border);transition:all .15s;font-family:var(--font-head)}
+.icon-btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--border)}
+.dino-nav-btn,.snake-nav-btn{font-size:.4rem;padding:.38rem .7rem;letter-spacing:.04em}
+.menu-btn{display:none}
+
+/* ══════════════════════════════════════════
+   HERO — NEON POKÉDEX INTERFACE v2
+══════════════════════════════════════════ */
+
+/* ── BASE SECTION ── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 4rem 5.5rem;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 60%, rgba(255,204,0,.04), transparent 60%),
+    radial-gradient(circle at 80% 30%, rgba(255,204,0,.03), transparent 60%),
+    linear-gradient(180deg, #02040a 0%, #030712 50%, #02040a 100%);
+  transition: filter 0.5s ease;
+}
+
+body.trainer-mode #hero {
+  filter: hue-rotate(-30deg) saturate(1.5) contrast(1.1);
+}
+
+/* ── THREE.JS CANVAS ── */
+#three-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1}
+
+/* ── LAYER: PRIMARY POKÉDEX GRID ── */
+.hero-dots{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,204,0,.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,204,0,.14) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-dots::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,204,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,204,0,.04) 1px, transparent 1px);
+  background-size:12px 12px;
+}
+.hero-dots::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle, rgba(255,204,0,.18) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:gridPulse 4s ease-in-out infinite;
+}
+
+/* ── LAYER: SCAN LINE ── */
+.hero-glow{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent calc(var(--scan-pos,0%) - 1px),
+    rgba(255,204,0,.07) var(--scan-pos,0%),
+    rgba(255,204,0,.025) calc(var(--scan-pos,0%) + 40px),
+    transparent calc(var(--scan-pos,0%) + 80px),
+    transparent 100%
+  );
+  animation:scanLine 6s linear infinite;
+}
+
+/* ── LAYER: NAME FOCUS GLOW ── */
+#hero-focus-glow{
+  position:absolute;
+  left:-8%;bottom:10%;
+  width:900px;height:600px;
+  background:radial-gradient(ellipse at 25% 70%,
+    rgba(255,204,0,.06) 0%,
+    rgba(255,204,0,.02) 30%,
+    transparent 60%
+  );
+  z-index:2;pointer-events:none;
+  transition: background 0.2s ease;
+}
+
+/* ── LAYER: CRT SCANLINES ── */
+#hero::after{
+  content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+  background-image:repeating-linear-gradient(
+    0deg,transparent,transparent 2px,
+    rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px
+  );
+  opacity:.6;
+}
+
+/* ── CORNER BRACKETS ── */
+.hero-corner{position:absolute;width:28px;height:28px;pointer-events:none;z-index:6;}
+.hero-corner::before,.hero-corner::after{content:'';position:absolute;background:var(--accent);}
+.hero-corner::before{width:100%;height:2px;top:0;left:0;}
+.hero-corner::after{width:2px;height:100%;top:0;left:0;}
+.hero-corner.tr{top:1.5rem;right:1.5rem;transform:rotate(90deg);}
+.hero-corner.tl{top:1.5rem;left:1.5rem;}
+.hero-corner.bl{bottom:1.5rem;left:1.5rem;transform:rotate(-90deg);}
+.hero-corner.br{bottom:1.5rem;right:1.5rem;transform:rotate(180deg);}
+
+/* ── STATUS STRIP ── */
+.hero-status-strip{
+  position:absolute;top:1.6rem;left:50%;transform:translateX(-50%);
+  z-index:6;pointer-events:none;
+  font-family:var(--font-mono);font-size:.52rem;color:rgba(255,204,0,.32);
+  letter-spacing:.28em;white-space:nowrap;
+}
+
+/* ── RANK CHIP ── */
+.hero-rank-chip{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(23,26,31,.85);
+  border-left:3px solid var(--accent4);
+  padding:.4rem .9rem;
+  margin-bottom:1.4rem;
+  font-family:var(--font-head);font-size:.48rem;
+  color:var(--accent4);letter-spacing:.18em;
+  opacity:0;animation:pixIn .5s .05s forwards;
+}
+.hero-rank-dot{width:7px;height:7px;background:var(--accent4);border-radius:50%;flex-shrink:0;}
+
+/* ── HERO NAME ── */
+.hero-name{
+  font-family:var(--font-head);
+  font-size:clamp(3.5rem,10vw,8.5rem);
+  line-height:.9;letter-spacing:-.03em;
+  margin-bottom:1rem;
+  opacity:0;animation:pixIn .5s .35s forwards;
+  position: relative;
+  cursor: default;
+}
+.hero-name .n1{
+  color:var(--accent);
+  display:inline-block;
+  text-shadow:0 0 40px rgba(255,204,0,.35),0 0 80px rgba(255,204,0,.12);
+  transition: transform 0.1s;
+}
+.hero-name .n2{
+  color:#f0f0f0;
+  display:inline-block;
+  transition: transform 0.1s;
+}
+.hero-name:hover .n1 { animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite; color: #fff; text-shadow: 2px 2px var(--accent2), -2px -2px var(--accent3); }
+.hero-name:hover .n2 { animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite reverse; color: var(--accent); }
+
+/* ── SUBTITLE LINE ── */
+.hero-subtitle-row{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1.6rem;
+  opacity:0;animation:pixIn .4s .55s forwards;
+}
+.hero-subtitle-bar{height:2px;width:70px;background:var(--accent2);flex-shrink:0;}
+.hero-subtitle-text{
+  font-family:var(--font-head);font-size:.72rem;
+  color:var(--accent2);letter-spacing:.22em;font-weight:700;
+}
+
+/* ── POSITION BANNER ── */
+.hero-position{
+  font-family:var(--font-mono);font-size:.85rem;color:var(--accent4);
+  line-height:1.7;
+  background:rgba(0,0,0,.3);
+  display:inline-block;padding:.6rem 1rem;
+  border-left:3px solid var(--accent4);
+  margin-bottom:1.5rem;
+  opacity:0;animation:pixIn .5s .1s forwards;
+}
+
+/* ── BADGE ── */
+.hero-badge{
+  display:inline-block;background:var(--accent);color:#000;
+  font-family:var(--font-head);font-size:.48rem;
+  padding:.3rem .8rem;border:2px solid #000;box-shadow:3px 3px 0 #000;
+  margin-bottom:1.4rem;letter-spacing:.08em;
+  opacity:0;animation:pixIn .4s .2s forwards;
+}
+
+/* ── TYPEWRITER ── */
+.hero-typewriter{
+  font-family:var(--font-mono);font-size:1.1rem;color:var(--muted);
+  margin-bottom:.8rem;min-height:1.7rem;
+  opacity:0;animation:pixIn .4s .72s forwards;
+}
+
+/* ── BODY TEXT ── */
+.hero-sub{
+  font-size:.97rem;color:var(--muted);
+  max-width:580px;line-height:1.8;
+  margin-bottom:2.5rem;font-weight:300;
+  opacity:0;animation:pixIn .4s .9s forwards;
+}
+
+/* ── ACTION BUTTONS ── */
+.hero-actions{
+  display:flex;gap:.9rem;flex-wrap:wrap;
+  opacity:0;animation:pixIn .4s 1.1s forwards;
+}
+
+/* ── HERO CONTENT WRAP ── */
+.hero-wrap{position:relative;z-index:5;max-width:820px}
+
+/* ── HERO RIGHT (Ash & Pikachu) ── */
+.hero-right{
+  position:absolute;right:4rem;top:50%;transform:translateY(-50%);
+  z-index:5;opacity:0;animation:fadeIn .8s 1.2s forwards;
+  display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;
+}
+
+/* Ash & Pikachu Interactives */
+.trainer-dialogue {
+  position: relative; 
+  background: rgba(17, 24, 39, 0.85); 
+  backdrop-filter: blur(8px); 
+  border: 2px solid var(--border);
+  padding: 0.8rem 1rem;
+  box-shadow: 3px 3px 0 var(--border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  animation: floatAnim 4s ease-in-out infinite;
+}
+.trainer-dialogue:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 4px 4px 0 var(--accent), 0 0 15px rgba(255,204,0,0.2);
+}
+.trainer-dialogue img {
+  width: 45px; height: 45px; 
+  border: 2px solid var(--border); 
+  background: var(--bg2); 
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.trainer-dialogue:hover img {
+  border-color: var(--accent);
+}
+.partner-reply {
+  margin-left: 2rem;
+  animation-delay: 1s;
+}
+.partner-reply img {
+  image-rendering: pixelated;
+}
+.partner-reply:hover img {
+  animation: jump 0.4s ease;
+}
+
+/* ── TRAINER DATA PANEL ── */
+.hero-data-panel{
+  position:absolute;right:4rem;bottom:9rem;z-index:5;
+  width:260px;
+  background:rgba(23,26,31,.82);
+  backdrop-filter:blur(8px);
+  border-top:2px solid var(--accent);
+  padding:1.1rem 1.4rem;
+  opacity:0;animation:fadeIn .8s 1.5s forwards;
+}
+.hdp-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1rem;
+}
+.hdp-label{font-family:var(--font-head);font-size:.38rem;color:var(--muted);letter-spacing:.12em;}
+.hdp-dots{display:flex;gap:3px;}
+.hdp-dot{width:6px;height:6px;}
+.hdp-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.45rem 0;border-bottom:1px solid rgba(70,72,77,.35);
+}
+.hdp-row:last-child{border-bottom:none;}
+.hdp-key{font-family:var(--font-head);font-size:.38rem;color:var(--muted);letter-spacing:.1em;}
+.hdp-val{font-family:var(--font-head);font-size:.52rem;font-weight:700;color:var(--text);letter-spacing:.06em;}
+.hdp-val.yellow{color:var(--accent);}
+.hdp-val.green{color:var(--accent4);}
+
+/* ── 3D POKÉBALL CANVAS (background centerpiece) ── */
+#pokeball-3d-canvas{
+  position:absolute;
+  right:-80px;top:50%;transform:translateY(-50%);
+  z-index:2;pointer-events:none;
+  opacity:.22;
+  filter:drop-shadow(0 0 60px rgba(255,204,0,.15));
+}
+
+/* ── SCROLL INDICATOR ── */
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:6;
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  font-family:var(--font-head);font-size:.38rem;color:var(--muted);letter-spacing:.1em;
+  opacity:0;animation:fadeIn .6s 1.8s forwards;
+}
+.scroll-arr{animation:bY 1.2s infinite;font-size:.65rem}
+
+/* ── ANIMATIONS ── */
+@keyframes scanLine{0%{--scan-pos:0%}100%{--scan-pos:105%}}
+@keyframes gridPulse{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes dataBlink{0%,90%,100%{opacity:.32}95%{opacity:.8}}
+@keyframes radarRotate{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes pokeballSpin3d{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.btn-px{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-head);font-size:.45rem;padding:.75rem 1.4rem;text-decoration:none;cursor:pointer;border:2px solid #000;box-shadow:var(--btn-shadow);transition:all .14s;letter-spacing:.04em}
+.btn-px:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
+.btn-red{background:var(--accent2);color:#fff}
+.btn-yellow{background:var(--accent);color:#000}
+.btn-blue{background:var(--accent3);color:#fff}
+.btn-green{background:var(--accent4);color:#fff}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--border2)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── SECTIONS ── */
+section{padding:5.5rem 3rem}
+.sec-hdr{display:flex;align-items:center;gap:1.2rem;margin-bottom:3.5rem}
+.sec-num{background:var(--accent);color:#000;font-family:var(--font-head);font-size:.48rem;padding:.3rem .65rem;border:2px solid #000;box-shadow:2px 2px 0 #000;white-space:nowrap}
+.sec-ttl{font-family:var(--font-head);font-size:clamp(.85rem,2.2vw,1.5rem);line-height:1.5;color:var(--text)}
+.sec-line{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--border) 0,var(--border) 6px,transparent 6px,transparent 12px)}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:3.5rem;align-items:start}
+.trainer-card{background:var(--surface);border:3px solid var(--border);padding:1.2rem;box-shadow:6px 6px 0 var(--border);position:relative}
+.trainer-card::before{content:'TRAINER CARD';position:absolute;top:-1.1rem;left:1rem;background:var(--accent2);color:#fff;font-family:var(--font-head);font-size:.4rem;padding:.22rem .55rem;border:2px solid #000}
+.trainer-img{width:100%;aspect-ratio:1;object-fit:cover;object-position:top center;display:block;border:2px solid var(--border2)}
+.trainer-info{margin-top:.9rem;display:flex;flex-direction:column;gap:.35rem}
+.tr-row{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px dashed var(--border)}
+.tr-k{font-family:var(--font-head);font-size:.38rem;color:var(--muted)}
+.tr-v{font-family:var(--font-mono);font-size:.9rem;color:var(--text)}
+.position-banner{background:var(--surface2);border:2px solid var(--accent4);padding:1rem 1.2rem;margin-bottom:1.5rem;border-left:4px solid var(--accent4);font-family:var(--font-mono);font-size:.88rem;line-height:1.7;color:var(--text)}
+.position-banner strong{color:var(--accent4)}
+.about-p{font-size:.95rem;line-height:1.85;color:var(--muted);margin-bottom:1.2rem;font-weight:300}
+.about-p strong{color:var(--text);font-weight:500}
+.type-wrap{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.5rem 0}
+.tb{font-family:var(--font-head);font-size:.38rem;padding:.3rem .65rem;border:2px solid #000;letter-spacing:.04em;transition:transform .14s;cursor:default}
+.tb:hover{transform:translateY(-2px)}
+.t-fire{background:#ff6b35;color:#fff}.t-water{background:#3b82f6;color:#fff}.t-grass{background:#22c55e;color:#fff}
+.t-elec{background:#ffcc00;color:#000}.t-psy{background:#a855f7;color:#fff}.t-steel{background:#64748b;color:#fff}
+.t-ice{background:#67e8f9;color:#000}.t-drag{background:#7c3aed;color:#fff}.t-norm{background:#9ca3af;color:#000}
+.t-dark{background:#374151;color:#fff}
+
+/* coursework + dsa */
+.two-col-sm{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+.mini-box{background:var(--surface);border:2px solid var(--border);padding:1.2rem;box-shadow:3px 3px 0 var(--border)}
+.mini-box h4{font-family:var(--font-head);font-size:.42rem;color:var(--accent3);margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px dashed var(--border)}
+.mini-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.mini-list li{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);display:flex;gap:.5rem;align-items:flex-start}
+.mini-list li::before{content:'▸';color:var(--accent);flex-shrink:0;font-size:.7rem;margin-top:.1rem}
+.edu-rows{margin-top:1.5rem;display:flex;flex-direction:column;gap:2px;background:var(--border)}
+.edu-row{background:var(--surface);padding:.9rem 1.3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background .2s}
+.edu-row:hover{background:var(--surface2)}
+.edu-s{font-size:.9rem;font-weight:500}
+.edu-d{font-family:var(--font-head);font-size:.36rem;color:var(--muted);margin-top:.25rem}
+.edu-y{font-family:var(--font-head);font-size:.4rem;color:var(--accent);white-space:nowrap}
+
+/* ── PROJECTS ── */
+#projects{background:var(--bg)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;background:var(--border)}
+.proj-card{background:var(--surface);padding:2rem;position:relative;display:flex;flex-direction:column;gap:.85rem;cursor:pointer;transition:background .25s}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.proj-card:hover{background:var(--surface2)}
+.proj-card:hover::before{transform:scaleX(1)}
+.proj-card.featured{grid-column:span 2}
+.proj-num{font-family:var(--font-head);font-size:.38rem;color:var(--muted)}
+.proj-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.proj-name{font-family:var(--font-head);font-size:.75rem;line-height:1.65;color:var(--text)}
+.proj-card.featured .proj-name{font-size:.95rem}
+.proj-link-icon{color:var(--accent);font-family:var(--font-head);font-size:.6rem;text-decoration:none;border:2px solid var(--accent);padding:.28rem .48rem;transition:all .14s;box-shadow:2px 2px 0 var(--border)}
+.proj-link-icon:hover{background:var(--accent);color:#000}
+.proj-desc{font-size:.87rem;color:var(--muted);line-height:1.75;font-weight:300}
+/* METRICS */
+.proj-metrics{display:flex;flex-direction:column;gap:.35rem;margin:.2rem 0;padding:.8rem 1rem;background:var(--bg);border-left:3px solid var(--accent4)}
+.metric-item{font-family:var(--font-mono);font-size:.78rem;color:var(--accent4);display:flex;gap:.5rem}
+.metric-item::before{content:'→';flex-shrink:0}
+.proj-types{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.9rem;border-top:2px dashed var(--border)}
+.deep-dive-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--surface2);border:2px solid var(--border2);color:var(--text);font-family:var(--font-head);font-size:.38rem;padding:.35rem .7rem;cursor:pointer;transition:all .14s;box-shadow:2px 2px 0 var(--border);letter-spacing:.04em;margin-top:.5rem;align-self:flex-start}
+.deep-dive-btn:hover{border-color:var(--accent3);color:var(--accent3);transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--accent3)}
+
+/* ── CASE STUDY MODAL ── */
+#case-modal{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.92);display:none;overflow-y:auto}
+#case-modal.open{display:block}
+.case-inner{max-width:900px;margin:4rem auto;padding:0 2rem 4rem}
+.case-close{font-family:var(--font-head);font-size:.5rem;background:var(--accent2);color:#fff;border:2px solid #000;box-shadow:3px 3px 0 #000;padding:.5rem 1rem;cursor:pointer;margin-bottom:2rem;display:inline-flex;align-items:center;gap:.5rem;transition:all .14s}
+.case-close:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+.case-title{font-family:var(--font-head);font-size:1rem;line-height:1.6;color:var(--accent);margin-bottom:.5rem;text-shadow:0 0 15px var(--accent)}
+.case-link{font-family:var(--font-mono);font-size:.85rem;color:var(--accent3);text-decoration:none;margin-bottom:2rem;display:inline-block}
+.case-link:hover{color:var(--accent)}
+.case-section{margin-bottom:2.5rem}
+.case-section h3{font-family:var(--font-head);font-size:.55rem;color:var(--accent2);margin-bottom:1rem;letter-spacing:.08em;border-left:3px solid var(--accent2);padding-left:.75rem}
+.case-section p,.case-section li{font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:.6rem}
+.case-section ul{list-style:none;padding-left:.5rem}
+.case-section ul li::before{content:'▶ ';color:var(--accent);font-size:.6rem}
+.case-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:1rem}
+.res-box{background:var(--surface);border:2px solid var(--border);padding:1rem;text-align:center;box-shadow:3px 3px 0 var(--border)}
+.res-n{font-family:var(--font-head);font-size:1.3rem;color:var(--accent);display:block;margin-bottom:.4rem}
+.res-l{font-family:var(--font-head);font-size:.38rem;color:var(--muted);line-height:1.6}
+/* Architecture diagram */
+.arch-diagram{background:var(--surface);border:2px solid var(--border);padding:1.5rem;box-shadow:3px 3px 0 var(--border);font-family:var(--font-mono);font-size:.82rem;line-height:2;overflow-x:auto;white-space:pre}
+.arch-diagram .ah{color:var(--accent)}
+.arch-diagram .ab{color:var(--accent3)}
+.arch-diagram .ac{color:var(--accent4)}
+.arch-diagram .ad{color:var(--accent2)}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg2)}
+.skills-4col{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+@media(min-width:1024px){.skills-4col{grid-template-columns:repeat(4,1fr)}}
+.pdx-card{background:var(--surface);border:2px solid var(--border);padding:1.3rem;box-shadow:4px 4px 0 var(--border);transition:all .2s}
+.pdx-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--border)}
+.pdx-cat{font-family:var(--font-head);font-size:.42rem;color:var(--accent);letter-spacing:.1em;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px dashed var(--border)}
+.move-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.move-list li{font-family:var(--font-mono);font-size:.88rem;color:var(--muted);display:flex;gap:.45rem;align-items:flex-start;transition:color .2s;cursor:default}
+.move-list li::before{content:'▸';color:var(--muted2);flex-shrink:0;font-size:.7rem;margin-top:.1rem}
+.move-list li:hover{color:var(--text)}
+.move-list li:hover::before{color:var(--accent)}
+
+/* ── CORE CONCEPTS ── */
+#concepts{background:var(--bg)}
+.concepts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+@media(min-width:900px){.concepts-grid{grid-template-columns:repeat(4,1fr)}}
+.concept-card{background:var(--surface);border:2px solid var(--border);padding:1.2rem;box-shadow:3px 3px 0 var(--border)}
+.concept-cat{font-family:var(--font-head);font-size:.4rem;letter-spacing:.08em;margin-bottom:.9rem;padding-bottom:.45rem;border-bottom:1px dashed var(--border)}
+.c-ml{color:var(--accent)}.c-dl{color:var(--accent3)}.c-nlp{color:var(--accent5)}.c-sys{color:var(--accent4)}
+.concept-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.concept-list li{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);display:flex;gap:.4rem;align-items:flex-start;line-height:1.5}
+.concept-list li::before{content:'·';color:var(--accent);flex-shrink:0;font-weight:700}
+
+/* ── TOOLS ── */
+#tools{background:var(--bg2)}
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+@media(min-width:900px){.tools-grid{grid-template-columns:repeat(3,1fr)}}
+.tool-group{background:var(--surface);border:2px solid var(--border);padding:1.3rem;box-shadow:3px 3px 0 var(--border)}
+.tool-cat{font-family:var(--font-head);font-size:.4rem;color:var(--accent3);letter-spacing:.1em;margin-bottom:.9rem;padding-bottom:.45rem;border-bottom:1px dashed var(--border)}
+.tool-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tool-tag{font-family:var(--font-mono);font-size:.78rem;background:var(--bg);border:1px solid var(--border2);color:var(--text);padding:.22rem .55rem;transition:all .15s}
+.tool-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── CERTS ── */
+#certs{background:var(--bg)}
+.cert-rows{display:flex;flex-direction:column;gap:2px;background:var(--border)}
+.cert-row{background:var(--surface);display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.8rem;gap:2rem;transition:background .2s}
+.cert-row:hover{background:var(--surface2)}
+.cert-l{display:flex;align-items:center;gap:1.2rem}
+.cert-ball{width:30px;height:30px;flex-shrink:0}
+.cert-name{font-family:var(--font-head);font-size:.48rem;line-height:1.65;color:var(--text)}
+.cert-sub{font-family:var(--font-mono);font-size:.88rem;color:var(--muted);margin-top:.2rem}
+.cert-yr{font-family:var(--font-head);font-size:.42rem;color:var(--accent);white-space:nowrap}
+
+/* ── RESEARCH ── */
+#research{background:var(--bg2)}
+.research-note{font-family:var(--font-mono);font-size:.82rem;color:var(--accent);background:var(--surface);border:2px solid var(--accent);padding:.75rem 1.2rem;margin-bottom:2.5rem;display:inline-block;box-shadow:3px 3px 0 var(--accent)}
+.research-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.res-card{background:var(--surface);border:2px solid var(--accent5);padding:2rem;position:relative;box-shadow:4px 4px 0 var(--accent5);transition:all .25s}
+.res-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--accent5)}
+.res-card.full{grid-column:span 2}
+.res-status{position:absolute;top:1.2rem;right:1.2rem;font-family:var(--font-head);font-size:.36rem;padding:.25rem .55rem;border:2px solid #000;animation:statusPulse 2s infinite}
+.st-ongoing{background:var(--accent2);color:#fff}
+.st-building{background:var(--accent3);color:#fff}
+.res-org{font-family:var(--font-head);font-size:.42rem;color:var(--accent5);letter-spacing:.12em;margin-bottom:.6rem}
+.res-title{font-family:var(--font-head);font-size:.65rem;line-height:1.7;margin-bottom:.9rem;color:var(--text)}
+.res-desc{font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;font-weight:300}
+.res-stack{display:flex;flex-wrap:wrap;gap:.4rem}
+.res-chip{font-family:var(--font-head);font-size:.36rem;background:rgba(168,85,247,.1);border:1px solid var(--accent5);color:var(--accent5);padding:.22rem .55rem}
+.res-phases{margin-top:1rem;display:flex;flex-direction:column;gap:.4rem}
+.res-phase{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);display:flex;gap:.6rem;align-items:flex-start}
+.ph-done{color:var(--accent4)}.ph-wip{color:var(--accent)}.ph-todo{color:var(--muted2)}
+.ph-dot{flex-shrink:0;width:8px;height:8px;border-radius:50%;margin-top:.3rem}
+.ph-done .ph-dot{background:var(--accent4)}.ph-wip .ph-dot{background:var(--accent)}.ph-todo .ph-dot{background:var(--muted2)}
+
+/* ── SIMULATIONS ── */
+#sims{background:var(--bg)}
+.sims-note{font-family:var(--font-head);font-size:.42rem;color:var(--muted);letter-spacing:.1em;margin-bottom:2.5rem;border-left:3px solid var(--accent3);padding-left:1rem}
+.sims-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.sim-card{background:var(--surface);border:2px solid var(--accent3);padding:2rem;position:relative;box-shadow:4px 4px 0 var(--accent3);transition:all .25s}
+.sim-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--accent3)}
+.sim-org{font-family:var(--font-head);font-size:.42rem;color:var(--accent3);letter-spacing:.1em;margin-bottom:.6rem}
+.sim-title{font-family:var(--font-head);font-size:.55rem;line-height:1.75;margin-bottom:.85rem;color:var(--text)}
+.sim-desc{font-size:.87rem;color:var(--muted);line-height:1.75;margin-bottom:1.1rem}
+.sim-date{position:absolute;top:1.2rem;right:1.2rem;font-family:var(--font-head);font-size:.38rem;color:var(--muted)}
+.sim-chips{display:flex;flex-wrap:wrap;gap:.38rem}
+.sim-chip{font-family:var(--font-head);font-size:.34rem;background:rgba(59,130,246,.08);border:1px solid var(--accent3);color:var(--accent3);padding:.2rem .5rem}
+
+/* ── COFFEE ── */
+#coffee{position:relative;overflow:hidden}
+[data-theme*="pokemon"] #coffee{background:linear-gradient(160deg,#0d0a00 0%,#0a0e1a 60%)}
+[data-theme="pokemon-light"] #coffee{background:linear-gradient(160deg,#fffbeb 0%,#fef9e7 60%)}
+.coffee-bg-emoji{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:18rem;opacity:.03;pointer-events:none;z-index:0;animation:spin40 40s linear infinite}
+.coffee-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.coffee-h{font-family:var(--font-head);font-size:clamp(.9rem,2.2vw,1.4rem);line-height:1.7;margin-bottom:1.3rem}
+.coffee-h em{font-style:normal;color:#e8a020}
+.coffee-txt{font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:1.8rem;font-weight:300}
+.cups{display:flex;gap:.8rem;margin-bottom:1.8rem;flex-wrap:wrap}
+.cup{background:var(--surface);border:2px solid var(--border);padding:1.1rem .9rem;flex:1;min-width:85px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:3px 3px 0 var(--border)}
+.cup:hover,.cup.active{border-color:#e8a020;background:rgba(232,160,32,.09);transform:translate(-2px,-2px);box-shadow:5px 5px 0 #e8a020}
+.cup-em{font-size:1.7rem;display:block;margin-bottom:.4rem}
+.cup-n{font-family:var(--font-head);font-size:.38rem;color:var(--text);margin-bottom:.2rem;display:block}
+.cup-p{font-family:var(--font-head);font-size:.52rem;color:#e8a020;display:block}
+.cup-hot{display:block;font-family:var(--font-head);font-size:.3rem;color:#ef4444;margin-top:.2rem}
+.coffee-cta-link{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#c8860a,#e8a020);color:#fff;padding:.85rem 1.8rem;font-family:var(--font-head);font-size:.48rem;text-decoration:none;border:2px solid #000;box-shadow:4px 4px 0 #000;transition:all .14s;letter-spacing:.04em}
+.coffee-cta-link:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
+.coffee-qr-col{display:flex;flex-direction:column;align-items:center;gap:1.3rem}
+.qr-frame{background:#fff;padding:.9rem;border:3px solid var(--border);box-shadow:6px 6px 0 var(--border);position:relative}
+.qr-frame img{width:150px;height:150px;display:block}
+.qr-spin{position:absolute;inset:-8px;border:2px dashed var(--accent);animation:spin20 20s linear infinite}
+.qr-cap{font-family:var(--font-head);font-size:.38rem;color:var(--muted);text-align:center;line-height:1.8}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-h{font-family:var(--font-head);font-size:clamp(.8rem,1.8vw,1.3rem);line-height:1.65;margin-bottom:1.2rem}
+.contact-h em{font-style:normal;color:var(--accent)}
+.contact-p{font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:2rem}
+.contact-rows{display:flex;flex-direction:column;gap:.6rem}
+.c-row{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--text);padding:.85rem 1.1rem;background:var(--surface);border:2px solid var(--border);box-shadow:3px 3px 0 var(--border);transition:all .18s}
+.c-row:hover{border-color:var(--accent);box-shadow:4px 4px 0 var(--accent);transform:translate(-2px,-2px)}
+.c-ico{font-family:var(--font-head);font-size:.38rem;color:var(--accent);min-width:4rem}
+.c-val{font-size:.87rem}
+.poke-form{display:flex;flex-direction:column;gap:.75rem}
+.form-f input,.form-f textarea{width:100%;background:var(--surface);border:2px solid var(--border);color:var(--text);padding:.85rem 1rem;font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .2s;resize:none;box-shadow:3px 3px 0 var(--border)}
+.form-f input:focus,.form-f textarea:focus{border-color:var(--accent);box-shadow:3px 3px 0 var(--accent)}
+.form-f input::placeholder,.form-f textarea::placeholder{color:var(--muted)}
+.form-sub{background:var(--accent);color:#000;border:2px solid #000;box-shadow:4px 4px 0 #000;padding:.85rem 1.8rem;font-family:var(--font-head);font-size:.48rem;cursor:pointer;letter-spacing:.05em;transition:all .14s;align-self:flex-start}
+.form-sub:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
+#form-msg{font-family:var(--font-head);font-size:.4rem;color:var(--accent);margin-top:.3rem}
+
+/* ── FOOTER ── */
+footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;background:var(--bg)}
+.foot-copy{font-family:var(--font-head);font-size:.38rem;color:var(--muted)}
+.foot-links{display:flex;gap:1.3rem;flex-wrap:wrap}
+.foot-links a{font-family:var(--font-head);font-size:.38rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+
+/* ── GAME OVERLAY ── */
+.game-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.95);display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.game-overlay.open{display:flex}
+.game-title{font-family:var(--font-head);font-size:.7rem;color:var(--accent);letter-spacing:.15em;text-shadow:0 0 10px var(--accent)}
+.game-wrap{background:#1a1a1a;border:3px solid var(--accent);box-shadow:0 0 30px rgba(255,204,0,.2),6px 6px 0 #000;padding:.9rem;position:relative}
+.game-score-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;padding:0 .4rem}
+.g-score-l{font-family:var(--font-head);font-size:.5rem;color:var(--accent)}
+#dinoHi,#snakeHi{font-family:var(--font-head);font-size:.5rem;color:var(--accent2)}
+.game-close-btn{background:var(--accent2);border:2px solid #000;box-shadow:3px 3px 0 #000;color:#fff;padding:.5rem 1.1rem;font-family:var(--font-head);font-size:.48rem;cursor:pointer;transition:all .14s}
+.game-close-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+.game-hint{font-family:var(--font-head);font-size:.36rem;color:#444;text-align:center;line-height:1.8}
+
+/* ── MOBILE NAV ── */
+.mob-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:700;flex-direction:column;justify-content:center;align-items:center;gap:1.8rem}
+.mob-nav.open{display:flex}
+.mob-nav a{font-family:var(--font-head);font-size:.8rem;color:var(--text);text-decoration:none;transition:color .2s}
+.mob-nav a:hover{color:var(--accent)}
+.mob-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+/* ── REVEAL ── */
+.reveal{opacity:1;transform:none;transition:opacity .6s,transform .6s}
+.reveal-anim{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.reveal-anim.visible{opacity:1;transform:none}
+#dogbreed{display:block!important;visibility:visible!important}
+#dog-grid{margin-top:2rem}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── ANIMATIONS ── */
+@keyframes pixIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes bY{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes spin40{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes spin20{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes statusPulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1200px){
+  .hero-right{display:none}
+  .hero-data-panel{display:none}
+  #pokeball-3d-canvas{display:none!important}
+  .hero-bg-deco{display:none}
+  .hero-name{font-size:clamp(2.8rem,12vw,5rem)!important}
+}
+@media(max-width:1000px){
+  #navbar{padding:1rem 2rem}
+  #hero,section,#coffee{padding-left:2rem;padding-right:2rem}
+  .about-grid{grid-template-columns:1fr;gap:2rem}.trainer-card{max-width:260px}
+  .proj-grid,.sims-grid,.research-grid{grid-template-columns:1fr}
+  .proj-card.featured,.res-card.full{grid-column:span 1}
+  .skills-4col,.concepts-grid,.tools-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid,.coffee-inner{grid-template-columns:1fr}
+  .two-col-sm{grid-template-columns:1fr}
+  footer{padding:1.5rem 2rem}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta,.dino-nav-btn,.snake-nav-btn{display:none}
+  .menu-btn{display:block}
+  #navbar{padding:1rem 1.5rem}
+  section,#coffee{padding-left:1.5rem;padding-right:1.5rem}
+  .skills-4col,.concepts-grid,.tools-grid{grid-template-columns:1fr}
+  .case-results{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+}
+
+/* ── METRIC CARDS ── */
+.metric-card{background:var(--surface);border:2px solid var(--border);padding:1.5rem;box-shadow:4px 4px 0 var(--border);transition:all .2s; position: relative; overflow: hidden;}
+.metric-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--border)}
+.metric-val{font-family:var(--font-head,'Press Start 2P',monospace);font-size:1.6rem;color:var(--accent);margin-bottom:.4rem;transition:color .3s; display: flex; align-items: center; gap: 0.5rem;}
+.metric-lbl{font-family:var(--font-head,'Press Start 2P',monospace);font-size:.38rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.8rem}
+.metric-bar{height:4px;background:var(--muted2);overflow:hidden}
+.metric-fill{height:100%;background:var(--accent);transition:width 1s ease;border-radius:0}
+.metric-trend { font-size: 0.8rem; }
+.trend-up { color: var(--accent4); }
+.trend-down { color: var(--accent2); }
+
+/* ── CHAT BUBBLES ── */
+.chat-bubble-msg{max-width:85%;padding:.6rem .9rem;font-family:var(--font-body,'DM Sans',sans-serif);font-size:.85rem;line-height:1.6;animation:msgIn .2s ease}
+.chat-bubble-user{background:var(--accent);color:#000;align-self:flex-end;border:2px solid #000;box-shadow:2px 2px 0 #000}
+.chat-bubble-bot{background:var(--surface2);color:var(--text);align-self:flex-start;border:2px solid var(--border);box-shadow:2px 2px 0 var(--border)}
+.chat-suggestions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; align-self: flex-start; animation: msgIn .2s ease 0.3s both; }
+.chat-sugg-btn { background: var(--bg); border: 1px solid var(--accent); color: var(--accent); padding: 0.3rem 0.6rem; font-family: var(--font-head); font-size: 0.35rem; cursor: pointer; transition: all 0.2s; border-radius: 2px;}
+.chat-sugg-btn:hover { background: var(--accent); color: #000; }
+
+/* ── DOG PREDICTOR ── */
+#dog-drop{transition:all .25s; position: relative; overflow: hidden;}
+#dog-drop:hover,#dog-drop.drag-over{border-color:var(--accent4);background:rgba(34,197,94,.06)}
+.breed-result{background:var(--bg);border:1px solid var(--border);padding:.75rem 1rem;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
+.breed-name{font-family:var(--font-head,monospace);font-size:.48rem;color:var(--text);letter-spacing:.05em}
+.breed-conf{font-family:var(--font-head,monospace);font-size:.52rem;color:var(--accent4)}
+.breed-bar-wrap{height:4px;background:var(--muted2);margin-top:.4rem; position: relative; overflow: hidden; border-radius: 2px;}
+.breed-bar-fill{height:100%;background:var(--accent4);transition:width 1.2s ease; border-radius: 2px; position: relative;}
+.breed-bar-fill::after { content:''; position: absolute; top:0; right:0; bottom:0; left:0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: scanLine 2s linear infinite; }
+.breed-top-result { box-shadow: 0 0 15px rgba(34,197,94,0.2); border-color: var(--accent4); position: relative; }
+.breed-top-result::before { content: 'TOP MATCH'; position: absolute; top: -0.5rem; right: 0.5rem; background: var(--accent4); color: #fff; font-family: var(--font-head); font-size: 0.35rem; padding: 0.1rem 0.3rem; }
+.dog-attention-box { position: absolute; border: 2px dashed var(--accent4); box-shadow: 0 0 10px rgba(34,197,94,0.3); pointer-events: none; transition: all 0.3s ease; opacity: 0; }
+.dog-attention-label { position: absolute; top: -1.2rem; left: -2px; background: var(--accent4); color: #fff; font-family: var(--font-head); font-size: 0.35rem; padding: 0.1rem 0.3rem; white-space: nowrap; }
+
+/* ── PARALLAX TILT ── */
+.tilt-card{transform-style:preserve-3d;transition:transform .15s ease}
+
+/* ── ADDITIONAL ANIMATIONS ── */
+@keyframes scanMove{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+@keyframes chatPulse{0%,100%{box-shadow:4px 4px 0 #000}50%{box-shadow:4px 4px 0 #000,0 0 20px var(--accent)}}
+@keyframes blink2{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes spin2{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes floatEl{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-18px) rotate(3deg)}66%{transform:translateY(-8px) rotate(-2deg)}}
+
+/* ── POKÉMON FLOATERS ── */
+.pokemon-float{
+  position:absolute;width:60px;height:60px;pointer-events:auto;
+  z-index:4;image-rendering:pixelated;cursor:pointer;
+  animation:floatPokemon 11s ease-in-out forwards;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));
+  transition:transform .15s ease;
+}
+@keyframes floatPokemon{
+  0%   {transform:translateY(0px) scaleX(1);opacity:0}
+  8%   {opacity:1}
+  50%  {transform:translateY(-120px) scaleX(1);opacity:1}
+  90%  {opacity:.8}
+  100% {transform:translateY(-280px) scaleX(1);opacity:0}
+}
+@keyframes pokeWiggle{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  25%{transform:rotate(-15deg) scale(1.2)}
+  75%{transform:rotate(15deg) scale(1.2)}
+}
+@keyframes pokeBurst{
+  to{transform:translate(var(--dx),var(--dy));opacity:0}
+}
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ── DOG BREED BAR UPGRADE ── */
+.breed-bar-pixel{
+  font-family:monospace;font-size:.82rem;letter-spacing:.05em;line-height:1.4;
+  white-space:nowrap;overflow:hidden;
+}
+</style>
+</head>
+<body>
+<div id="cursor">
+  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="20" cy="20" r="18" fill="var(--accent2)" stroke="#000" stroke-width="2.5"/>
+    <rect x="2" y="17.5" width="36" height="5" fill="#111"/>
+    <circle cx="20" cy="20" r="5.5" fill="white" stroke="#111" stroke-width="2"/>
+    <circle cx="20" cy="20" r="2.5" fill="#333"/>
+    <circle cx="15" cy="12" r="2" fill="rgba(255,255,255,.3)"/>
+  </svg>
+</div>
+<div id="cursor-ring"></div>
+
+<div id="theme-panel">
+  <button class="theme-toggle-btn" id="themeToggle">🎨 THEME</button>
+  <div class="theme-dropdown" id="themeDropdown">
+    <button class="theme-pill active" data-theme="pokemon-dark">⚡ POKÉMON DARK</button>
+    <button class="theme-pill" data-theme="pokemon-light">🌞 POKÉMON LIGHT</button>
+  </div>
+</div>
+
+<div class="game-overlay" id="dinoOverlay">
+  <div class="game-title">⚪ POKÉBALL RUN</div>
+  <div class="game-wrap">
+    <div class="game-score-bar">
+      <span class="g-score-l">SCORE: <span id="dinoScore">0</span></span>
+      <span id="dinoHi">HI: 0</span>
+    </div>
+    <canvas id="dinoCanvas" width="680" height="190"></canvas>
+  </div>
+  <button class="game-close-btn" id="dinoClose">✕ EXIT</button>
+  <div class="game-hint">SPACE / CLICK to jump · Double jump! · ESC to exit</div>
+</div>
+
+<div class="game-overlay" id="snakeOverlay">
+  <div class="game-title">🐍 EKANS HUNT</div>
+  <div class="game-wrap">
+    <div class="game-score-bar">
+      <span class="g-score-l">SCORE: <span id="snakeScore">0</span></span>
+      <span id="snakeHi">HI: 0</span>
+    </div>
+    <canvas id="snakeCanvas" width="420" height="420"></canvas>
+  </div>
+  <button class="game-close-btn" id="snakeClose">✕ EXIT</button>
+  <div class="game-hint">ARROW KEYS / WASD · Collect Pokéballs! · ESC to exit</div>
+</div>
+
+<div id="case-modal">
+  <div class="case-inner">
+    <button class="case-close" id="caseClose">← BACK TO PROJECTS</button>
+    <div id="case-content"></div>
+  </div>
+</div>
+
+<nav id="navbar">
+  <a href="#hero" class="logo">PG.</a>
+  <ul class="nav-links">
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#research">RESEARCH</a></li>
+    <li><a href="#skills">SKILLS</a></li>
+    <li><a href="#concepts">CONCEPTS</a></li>
+    <li><a href="#dogbreed">DOG AI</a></li>
+    <li><a href="#metrics">METRICS</a></li>
+    <li><a href="#coffee">COFFEE</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="icon-btn dino-nav-btn" id="dinoBtn">⚪ POKÉBALL RUN</button>
+    <button class="icon-btn snake-nav-btn" id="snakeBtn">🐍 EKANS</button>
+    <a href="https://drive.google.com/file/d/1Kg8uG0i0umHXRg0DYnCznH1EBC0HjZZD/view" target="_blank" class="nav-cta">RÉSUMÉ ↗</a>
+    <button class="icon-btn menu-btn" id="menuBtn">☰</button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#about" class="ml">ABOUT</a>
+  <a href="#projects" class="ml">PROJECTS</a>
+  <a href="#research" class="ml">RESEARCH</a>
+  <a href="#skills" class="ml">SKILLS</a>
+  <a href="#dogbreed" class="ml">DOG AI</a>
+  <a href="#metrics" class="ml">METRICS</a>
+  <a href="#coffee" class="ml">COFFEE</a>
+  <a href="#contact" class="ml">CONTACT</a>
+</div>
+
+<section id="hero">
+  <canvas id="three-canvas"></canvas>
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-bg-deco">
+    <div class="hero-bg-deco-sq1"></div>
+    <div class="hero-bg-deco-sq2"></div>
+  </div>
+
+  <canvas id="pokeball-3d-canvas" width="520" height="520"></canvas>
+
+  <div class="hero-corner tl"></div>
+  <div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div>
+  <div class="hero-corner br"></div>
+  <div class="hero-status-strip" id="heroStatusStrip">POKÉDEX OS v2.7 · SCANNING · ██████░░░░ 61%</div>
+
+  <div class="hero-wrap">
+
+    <div class="hero-rank-chip">
+      <div class="hero-rank-dot"></div>
+      RANK: ELITE TRAINER · THAPAR INSTITUTE
+    </div>
+
+    <div class="hero-position">AI/ML Engineer focused on building <strong>end-to-end intelligent systems</strong><br>from model training → deployment using FastAPI, Docker &amp; React.</div>
+
+    <div class="hero-badge">✦ TRAINER LVL 3 · CLASS OF 2027</div>
+
+    <h1 class="hero-name" id="heroNameInteractive">
+      <span class="n1">PRASHANT</span>
+      <span class="n2">GAGNEJA</span>
+    </h1>
+
+    <div class="hero-subtitle-row">
+      <div class="hero-subtitle-bar"></div>
+      <div class="hero-subtitle-text">TOP-TIER AI/ML TRAINER</div>
+    </div>
+
+    <div class="hero-typewriter" id="typewriter">AI/ML ENGINEER_</div>
+
+    <p class="hero-sub">Building intelligent systems that learn, adapt, and solve real problems — from deep learning pipelines to full-stack production deployments. Currently exploring RL for adaptive game systems.</p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-px btn-yellow">⚔ PROJECTS</a>
+      <a href="#research" class="btn-px btn-blue">🔬 RESEARCH</a>
+      <a href="#coffee" class="btn-px btn-red">☕ COFFEE</a>
+      <a href="#contact" class="btn-px btn-outline">✉ CONTACT</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats-col" style="gap: 1.5rem;">
+      <div class="stat-px trainer-dialogue" id="ashDialogue">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Ash" id="ashImg">
+          <div>
+            <span style="font-family: var(--font-head); font-size: 0.45rem; color: var(--accent);">ASH KETCHUM</span>
+            <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text); margin-top: 0.4rem; line-height: 1.4;">"I'll be the best Machine Learning Engineer one day. Maybe even better than that."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-px trainer-dialogue partner-reply" id="pikaDialogue">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu" id="pikaImg">
+          <div>
+            <span style="font-family: var(--font-head); font-size: 0.45rem; color: var(--accent);">PIKACHU</span>
+            <p id="pikaText" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.4;">"Pika... pika..."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-data-panel">
+    <div class="hdp-header">
+      <span class="hdp-label">SYSTEM STATUS: OPTIMAL</span>
+      <div class="hdp-dots">
+        <div class="hdp-dot" style="background:var(--accent4)"></div>
+        <div class="hdp-dot" style="background:rgba(187,255,179,.35)"></div>
+        <div class="hdp-dot" style="background:rgba(187,255,179,.15)"></div>
+      </div>
+    </div>
+    <div class="hdp-row">
+      <span class="hdp-key">REGION</span>
+      <span class="hdp-val">THAPAR · GLOBAL</span>
+    </div>
+    <div class="hdp-row">
+      <span class="hdp-key">BADGES</span>
+      <span class="hdp-val yellow">8 / 8 EARNED</span>
+    </div>
+    <div class="hdp-row">
+      <span class="hdp-key">SPECIALTY</span>
+      <span class="hdp-val">NEURAL NETS</span>
+    </div>
+    <div class="hdp-row">
+      <span class="hdp-key">STATUS</span>
+      <span class="hdp-val green">● ACTIVE</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll"><div class="scroll-arr">▼</div><span>SCROLL</span></div>
+</section>
+
+<section id="about">
+  <div class="sec-hdr reveal"><span class="sec-num">01</span><h2 class="sec-ttl">TRAINER INFO</h2><div class="sec-line"></div></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="trainer-card tilt-card">
+        <img src="photo.jpeg" alt="Prashant Gagneja" class="trainer-img">
+        <div class="trainer-info">
+          <div class="tr-row"><span class="tr-k">NAME</span><span class="tr-v">Prashant Gagneja</span></div>
+          <div class="tr-row"><span class="tr-k">CLASS</span><span class="tr-v">AI/ML Engineer</span></div>
+          <div class="tr-row"><span class="tr-k">HOME</span><span class="tr-v">Uttarakhand, IN</span></div>
+          <div class="tr-row"><span class="tr-k">INSTITUTE</span><span class="tr-v">TIET Punjab</span></div>
+          <div class="tr-row"><span class="tr-k">GPA</span><span class="tr-v">7.30 / 10</span></div>
+          <div class="tr-row"><span class="tr-k">LEETCODE</span><span class="tr-v">100+ Problems</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="position-banner tilt-card">
+        <strong>AI/ML Engineer</strong> focused on building end-to-end intelligent systems — from model training to deployment using <strong>FastAPI, Docker, and React</strong>. Specializing in deep learning pipelines, NLP, and production-grade MLOps.
+      </div>
+      <p class="about-p">I'm a <strong>Computer Engineering (AI/ML) student</strong> at Thapar Institute, building data-driven systems and full-stack applications with a focus on measurable impact.</p>
+      <p class="about-p">My work spans <strong>deep learning, NLP, computer vision</strong>, and production ML pipelines. I care about clarity, maintainability, and shipping things that actually work with real metrics.</p>
+      <p class="about-p">Currently exploring <strong>reinforcement learning for adaptive game systems</strong> (Cognitive Game Director) and building research frameworks bridging academic rigor with practical deployment.</p>
+      <div class="type-wrap">
+        <span class="tb t-elec">PYTORCH</span><span class="tb t-water">FASTAPI</span><span class="tb t-fire">GPT-2</span>
+        <span class="tb t-grass">YOLOV8</span><span class="tb t-psy">BERT</span><span class="tb t-steel">DOCKER</span>
+        <span class="tb t-ice">REACT</span><span class="tb t-drag">TENSORFLOW</span><span class="tb t-norm">GCP</span>
+        <span class="tb t-dark">SCIKIT-LEARN</span>
+      </div>
+      <div class="two-col-sm">
+        <div class="mini-box tilt-card">
+          <h4>📚 RELEVANT COURSEWORK</h4>
+          <ul class="mini-list">
+            <li>Machine Learning</li><li>Deep Learning</li><li>Natural Language Processing</li>
+            <li>Data Structures &amp; Algorithms</li><li>Probability &amp; Statistics</li>
+            <li>Optimization Techniques</li><li>Computer Vision</li><li>Operating Systems</li>
+          </ul>
+        </div>
+        <div class="mini-box tilt-card">
+          <h4>🎯 DSA / PROBLEM SOLVING</h4>
+          <ul class="mini-list">
+            <li>100+ LeetCode problems solved</li><li>Strong in graphs, trees, DP</li>
+            <li>Sliding window &amp; two-pointer</li><li>BFS/DFS implementations</li>
+            <li>Time complexity analysis</li><li>Array manipulation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="edu-rows tilt-card">
+        <div class="edu-row"><div><div class="edu-s">Thapar Institute of Engineering &amp; Technology</div><div class="edu-d">B.E. COMPUTER ENGINEERING (AI/ML)</div></div><div class="edu-y">2023–27</div></div>
+        <div class="edu-row"><div><div class="edu-s">R.A.N Public School, Rudrapur</div><div class="edu-d">CBSE · CLASS 12: 84.8%</div></div><div class="edu-y">2022</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-hdr reveal"><span class="sec-num">02</span><h2 class="sec-ttl">POKÉDEX — PROJECTS</h2><div class="sec-line"></div></div>
+  <div class="proj-grid">
+
+    <div class="proj-card featured reveal tilt-card" data-project="cicop">
+      <div class="proj-num">001 — FEATURED</div>
+      <div class="proj-hdr">
+        <div class="proj-name">CICOP — Customer Intelligence &amp; Campaign Orchestration</div>
+        <a href="https://github.com/praxshant/Customer-Intelligence-Platform" target="_blank" class="proj-link-icon">↗</a>
+      </div>
+      <div class="proj-desc">End-to-end ML platform with FastAPI microservices, Streamlit analytics dashboard, and real-time customer segmentation engine with automated campaign orchestration.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">Segmented 10K+ customer records using K-means, DBSCAN &amp; hierarchical clustering</div>
+        <div class="metric-item">A/B testing framework improved campaign ROI by ~18% in simulation</div>
+        <div class="metric-item">3 independent FastAPI microservices, each containerized with Docker</div>
+        <div class="metric-item">End-to-end CI/CD pipeline with zero-downtime deployment</div>
+      </div>
+      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-water">STREAMLIT</span><span class="tb t-grass">SCIKIT</span><span class="tb t-steel">DOCKER</span><span class="tb t-elec">CI/CD</span></div>
+      <button class="deep-dive-btn" onclick="openCase('cicop')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="codementor">
+      <div class="proj-num">002</div>
+      <div class="proj-hdr"><div class="proj-name">CODEMENTOR</div><a href="https://github.com/praxshant/CodeMentor" target="_blank" class="proj-link-icon">↗</a></div>
+      <div class="proj-desc">Full-stack AI code analysis with fine-tuned GPT-2. Flask REST + React/TypeScript frontend.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">85% bug detection accuracy on Python test suite</div>
+        <div class="metric-item">Transfer learning reduced false-positive rate vs baseline</div>
+        <div class="metric-item">Sub-2s inference latency on CPU with model optimization</div>
+      </div>
+      <div class="proj-types"><span class="tb t-psy">GPT-2</span><span class="tb t-fire">FLASK</span><span class="tb t-ice">REACT</span><span class="tb t-norm">TAILWIND</span></div>
+      <button class="deep-dive-btn" onclick="openCase('codementor')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="sentry">
+      <div class="proj-num">003</div>
+      <div class="proj-hdr"><div class="proj-name">SENTRYVISION — Critical Region Object Detection</div><a href="https://github.com/praxshant/SentryVision" target="_blank" class="proj-link-icon">↗</a></div>
+      <div class="proj-desc">Advanced real-time system that detects fast-moving thrown objects (stones, tools, sacks) entering a user-defined critical region in live video feeds. Minimizes false positives from birds, animals, and environmental noise. Production-deployed with Gunicorn + Nginx.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">92% person/object detection accuracy using YOLOv8 + MOG2 background subtraction</div>
+        <div class="metric-item">Reduced false positives 28% via adaptive morphological noise filtering &amp; contour analysis</div>
+        <div class="metric-item">18 FPS processing on CPU — real-time capable on standard hardware</div>
+        <div class="metric-item">Production-ready: Gunicorn (4 workers) + Nginx reverse proxy with sticky sessions</div>
+      </div>
+      <div class="proj-types"><span class="tb t-elec">YOLOV8</span><span class="tb t-water">OPENCV</span><span class="tb t-fire">FLASK</span><span class="tb t-steel">GUNICORN</span><span class="tb t-norm">NGINX</span><span class="tb t-grass">SQLITE</span></div>
+      <button class="deep-dive-btn" onclick="openCase('sentry')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="goemo">
+      <div class="proj-num">004</div>
+      <div class="proj-hdr"><div class="proj-name">GOEMOTIONS CLASSIFIER</div><a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a></div>
+      <div class="proj-desc">28-class multi-label NLP emotion classifier on Google's GoEmotions dataset.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">TF-IDF (15K features) + SMOTE — addressed severe label imbalance</div>
+        <div class="metric-item">Per-label threshold optimization boosted minority class recall</div>
+        <div class="metric-item">Fully modular ML pipeline — preprocessing → evaluation</div>
+      </div>
+      <div class="proj-types"><span class="tb t-psy">TF-IDF</span><span class="tb t-drag">SMOTE</span><span class="tb t-norm">NLTK</span></div>
+      <button class="deep-dive-btn" onclick="openCase('goemo')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="adaptivetype">
+      <div class="proj-num">005</div>
+      <div class="proj-hdr"><div class="proj-name">ADAPTIVETYPE — Intelligent Typing Engine</div><a href="https://github.com/praxshant/AdaptiveType" target="_blank" class="proj-link-icon">↗</a></div>
+      <div class="proj-desc">A TypeScript-based adaptive typing system that intelligently adjusts text prediction, autocomplete behaviour, and input UX based on user typing patterns and context. Built for developers who want smarter keyboard input without latency overhead.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">Real-time keystroke pattern analysis with adaptive model updates</div>
+        <div class="metric-item">Context-aware autocomplete — adapts to per-user typing style over sessions</div>
+        <div class="metric-item">Zero-dependency TypeScript core — embeds in any web or Electron app</div>
+        <div class="metric-item">Sub-5ms prediction latency on standard hardware</div>
+      </div>
+      <div class="proj-types"><span class="tb t-ice">TYPESCRIPT</span><span class="tb t-psy">ADAPTIVE ML</span><span class="tb t-elec">REAL-TIME</span><span class="tb t-water">NLP</span></div>
+      <button class="deep-dive-btn" onclick="openCase('adaptivetype')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card featured reveal tilt-card" data-project="atlasos">
+      <div class="proj-num">006 — FEATURED</div>
+      <div class="proj-hdr">
+        <div class="proj-name">ATLASOS — Industrial Knowledge Operating System</div>
+        <a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a>
+      </div>
+      <div class="proj-desc">Enterprise-grade IKOS unifying fragmented industrial plants — SOPs, engineering manuals, maintenance logs, regulations — into a high-fidelity digital twin via GraphRAG over a hybrid vector + property-graph store.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">Hybrid storage triad: PostgreSQL metastore + Qdrant vectors (BAAI/bge-large-en-v1.5) + Neo4j knowledge graph</div>
+        <div class="metric-item">Multi-hop GraphRAG copilot — intent routing, PageRank centrality scoring, shortest-path context extraction, streamed via SSE</div>
+        <div class="metric-item">Automated Ishikawa root-cause trees + ISO/OSHA compliance audits with Pass/Fail checklists</div>
+        <div class="metric-item">Cross-DB integrity checker + SHA-256 duplicate-hash detection across tenants</div>
+      </div>
+      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-ice">REACT 19</span><span class="tb t-grass">NEO4J</span><span class="tb t-water">QDRANT</span><span class="tb t-steel">POSTGRESQL</span><span class="tb t-elec">CELERY</span></div>
+      <button class="deep-dive-btn" onclick="openCase('atlasos')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="auralis">
+      <div class="proj-num">007</div>
+      <div class="proj-hdr"><div class="proj-name">AURALIS — Music Intelligence Platform</div><a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a></div>
+      <div class="proj-desc">Full-stack music discovery system combining Spotify ingestion, semantic search over track embeddings, DSP-based audio analysis, and contextual playlist generation — an engineering codebase, not a demo.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">Async FastAPI + SQLAlchemy/Alembic backend with pgvector-backed embedding search</div>
+        <div class="metric-item">Celery/Redis workers isolate ingestion, embedding generation &amp; audio processing from request handling</div>
+        <div class="metric-item">librosa/soundfile DSP pipeline for waveform, BPM, key &amp; energy analysis</div>
+        <div class="metric-item">JWT auth + encrypted OAuth tokens + Redis one-time exchange codes on the Spotify callback</div>
+      </div>
+      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-ice">NEXT.JS</span><span class="tb t-steel">POSTGRESQL</span><span class="tb t-water">PGVECTOR</span><span class="tb t-elec">CELERY</span></div>
+      <button class="deep-dive-btn" onclick="openCase('auralis')">🔍 DEEP DIVE →</button>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="genfx">
+      <div class="proj-num">008</div>
+      <div class="proj-hdr"><div class="proj-name">GENFX LITE — LLM + Diffusion VFX Pipeline</div><a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a></div>
+      <div class="proj-desc">Production-style prototype chaining an LLM scene parser, diffusion image generation, and a headless Blender compositor behind a Streamlit UI — inspired by studio VFX pipeline architecture.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">3-stage pipeline: LLM scene parser → HF diffusion image gen (SD3.5 / FLUX.1-schnell / Hyper-SD fallback chain) → headless Blender Cycles compositor</div>
+        <div class="metric-item">Every stage degrades gracefully to a pre-baked fallback asset — pipeline always completes and produces output</div>
+        <div class="metric-item">22 passing smoke tests requiring zero API keys</div>
+        <div class="metric-item">Modular orchestration (runner/scheduler/worker) + pluggable post-processing (Pillow default, optional OpenCV)</div>
+      </div>
+      <div class="proj-types"><span class="tb t-psy">STREAMLIT</span><span class="tb t-elec">LLM PARSER</span><span class="tb t-water">DIFFUSION</span><span class="tb t-grass">BLENDER</span></div>
+      <button class="deep-dive-btn" onclick="openCase('genfx')">🔍 DEEP DIVE →</button>
+    </div>
+
+  </div>
+  <div style="margin-top:1.5rem;text-align:right" class="reveal">
+    <a href="https://github.com/praxshant" target="_blank" class="btn-px btn-outline" style="font-size:.42rem">VIEW ALL REPOS ↗</a>
+  </div>
+</section>
+
+<section id="research">
+  <div class="sec-hdr reveal"><span class="sec-num">03</span><h2 class="sec-ttl">RESEARCH WORK</h2><div class="sec-line"></div></div>
+  <div class="research-note reveal">⚠ ALL PROJECTS ONGOING — NOT PUBLISHED YET</div>
+  <div class="research-grid">
+
+    <div class="res-card reveal tilt-card">
+      <span class="res-status st-building">● BUILDING</span>
+      <div class="res-org">ADAPTIVE AI RESEARCH</div>
+      <div class="res-title">Cognitive Game Director (CGD)</div>
+      <div class="res-desc">Research framework for adaptive procedural game world generation integrating a Player Cognitive Model (PCM), World Memory Graph (WMG), and an RL-based Game Director Agent. Phase 2 extends with a conditional GAN world generator and RAG-grounded LLM narrative engine.</div>
+      <div class="res-phases">
+        <div class="res-phase ph-done"><div class="ph-dot"></div>PCM design + 3 falsifiable hypotheses defined</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Rule-based archetype agents for simulation data</div>
+        <div class="res-phase ph-wip"><div class="ph-dot"></div>RL Game Director Agent (DQN) — training in simulation</div>
+        <div class="res-phase ph-wip"><div class="ph-dot"></div>World Memory Graph (Neo4j) integration</div>
+        <div class="res-phase ph-todo"><div class="ph-dot"></div>Conditional GAN world generator (Phase 2)</div>
+        <div class="res-phase ph-todo"><div class="ph-dot"></div>RAG narrative engine (Phase 2)</div>
+      </div>
+      <div class="res-stack" style="margin-top:1rem">
+        <span class="res-chip">PYTORCH</span><span class="res-chip">DQN</span><span class="res-chip">GAN</span><span class="res-chip">RAG</span><span class="res-chip">NEO4J</span><span class="res-chip">LLM</span>
+      </div>
+    </div>
+
+    <div class="res-card full reveal tilt-card">
+      <span class="res-status st-building">● BUILDING</span>
+      <div class="res-org">SPEECH &amp; LANGUAGE AI RESEARCH</div>
+      <div class="res-title">VoxIntel — Error-Aware Speech-to-Intent Pipeline</div>
+      <div class="res-desc">Studies how ASR transcription errors propagate into downstream intent classification. Moves past aggregate WER/CER to ask which specific error categories — substitution, deletion, negation, entity, number, location — actually flip predicted intents, using a Wav2Vec2 model fine-tuned on SLURP feeding a DistilBERT intent classifier, wrapped in a production-oriented MLOps stack.</div>
+      <div class="res-phases" style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem">
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Error taxonomy defined — 8 categories (substitution, deletion, negation, entity, number, location, insertion, function word)</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Baseline ASR inference + WER/CER benchmarking on SLURP</div>
+        <div class="res-phase ph-wip"><div class="ph-dot"></div>Wav2Vec2 fine-tuning on SLURP — lazy Dataset pipeline to resolve memory errors on large-scale mapping</div>
+        <div class="res-phase ph-wip"><div class="ph-dot"></div>DistilBERT intent classifier — ground-truth vs. ASR transcript comparison</div>
+        <div class="res-phase ph-todo"><div class="ph-dot"></div>Error-flip sensitivity analysis — intent-flip rate per error category</div>
+        <div class="res-phase ph-todo"><div class="ph-dot"></div>FastAPI inference service + MLflow/DVC MLOps deployment</div>
+      </div>
+      <div class="res-stack" style="margin-top:1rem">
+        <span class="res-chip">PYTORCH</span><span class="res-chip">WAV2VEC2</span><span class="res-chip">DISTILBERT</span><span class="res-chip">MLFLOW</span><span class="res-chip">DVC</span><span class="res-chip">FASTAPI</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-hdr reveal"><span class="sec-num">04</span><h2 class="sec-ttl">MOVE SET</h2><div class="sec-line"></div></div>
+  <div class="skills-4col">
+    <div class="pdx-card reveal tilt-card"><div class="pdx-cat">⚡ AI / ML / DL</div><ul class="move-list"><li>PyTorch &amp; TensorFlow</li><li>Hugging Face Transformers</li><li>BERT, GPT-2, Attention</li><li>YOLOv8, Computer Vision</li><li>Scikit-learn, SMOTE</li><li>Word2Vec, NLTK, TF-IDF</li><li>Transfer Learning</li><li>RL — DQN, PPO</li></ul></div>
+    <div class="pdx-card reveal tilt-card"><div class="pdx-cat">🔮 LLM &amp; GENAI</div><ul class="move-list"><li>Large Language Models</li><li>Prompt Engineering</li><li>Fine-Tuning &amp; Tokenization</li><li>Beam Search Decoding</li><li>Encoder-Decoder Arches</li><li>Multi-Head Attention</li><li>RAG Pipelines</li><li>Code Generation</li></ul></div>
+    <div class="pdx-card reveal tilt-card"><div class="pdx-cat">🛠 ENGINEERING</div><ul class="move-list"><li>Python, C++, Java, JS</li><li>FastAPI, Flask, React</li><li>Docker, CI/CD</li><li>REST APIs, Microservices</li><li>PostgreSQL, SQLite, Redis</li><li>GCP, Streamlit</li><li>Tailwind CSS</li><li>Git, Agile/Scrum</li></ul></div>
+    <div class="pdx-card reveal tilt-card"><div class="pdx-cat">📊 DATA</div><ul class="move-list"><li>Pandas, NumPy</li><li>Feature Engineering</li><li>Data Visualization</li><li>EDA &amp; Preprocessing</li><li>Imbalanced Datasets</li><li>Time Series Analysis</li><li>A/B Testing</li><li>Statistical Modeling</li></ul></div>
+  </div>
+</section>
+
+<section id="concepts">
+  <div class="sec-hdr reveal"><span class="sec-num">05</span><h2 class="sec-ttl">CORE CONCEPTS</h2><div class="sec-line"></div></div>
+  <div class="concepts-grid">
+    <div class="concept-card reveal tilt-card"><div class="concept-cat c-ml">🧠 MACHINE LEARNING</div><ul class="concept-list"><li>Bias-Variance Tradeoff</li><li>Regularization (L1/L2)</li><li>Cross-Validation</li><li>Ensemble Methods</li><li>Feature Selection</li><li>Gradient Descent variants</li></ul></div>
+    <div class="concept-card reveal tilt-card"><div class="concept-cat c-dl">⚡ DEEP LEARNING</div><ul class="concept-list"><li>Backpropagation &amp; Chain Rule</li><li>Optimization (Adam, SGD)</li><li>CNNs, RNNs, LSTMs</li><li>Transformers &amp; Self-Attention</li><li>Batch Norm, Dropout</li><li>Transfer Learning</li></ul></div>
+    <div class="concept-card reveal tilt-card"><div class="concept-cat c-nlp">🔮 NLP</div><ul class="concept-list"><li>Tokenization strategies</li><li>Attention Mechanisms</li><li>Word Embeddings</li><li>Fine-tuning LLMs</li><li>Named Entity Recognition</li><li>Seq2Seq models</li></ul></div>
+    <div class="concept-card reveal tilt-card"><div class="concept-cat c-sys">🛠 SYSTEMS</div><ul class="concept-list"><li>REST API design</li><li>Microservices patterns</li><li>Dockerization &amp; orchestration</li><li>CI/CD pipelines</li><li>Database indexing</li><li>Async programming</li></ul></div>
+  </div>
+</section>
+
+<section id="tools" style="padding:4rem 3rem;background:var(--bg2)">
+  <div class="sec-hdr reveal"><span class="sec-num">06</span><h2 class="sec-ttl">TOOLS &amp; PLATFORMS</h2><div class="sec-line"></div></div>
+  <div class="tools-grid">
+    <div class="tool-group reveal tilt-card"><div class="tool-cat">ML FRAMEWORKS</div><div class="tool-tags"><span class="tool-tag">PyTorch</span><span class="tool-tag">TensorFlow</span><span class="tool-tag">Scikit-learn</span><span class="tool-tag">Keras</span><span class="tool-tag">Hugging Face</span><span class="tool-tag">XGBoost</span></div></div>
+    <div class="tool-group reveal tilt-card"><div class="tool-cat">BACKEND</div><div class="tool-tags"><span class="tool-tag">FastAPI</span><span class="tool-tag">Flask</span><span class="tool-tag">REST APIs</span><span class="tool-tag">SQLite</span><span class="tool-tag">PostgreSQL</span><span class="tool-tag">Redis</span></div></div>
+    <div class="tool-group reveal tilt-card"><div class="tool-cat">FRONTEND</div><div class="tool-tags"><span class="tool-tag">React</span><span class="tool-tag">TypeScript</span><span class="tool-tag">Tailwind CSS</span><span class="tool-tag">Streamlit</span><span class="tool-tag">Vite</span></div></div>
+    <div class="tool-group reveal tilt-card"><div class="tool-cat">DEVOPS &amp; CLOUD</div><div class="tool-tags"><span class="tool-tag">Docker</span><span class="tool-tag">GitHub Actions</span><span class="tool-tag">CI/CD</span><span class="tool-tag">GCP</span><span class="tool-tag">Render</span><span class="tool-tag">Vercel</span></div></div>
+    <div class="tool-group reveal tilt-card"><div class="tool-cat">CV &amp; VISION</div><div class="tool-tags"><span class="tool-tag">YOLOv8</span><span class="tool-tag">OpenCV</span><span class="tool-tag">PIL</span><span class="tool-tag">MobileNetV2</span></div></div>
+    <div class="tool-group reveal tilt-card"><div class="tool-cat">DATA &amp; NLP</div><div class="tool-tags"><span class="tool-tag">Pandas</span><span class="tool-tag">NumPy</span><span class="tool-tag">NLTK</span><span class="tool-tag">SpaCy</span><span class="tool-tag">Matplotlib</span><span class="tool-tag">Seaborn</span></div></div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="sec-hdr reveal"><span class="sec-num">07</span><h2 class="sec-ttl">BADGES EARNED</h2><div class="sec-line"></div></div>
+  <div class="cert-rows reveal tilt-card">
+    <div class="cert-row"><div class="cert-l"><svg class="cert-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#ef4444" stroke="#000" stroke-width="2"/><rect x="2" y="18" width="36" height="4" fill="#000"/><circle cx="20" cy="20" r="6" fill="#fff" stroke="#000" stroke-width="2"/><circle cx="20" cy="20" r="3" fill="#000"/></svg><div><div class="cert-name">MACHINE LEARNING SPECIALIZATION</div><div class="cert-sub">DeepLearning.AI — Supervised learning, clustering, feature engineering</div></div></div><div class="cert-yr">2024</div></div>
+    <div class="cert-row"><div class="cert-l"><svg class="cert-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#3b82f6" stroke="#000" stroke-width="2"/><rect x="2" y="18" width="36" height="4" fill="#000"/><circle cx="20" cy="20" r="6" fill="#fff" stroke="#000" stroke-width="2"/><circle cx="20" cy="20" r="3" fill="#000"/></svg><div><div class="cert-name">DEEP LEARNING SPECIALIZATION</div><div class="cert-sub">DeepLearning.AI — CNNs, RNNs, Transformers, GANs, LLMs</div></div></div><div class="cert-yr">2024</div></div>
+    <div class="cert-row"><div class="cert-l"><svg class="cert-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#22c55e" stroke="#000" stroke-width="2"/><rect x="2" y="18" width="36" height="4" fill="#000"/><circle cx="20" cy="20" r="6" fill="#fff" stroke="#000" stroke-width="2"/><circle cx="20" cy="20" r="3" fill="#000"/></svg><div><div class="cert-name">NLP WITH TRANSFORMERS — HUGGING FACE</div><div class="cert-sub">LLM fine-tuning, tokenization, inference pipelines</div></div></div><div class="cert-yr">2024</div></div>
+  </div>
+</section>
+
+<section id="sims">
+  <div class="sec-hdr reveal"><span class="sec-num">08</span><h2 class="sec-ttl">GYM SIMULATIONS</h2><div class="sec-line"></div></div>
+  <p class="sims-note reveal">VIRTUAL EXPERIENCE PROGRAMMES — FORAGE PLATFORM</p>
+  <div class="sims-grid">
+    <div class="sim-card reveal tilt-card"><div class="sim-date">MAR 2026</div><div class="sim-org">TATA CONSULTANCY SERVICES</div><div class="sim-title">DATA VISUALISATION: EMPOWERING BUSINESS WITH EFFECTIVE INSIGHTS</div><div class="sim-desc">Produced executive-ready data visualizations for TCS senior leadership. Translated raw business data into actionable insights and KPI dashboards for stakeholder decision-making.</div><div class="sim-chips"><span class="sim-chip">DATA VIZ</span><span class="sim-chip">BUSINESS INTEL</span><span class="sim-chip">STORYTELLING</span><span class="sim-chip">FORAGE</span></div></div>
+    <div class="sim-card reveal tilt-card"><div class="sim-date">MAR 2026</div><div class="sim-org">VISTA EQUITY PARTNERS</div><div class="sim-title">AI IN ACTION — GENAI &amp; WORKFLOW AUTOMATION</div><div class="sim-desc">Applied structured prompt engineering frameworks to transform raw data into executive-ready outputs. Designed scalable AI workflows with insight summarization and validation guardrails.</div><div class="sim-chips"><span class="sim-chip">PROMPT ENG</span><span class="sim-chip">GENAI</span><span class="sim-chip">AUTOMATION</span><span class="sim-chip">LLMS</span><span class="sim-chip">FORAGE</span></div></div>
+  </div>
+</section>
+
+<section id="dogbreed" style="padding:5rem 3rem;background:var(--bg2)">
+  <div class="sec-hdr reveal">
+    <span class="sec-num" style="background:var(--accent4);color:#fff">🐕</span>
+    <h2 class="sec-ttl">DOG BREED PREDICTOR</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" id="dog-grid">
+    <div class="reveal">
+      <p style="font-family:var(--font-mono,monospace);font-size:.82rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.7">Upload any dog photo — our ML model identifies the breed with confidence scores using Hugging Face + image classification.</p>
+      <div id="dog-drop" style="border:3px dashed var(--border2);padding:3rem 2rem;text-align:center;cursor:pointer;transition:all .25s;background:var(--surface);position:relative">
+        <div id="dog-drop-inner">
+          <div style="font-size:3rem;margin-bottom:1rem">🐕</div>
+          <div style="font-family:var(--font-head,monospace);font-size:.52rem;color:var(--muted);letter-spacing:.08em">DROP IMAGE HERE</div>
+          <div style="font-family:var(--font-mono,monospace);font-size:.75rem;color:var(--muted);margin-top:.5rem">or click to browse</div>
+        </div>
+        <input type="file" id="dog-file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer">
+        <img id="dog-preview" style="display:none;max-width:100%;max-height:220px;object-fit:contain;margin-top:1rem;border:2px solid var(--border)" alt="Preview">
+        <div id="dog-attention-box" class="dog-attention-box"><div class="dog-attention-label">ATTENTION</div></div>
+      </div>
+      <button id="dog-btn" style="margin-top:1rem;background:var(--accent4);color:#fff;border:2px solid #000;box-shadow:4px 4px 0 #000;padding:.75rem 1.8rem;font-family:var(--font-head,monospace);font-size:.5rem;cursor:pointer;letter-spacing:.06em;transition:all .14s;display:none">🔍 IDENTIFY BREED</button>
+    </div>
+    <div class="reveal tilt-card" id="dog-results" style="display:none">
+      <div style="background:var(--surface);border:2px solid var(--border);padding:1.5rem;box-shadow:4px 4px 0 var(--border)">
+        <div style="font-family:var(--font-head,monospace);font-size:.52rem;color:var(--accent);letter-spacing:.1em;margin-bottom:1.2rem">ANALYSIS RESULTS</div>
+        <div id="dog-loading" style="display:none;text-align:center;padding:2rem">
+          <div style="font-size:2rem;animation:spin2 1s linear infinite;display:inline-block">🔄</div>
+          <div style="font-family:var(--font-mono,monospace);font-size:.8rem;color:var(--muted);margin-top:.75rem">Warming up neural pathways...</div>
+        </div>
+        <div id="dog-output" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metrics" style="padding:5rem 3rem;background:var(--bg)">
+  <div class="sec-hdr reveal">
+    <span class="sec-num" style="background:var(--accent3);color:#fff">📊</span>
+    <h2 class="sec-ttl">LIVE AI METRICS</h2>
+    <div class="sec-line"></div>
+  </div>
+  <p class="reveal" style="font-family:var(--font-mono,monospace);font-size:.78rem;color:var(--muted);margin-bottom:2.5rem;border-left:3px solid var(--accent3);padding-left:1rem">// SIMULATED SYSTEM DASHBOARD — UPDATES EVERY 3s <span id="metric-event" style="color:var(--accent);margin-left:1rem;"></span></p>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem" class="reveal" id="metrics-grid">
+    <div class="metric-card tilt-card" data-metric="requests">
+      <div class="metric-val"><span id="m-requests">0</span><span class="metric-trend" id="mt-requests"></span></div>
+      <div class="metric-lbl">REQUESTS / DAY</div>
+      <div class="metric-bar"><div class="metric-fill" id="mb-requests" style="width:0%"></div></div>
+    </div>
+    <div class="metric-card tilt-card" data-metric="latency">
+      <div class="metric-val"><span id="m-latency">0</span>ms<span class="metric-trend" id="mt-latency"></span></div>
+      <div class="metric-lbl">MODEL LATENCY</div>
+      <div class="metric-bar"><div class="metric-fill" id="mb-latency" style="width:0%"></div></div>
+    </div>
+    <div class="metric-card tilt-card" data-metric="users">
+      <div class="metric-val"><span id="m-users">0</span><span class="metric-trend" id="mt-users"></span></div>
+      <div class="metric-lbl">ACTIVE USERS</div>
+      <div class="metric-bar"><div class="metric-fill" id="mb-users" style="width:0%"></div></div>
+    </div>
+    <div class="metric-card tilt-card" data-metric="accuracy">
+      <div class="metric-val"><span id="m-accuracy">0</span>%<span class="metric-trend" id="mt-accuracy"></span></div>
+      <div class="metric-lbl">MODEL ACCURACY</div>
+      <div class="metric-bar"><div class="metric-fill" id="mb-accuracy" style="width:0%;background:var(--accent4)"></div></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.2rem" class="reveal">
+    <div class="tilt-card" style="background:var(--surface);border:2px solid var(--border);padding:1.2rem;box-shadow:3px 3px 0 var(--border)">
+      <div style="font-family:var(--font-head,monospace);font-size:.42rem;color:var(--accent3);margin-bottom:.8rem;letter-spacing:.1em">REQUEST TREND</div>
+      <canvas id="sparkRequests" width="300" height="60" style="width:100%;display:block"></canvas>
+    </div>
+    <div class="tilt-card" style="background:var(--surface);border:2px solid var(--border);padding:1.2rem;box-shadow:3px 3px 0 var(--border)">
+      <div style="font-family:var(--font-head,monospace);font-size:.42rem;color:var(--accent2);margin-bottom:.8rem;letter-spacing:.1em">LATENCY TREND</div>
+      <canvas id="sparkLatency" width="300" height="60" style="width:100%;display:block"></canvas>
+    </div>
+  </div>
+</section>
+
+<section id="coffee">
+  <div class="coffee-bg-emoji">☕</div>
+  <div class="sec-hdr reveal"><span class="sec-num">09</span><h2 class="sec-ttl">POTION SHOP</h2><div class="sec-line"></div></div>
+  <div class="coffee-inner">
+    <div class="reveal">
+      <h2 class="coffee-h">Fuel the<br><em>late-night builds.</em></h2>
+      <p class="coffee-txt">Every coffee helps me debug neural nets and ship side projects. If my work helped you — I'm one potion away! ☕</p>
+      <div class="cups">
+        <div class="cup active tilt-card" data-price="3"><span class="cup-em">☕</span><span class="cup-n">ESPRESSO</span><span class="cup-p">$3</span></div>
+        <div class="cup tilt-card" data-price="5"><span class="cup-em">🍵</span><span class="cup-n">LATTE</span><span class="cup-p">$5</span><span class="cup-hot">★ POPULAR</span></div>
+        <div class="cup tilt-card" data-price="10"><span class="cup-em">🥤</span><span class="cup-n">MEGA FUEL</span><span class="cup-p">$10</span></div>
+      </div>
+      <a href="https://buymeacoffee.com/prashantgaw" target="_blank" class="coffee-cta-link" id="coffeeCta">☕ BUY ME A COFFEE ($3)</a>
+    </div>
+    <div class="coffee-qr-col reveal tilt-card">
+      <div class="qr-frame">
+        <div class="qr-spin"></div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://buymeacoffee.com/prashantgaw&bgcolor=ffffff&color=6B4423&margin=8&format=png" alt="Coffee QR" width="150" height="150">
+      </div>
+      <p class="qr-cap">SCAN TO BUY A POTION<br>FOR YOUR TRAINER!</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-hdr reveal"><span class="sec-num">10</span><h2 class="sec-ttl">SEND A MESSAGE</h2><div class="sec-line"></div></div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h2 class="contact-h">Let's build<br>something <em>great.</em></h2>
+      <p class="contact-p">Open to research collaborations, AI/ML internships, and interesting projects. Reach out anytime.</p>
+      <div class="contact-rows">
+        <a href="mailto:prashantgagneja0@gmail.com" class="c-row tilt-card"><span class="c-ico">EMAIL</span><span class="c-val">prashantgagneja0@gmail.com</span></a>
+        <a href="https://linkedin.com/in/prashant-gagneja-208878281" target="_blank" class="c-row tilt-card"><span class="c-ico">LINKEDIN</span><span class="c-val">prashant-gagneja-208878281</span></a>
+        <a href="https://github.com/praxshant" target="_blank" class="c-row tilt-card"><span class="c-ico">GITHUB</span><span class="c-val">github.com/praxshant</span></a>
+        <a href="tel:+917037770066" class="c-row tilt-card"><span class="c-ico">PHONE</span><span class="c-val">+91 70377 70066</span></a>
+      </div>
+    </div>
+    <form class="poke-form reveal tilt-card" id="contactForm">
+      <div class="form-f"><input type="text" placeholder="Your name" required id="fname"></div>
+      <div class="form-f"><input type="email" placeholder="Your email" required id="femail"></div>
+      <div class="form-f"><input type="text" placeholder="Subject" required id="fsubject"></div>
+      <div class="form-f"><textarea placeholder="Your message" rows="5" required id="fmsg"></textarea></div>
+      <div id="form-msg"></div>
+      <button type="submit" class="form-sub">▶ SEND MESSAGE</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-copy">© <span id="yr"></span> PRASHANT GAGNEJA. ALL RIGHTS RESERVED.</div>
+  <div class="foot-links">
+    <a href="https://github.com/praxshant" target="_blank">GITHUB</a>
+    <a href="https://linkedin.com/in/prashant-gagneja-208878281" target="_blank">LINKEDIN</a>
+    <a href="https://buymeacoffee.com/prashantgaw" target="_blank">☕ COFFEE</a>
+    <a href="https://drive.google.com/file/d/1Kg8uG0i0umHXRg0DYnCznH1EBC0HjZZD/view" target="_blank">RÉSUMÉ</a>
+  </div>
+</footer>
+
+<div id="hero-overlay-poke" class="hero-theme-overlay" style="position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden">
+  <canvas id="radarCanvas" style="position:absolute;inset:0;width:100%;height:100%;opacity:.18"></canvas>
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,255,180,.025) 0,transparent 2px,transparent 4px);animation:scanMove 8s linear infinite"></div>
+</div>
+
+<div id="chat-bubble" title="Chat with Prashant's AI" style="position:fixed;bottom:6rem;right:1.5rem;z-index:800;width:52px;height:52px;background:var(--accent);border:3px solid #000;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:4px 4px 0 #000;transition:transform .15s;animation:chatPulse 3s ease-in-out infinite">🤖</div>
+
+<div id="chat-window" style="position:fixed;bottom:10rem;right:1.5rem;z-index:900;width:340px;max-width:92vw;background:var(--surface);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);display:none;flex-direction:column;overflow:hidden;border-radius:2px">
+  <div id="chat-header" style="background:var(--accent2);color:#fff;padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #000">
+    <span style="font-family:var(--font-head,monospace);font-size:.5rem;letter-spacing:.08em">🤖 PG ASSISTANT</span>
+    <button id="chat-close" style="background:none;border:none;color:#fff;cursor:pointer;font-size:1.1rem;line-height:1">✕</button>
+  </div>
+  <div id="chat-msgs" style="height:280px;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.65rem;scroll-behavior:smooth"></div>
+  <div id="chat-typing" style="display:none;padding:.4rem 1rem;font-family:monospace;font-size:.78rem;color:var(--muted);animation:blink 1.2s infinite">● ● ●</div>
+  <form id="chat-form" style="display:flex;border-top:2px solid var(--border)">
+    <input id="chat-input" type="text" placeholder="Ask me anything..." autocomplete="off" style="flex:1;background:var(--bg);border:none;outline:none;padding:.75rem 1rem;color:var(--text);font-size:.88rem;font-family:var(--font-body,sans-serif)">
+    <button type="submit" style="background:var(--accent);color:#000;border:none;border-left:2px solid var(--border);padding:.75rem 1rem;cursor:pointer;font-family:var(--font-head,monospace);font-size:.55rem;font-weight:700;transition:background .2s">▶</button>
+  </form>
+</div>
+
+<div id="konami-overlay" style="position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.96);display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem">
+  <div id="konami-content" style="text-align:center;max-width:500px;padding:2rem">
+    <div style="font-size:4rem;animation:spin2 2s linear infinite;display:inline-block">⭐</div>
+    <div style="font-family:var(--font-head,monospace);font-size:1.2rem;color:var(--accent);margin:1rem 0;text-shadow:0 0 20px var(--accent);line-height:1.6">CHEAT CODE<br>ACTIVATED!</div>
+    <div style="font-family:var(--font-mono,monospace);font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.8">↑↑↓↓←→←→BA<br><span style="color:var(--accent2)">You found Prashant's secret! 🎮</span><br>Oldschool gamer detected. Respect.</div>
+    <div id="konami-secret-project" style="background:var(--surface);border:2px solid var(--accent);padding:1.5rem;box-shadow:0 0 30px rgba(255,204,0,.3);margin-bottom:1.5rem;text-align:left">
+      <div style="font-family:var(--font-head,monospace);font-size:.5rem;color:var(--accent2);margin-bottom:.5rem">🔒 SECRET PROJECT UNLOCKED</div>
+      <div style="font-family:var(--font-head,monospace);font-size:.7rem;color:var(--accent);margin-bottom:.75rem">PROJECT: MINERVA</div>
+      <div style="font-family:var(--font-mono,monospace);font-size:.85rem;color:var(--muted);line-height:1.75">An autonomous AI agent that monitors GitHub, scrapes research papers, and automatically generates implementation plans — then opens PRs. Currently: stealth mode. ETA: when it's ready 👀</div>
+    </div>
+    <button onclick="document.getElementById('konami-overlay').style.display='none';document.body.style.overflow=''" style="background:var(--accent);color:#000;border:2px solid #000;box-shadow:4px 4px 0 #000;padding:.7rem 2rem;font-family:var(--font-head,monospace);font-size:.52rem;cursor:pointer">CLOSE ✕</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ── PROXY CONFIG ──
+// Both the chatbot and the dog-breed predictor call a Cloudflare Worker
+// proxy so the real Groq / Hugging Face API keys never ship to the browser.
+// Deploy the worker in /cloudflare-worker (see its README), then replace
+// this URL with the one Wrangler prints after `wrangler deploy`.
+const API_BASE = 'https://prashant-portfolio-proxy.prashantgagneja-portfolio.workers.dev';
+
+// ── INIT GLOBAL STATE ──
+// Use sessionStorage to persist across refreshes slightly
+window.appState = { 
+  visits: parseInt(sessionStorage.getItem('pg_visits') || '0'), 
+  interactions: 0, 
+  mode: 'normal' 
+};
+sessionStorage.setItem('pg_visits', window.appState.visits + 1);
+
+// ─── CURSOR PHYSICS ───
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animCursor(){
+  // Physics logic for cursor
+  let targetX = mx;
+  let targetY = my;
+
+  // Attraction to pokemon floaters
+  document.querySelectorAll('.pokemon-float').forEach(p => {
+    const rect = p.getBoundingClientRect();
+    const px = rect.left + rect.width / 2;
+    const py = rect.top + rect.height / 2;
+    const dist = Math.hypot(px - mx, py - my);
+    if(dist < 80) {
+      targetX = px;
+      targetY = py;
+      ring.classList.add('cursor-attract');
+    } else {
+      ring.classList.remove('cursor-attract');
+    }
+  });
+
+  rx+=(targetX-rx)*.15;ry+=(targetY-ry)*.15;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(animCursor)
+})();
+
+document.querySelectorAll('a,button,.cup,.proj-card,.sim-card,.res-card,.c-row,.cert-row,.deep-dive-btn,.trainer-dialogue').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('cursor-big'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('cursor-big'));
+});
+
+// ─── THREE.JS — ELECTRIC POKÉMON ENERGY ───
+(function(){
+  const heroEl = document.getElementById('hero');
+  const canvas = document.getElementById('three-canvas');
+  const isMobile = window.innerWidth < 768;
+  const particleCount = isMobile ? 150 : 350;
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias: !isMobile, alpha: true, powerPreference: 'low-power'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 150);
+  cam.position.z = 30;
+
+  const pGeo = new THREE.BufferGeometry();
+  const pp = new Float32Array(particleCount * 3);
+  const vels = [];
+  
+  for(let i = 0; i < particleCount; i++){
+    pp[i*3] = (Math.random() - 0.5) * 100;
+    pp[i*3+1] = (Math.random() - 0.5) * 100;
+    pp[i*3+2] = (Math.random() - 0.5) * 50;
+    vels.push({
+      y: Math.random() * 0.05 + 0.02,
+      x: (Math.random() - 0.5) * 0.02,
+      baseX: pp[i*3],
+      baseY: pp[i*3+1]
+    });
+  }
+  
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pp, 3));
+  const pMat = new THREE.PointsMaterial({
+    color: 0xffcc00, size: isMobile ? 0.3 : 0.5, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending
+  });
+  const sparks = new THREE.Points(pGeo, pMat);
+  scene.add(sparks);
+
+  let mouse = {x: 0, y: 0, vX: 0, vY: 0, lastX: 0, lastY: 0}, heroVis = true, animId;
+  document.addEventListener('mousemove', e => {
+    mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouse.y = -(e.clientY / window.innerHeight - 0.5) * 2;
+    mouse.vX = e.clientX - mouse.lastX;
+    mouse.vY = e.clientY - mouse.lastY;
+    mouse.lastX = e.clientX;
+    mouse.lastY = e.clientY;
+  });
+
+  new IntersectionObserver(([e]) => { heroVis = e.isIntersecting; if(heroVis && !animId) loop(); }, {threshold: 0.05}).observe(heroEl);
+
+  window.addEventListener('resize', () => {
+    cam.aspect = window.innerWidth / window.innerHeight;
+    cam.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  function loop() {
+    animId = requestAnimationFrame(loop);
+    if(!heroVis){ animId = null; cancelAnimationFrame(animId); return; }
+    
+    cam.position.x += (mouse.x * (isMobile ? 2 : 5) - cam.position.x) * 0.05;
+    cam.position.y += (mouse.y * (isMobile ? 1.5 : 3) - cam.position.y) * 0.05;
+    cam.lookAt(0, 0, 0);
+
+    const positions = sparks.geometry.attributes.position.array;
+    const speed = Math.sqrt(mouse.vX*mouse.vX + mouse.vY*mouse.vY);
+
+    for(let i = 0; i < particleCount; i++){
+      positions[i*3+1] += vels[i].y;
+      positions[i*3] += vels[i].x;
+      
+      // Repel on fast movement
+      if (speed > 10) {
+        const dx = positions[i*3] - (mouse.x * 50);
+        const dy = positions[i*3+1] - (mouse.y * 50);
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 15) {
+          positions[i*3] += (dx/dist) * 0.5;
+          positions[i*3+1] += (dy/dist) * 0.5;
+        }
+      } else {
+        // Attract slightly to cursor
+        positions[i*3] -= (positions[i*3] - mouse.x * 20) * 0.001;
+      }
+
+      if(positions[i*3+1] > 50) {
+        positions[i*3+1] = -50;
+        positions[i*3] = (Math.random() - 0.5) * 100;
+      }
+    }
+    sparks.geometry.attributes.position.needsUpdate = true;
+    
+    // Decay mouse velocity
+    mouse.vX *= 0.9; mouse.vY *= 0.9;
+
+    renderer.render(scene, cam);
+  }
+  loop();
+})();
+
+// ─── ASH & PIKACHU INTERACTION ───
+(function initPartners() {
+  const pikaLines = ["Pika!", "Pika pika!", "Pikaaa...", "Chu!", "Pi-kachu!"];
+  const pikaText = document.getElementById('pikaText');
+  const pikaDialogue = document.getElementById('pikaDialogue');
+  
+  if(pikaDialogue && pikaText) {
+    pikaDialogue.addEventListener('mouseenter', () => {
+      pikaText.textContent = `"${pikaLines[Math.floor(Math.random() * pikaLines.length)]}"`;
+    });
+  }
+
+  // Easter Egg string listener
+  let typedStr = '';
+  document.addEventListener('keydown', e => {
+    typedStr += e.key.toLowerCase();
+    if(typedStr.length > 20) typedStr = typedStr.slice(-20);
+    if(typedStr.includes('ichooseyou')) {
+      typedStr = '';
+      document.body.classList.toggle('trainer-mode');
+      const msg=document.createElement('div');
+      msg.style.cssText=`position:fixed;top:20%;left:50%;transform:translateX(-50%);z-index:9600;
+        color:var(--accent);font-family:var(--font-head);font-size:1.5rem;text-shadow:0 0 20px var(--accent);animation:msgIn 1s ease`;
+      msg.textContent = 'TRAINER MODE ENGAGED';
+      document.body.appendChild(msg);setTimeout(()=>msg.remove(),2000);
+    }
+  });
+})();
+
+// ─── TYPEWRITER ───
+const phrases=['AI/ML ENGINEER_','FULL-STACK DEV_','DEEP LEARNER_','POKÉMON TRAINER_','SPEECH AI RESEARCHER_','GAME AI RESEARCHER_'];
+let pi=0,ci=0,del=false;
+const tw=document.getElementById('typewriter');
+function typeLoop(){
+  const p=phrases[pi];
+  if(!del){tw.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(typeLoop,1800);return}}
+  else{tw.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}
+  setTimeout(typeLoop,del?52:90);
+}
+setTimeout(typeLoop,1500);
+
+// ─── THEME SYSTEM ───
+const themes=['pokemon-dark','pokemon-light'];
+let curTheme=0;
+
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('.theme-pill').forEach(p=>{p.classList.toggle('active',p.dataset.theme===t)});
+}
+
+document.getElementById('themeToggle').onclick=()=>{
+  const dd=document.getElementById('themeDropdown');dd.classList.toggle('open');
+};
+document.querySelectorAll('.theme-pill').forEach(pill=>{
+  pill.onclick=()=>{
+    const t=pill.dataset.theme;
+    curTheme=themes.indexOf(t);
+    applyTheme(t);
+    document.getElementById('themeDropdown').classList.remove('open');
+  };
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#theme-panel'))document.getElementById('themeDropdown').classList.remove('open');
+});
+
+// ─── CASE STUDY DATA ───
+const caseData={
+  cicop:{
+    title:'CICOP — Customer Intelligence & Campaign Orchestration',
+    link:'https://github.com/praxshant/Customer-Intelligence-Platform',
+    problem:`CICOP addresses a core business problem: enterprises have vast customer data but lack automated tools to segment customers meaningfully, orchestrate personalised campaigns, and measure real ROI — all in real time. The challenge was building an end-to-end ML platform that is both analytically rigorous and production-ready.`,
+    arch:`<span class="ah">┌─────────────────────────────────────────────────────┐</span>\n<span class="ah">│              CICOP ARCHITECTURE                     │</span>\n<span class="ah">└─────────────────────────────────────────────────────┘</span>\n<span class="ab">  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐</span>\n<span class="ab">  │  Segmentation│    │  Campaign    │    │  Analytics   │</span>\n<span class="ab">  │  Service     │    │  Orchestrator│    │  Dashboard   │</span>\n<span class="ab">  │  :8000       │    │  :8001       │    │  Streamlit   │</span>\n<span class="ab">  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘</span>\n         <span class="ac">│                    │                    │</span>\n<span class="ac">  ┌──────▼──────────────▼──────────────▼───────┐</span>\n<span class="ac">  │            FastAPI Gateway :8002             │</span>\n<span class="ac">  └──────────────────┬──────────────────────────┘</span>\n                     <span class="ad">│</span>\n<span class="ad">  ┌──────────────────▼──────────────────────────┐</span>\n<span class="ad">  │  ML Pipeline: K-means / DBSCAN / Hierarchical│</span>\n<span class="ad">  │  A/B Testing Framework + ROI Optimizer       │</span>\n<span class="ad">  └────────────────────────────────────────────── ┘</span>`,
+    results:[{n:'10K+',l:'Customer Records Segmented'},{n:'18%',l:'Campaign ROI Lift (Simulation)'},{n:'3',l:'Independent Microservices'}]
+  },
+  codementor:{
+    title:'CodeMentor — AI Code Analysis Platform',
+    link:'https://github.com/praxshant/CodeMentor',
+    problem:`Developers spend 30–40% of debugging time on bugs that could be caught at code-review stage. CodeMentor uses fine-tuned GPT-2 to automatically flag bugs and suggest fixes — reducing manual review overhead.`,
+    arch:`<span class="ah">┌──────────────────────────────────────────┐</span>\n<span class="ah">│         CODEMENTOR ARCHITECTURE          │</span>\n<span class="ah">└──────────────────────────────────────────┘</span>\n<span class="ab">  React Frontend (TypeScript + Vite)</span>\n       <span class="ab">│ HTTP POST /analyze</span>\n<span class="ac">  Flask REST API (Python)</span>\n       <span class="ac">│</span>\n<span class="ac">  Analyzer Module</span>\n<span class="ac">  ├── GPT-2 (HuggingFace, fine-tuned)</span>\n<span class="ac">  ├── Pattern Detector (regex + AST)</span>\n<span class="ac">  └── Result Formatter</span>\n       <span class="ad">│</span>\n<span class="ad">  Response: bugs[], fixes[], suggestions[]</span>`,
+    results:[{n:'85%',l:'Bug Detection Accuracy'},{n:'<2s',l:'Inference Latency on CPU'},{n:'3+',l:'Languages Supported'}]
+  },
+  sentry:{
+    title:'SentryVision — Critical Region Object Throw Detection',
+    link:'https://github.com/praxshant/SentryVision',
+    problem:`Security camera systems are overwhelmed by false alarms — birds, animals, wind-blown debris all trigger dumb motion detectors. SentryVision solves a harder, more specific problem: detecting fast-moving thrown objects (stones, sacks, tools) entering a user-defined critical region in real-time video. It's designed for industrial and facility security where precision matters more than sensitivity. The key challenge: eliminating environmental false positives while maintaining true detection at 18 FPS on standard CPU hardware.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│              SENTRYVISION ARCHITECTURE                 │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Input Layer</span>\n<span class="ab">  ├── Webcam  ├── RTSP Stream  └── Video File</span>\n       <span class="ab">│</span>\n<span class="ac">  ROI Manager (roi_manager.py)</span>\n<span class="ac">  └── Interactive region selection + persistence (.npy)</span>\n       <span class="ac">│</span>\n<span class="ac">  Motion Detection Pipeline (motion_detector.py)</span>\n<span class="ac">  ├── MOG2 background subtraction (adaptive learning)</span>\n<span class="ac">  ├── High-speed motion + size filtering</span>\n<span class="ac">  ├── Morphological noise reduction</span>\n<span class="ac">  └── YOLOv8 object detection + contour analysis</span>\n       <span class="ac">│</span>\n<span class="ad">  Alert System (alert_system.py)</span>\n<span class="ad">  ├── Screenshot + metadata capture (auto-save)</span>\n<span class="ad">  ├── SQLite event DB (event_db.py)</span>\n<span class="ad">  └── Real-time Flask web dashboard (app.py)</span>\n       <span class="ad">│</span>\n<span class="ad">  Production Layer</span>\n<span class="ad">  └── Gunicorn (4 workers, eventlet) + Nginx reverse proxy</span>`,
+    results:[{n:'92%',l:'Object Detection Accuracy'},{n:'−28%',l:'False Positive Reduction'},{n:'18 FPS',l:'CPU Real-Time'},{n:'4',l:'Gunicorn Workers'}]
+  },
+  adaptivetype:{
+    title:'AdaptiveType — Intelligent Typing Engine',
+    link:'https://github.com/praxshant/AdaptiveType',
+    problem:`Standard autocomplete and text prediction systems are static — they don't adapt to individual users' typing patterns, domain vocabulary, or error habits. AdaptiveType solves this by building a per-session and per-user model that evolves in real time. The goal: reduce keystrokes, correct frequent personal typos proactively, and surface the right completions based on context — all within a zero-dependency TypeScript package that adds under 5ms latency.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│             ADAPTIVETYPE ARCHITECTURE                  │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Input Layer</span>\n<span class="ab">  └── KeystrokeInterceptor — captures raw input events</span>\n       <span class="ab">│</span>\n<span class="ac">  Pattern Analysis Engine</span>\n<span class="ac">  ├── Typing rhythm model (inter-key timing)</span>\n<span class="ac">  ├── Error frequency map (per user)</span>\n<span class="ac">  └── N-gram context window (adaptive vocabulary)</span>\n       <span class="ac">│</span>\n<span class="ac">  Prediction Module</span>\n<span class="ac">  ├── Context-aware autocomplete candidates</span>\n<span class="ac">  ├── Proactive typo correction (before commit)</span>\n<span class="ac">  └── Confidence scoring per suggestion</span>\n       <span class="ad">│</span>\n<span class="ad">  Session Persistence Layer</span>\n<span class="ad">  ├── In-memory model (per session)</span>\n<span class="ad">  └── Optional export / import user profile</span>\n       <span class="ad">│</span>\n<span class="ad">  Integration API (TypeScript)</span>\n<span class="ad">  └── Drop-in &lt;input&gt; / contenteditable wrapper</span>`,
+    results:[{n:'<5ms',l:'Prediction Latency'},{n:'0',l:'External Dependencies'},{n:'TypeScript',l:'Fully Type-Safe'},{n:'Real-Time',l:'Per-User Adaptation'}]
+  },
+  goemo:{
+    title:'GoEmotions — Multi-Label Emotion Classifier',
+    link:'https://github.com/praxshant',
+    problem:`Multi-label emotion classification is hard due to severe class imbalance (28 emotion categories, many with <1% representation). The challenge was building a robust pipeline that handles imbalance without collapsing to majority-class predictions.`,
+    arch:`<span class="ah">┌──────────────────────────────────────────┐</span>\n<span class="ah">│        GOEMOTIONS PIPELINE               │</span>\n<span class="ah">└──────────────────────────────────────────┘</span>\n<span class="ab">  Raw Text (GoEmotions dataset, ~58K rows)</span>\n       <span class="ab">│</span>\n<span class="ac">  Preprocessing: NLTK tokenization, cleaning</span>\n       <span class="ac">│</span>\n<span class="ac">  Feature Extraction</span>\n<span class="ac">  ├── TF-IDF (15K features, unigrams+bigrams)</span>\n<span class="ac">  └── Word2Vec embeddings</span>\n       <span class="ac">│</span>\n<span class="ad">  Imbalance Handling: SMOTE oversampling</span>\n       <span class="ad">│</span>\n<span class="ad">  Random Forest Classifier (Multi-label)</span>\n       <span class="ad">│</span>\n<span class="ad">  Threshold Optimization (per-label PR curve)</span>`,
+    results:[{n:'28',l:'Emotion Classes'},{n:'F1 0.37',l:'Micro F1 Score'},{n:'SMOTE',l:'Imbalance Handling'}]
+  },
+  atlasos:{
+    title:'AtlasOS — Industrial Knowledge Operating System (IKOS)',
+    link:'https://github.com/praxshant',
+    problem:`Industrial plants accumulate fragmented knowledge across SOPs, engineering manuals, maintenance logs, and regulations, with no unified way to query it. AtlasOS couples a dense vector store with a semantic property graph to enable multi-hop GraphRAG reasoning, automated compliance audits, root-cause investigations, and preservation of tribal knowledge before it walks out the door with retiring engineers.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│                 ATLASOS ARCHITECTURE                    │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Ingestion Pipeline</span>\n<span class="ab">  └── PyMuPDF / Tesseract — PDF, DOCX, CSV, XLSX, PPTX</span>\n       <span class="ab">│</span>\n<span class="ac">  Hybrid Storage Triad</span>\n<span class="ac">  ├── PostgreSQL — multi-tenant metastore + audit trail</span>\n<span class="ac">  ├── Qdrant — dense vectors (BAAI/bge-large-en-v1.5)</span>\n<span class="ac">  └── Neo4j — plant topology property graph</span>\n       <span class="ac">│</span>\n<span class="ad">  Industrial Agentic GraphRAG Engine</span>\n<span class="ad">  ├── Hybrid Retriever — semantic vectors + BM25</span>\n<span class="ad">  ├── Compliance / Copilot / RCA / Lessons Agents</span>\n<span class="ad">  └── PageRank &amp; centrality graph analytics</span>\n       <span class="ad">│</span>\n<span class="ad">  Unified App Layer — Dashboard, RCA, Compliance</span>`,
+    results:[{n:'3',l:'Hybrid Storage Layers (Postgres + Qdrant + Neo4j)'},{n:'4',l:'LLM Agents (Copilot, RCA, Compliance, Lessons)'},{n:'SSE',l:'Streamed GraphRAG Copilot Chat'}]
+  },
+  auralis:{
+    title:'Auralis — Music Intelligence Platform',
+    link:'https://github.com/praxshant',
+    problem:`Most music-discovery projects are either shallow marketing demos or single-purpose scripts. Auralis was built as a genuine multi-service engineering system — combining Spotify ingestion, catalog normalization, semantic search, and DSP-based audio analysis — to study embeddings, audio features, and retrieval quality end-to-end rather than to showcase a UI.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│                 AURALIS ARCHITECTURE                    │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Next.js Frontend (React Query + Zustand)</span>\n       <span class="ab">│</span>\n<span class="ac">  FastAPI Backend — auth / music / search / assistant / audio</span>\n<span class="ac">  ├── Service Layer — ingestion, embeddings, recommendation</span>\n<span class="ac">  └── Repository Layer — SQLAlchemy async sessions</span>\n       <span class="ac">│</span>\n<span class="ad">  Data Layer</span>\n<span class="ad">  ├── PostgreSQL + Alembic migrations</span>\n<span class="ad">  └── pgvector — embedding-backed semantic search</span>\n       <span class="ad">│</span>\n<span class="ad">  Celery + Redis — ingestion / embeddings / audio queues</span>`,
+    results:[{n:'pgvector',l:'Embedding-Backed Semantic Search'},{n:'3',l:'Celery Worker Queues (Ingestion / Embeddings / Audio)'},{n:'JWT',l:'Auth + Encrypted OAuth Token Storage'}]
+  },
+  genfx:{
+    title:'GenFX Lite — LLM + Diffusion VFX Pipeline',
+    link:'https://github.com/praxshant',
+    problem:`Studio VFX pipelines chain many fragile stages together, and any single API outage can block a whole demo. GenFX Lite explores how an LLM scene parser, diffusion image generation, and a headless Blender compositor can be orchestrated so that every stage degrades gracefully to a pre-baked fallback asset — the pipeline always completes and always produces output, regardless of API availability.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│                 GENFX LITE PIPELINE                     │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  User Prompt (natural language)</span>\n       <span class="ab">│</span>\n<span class="ac">  LLM Parser — GPT-4o-mini / HF Mixtral → Scene JSON</span>\n       <span class="ac">│</span>\n<span class="ac">  Image Gen — HF Inference API</span>\n<span class="ac">  └── SD 3.5 → FLUX.1-schnell → Hyper-SD fallback chain</span>\n       <span class="ad">│</span>\n<span class="ad">  Blender — headless Cycles compositor (image-plane comp)</span>\n       <span class="ad">│</span>\n<span class="ad">  Streamlit UI — 3-column output + pipeline status</span>`,
+    results:[{n:'3',l:'Chained Pipeline Stages (LLM → Diffusion → Blender)'},{n:'22',l:'Passing Smoke Tests, Zero API Keys Required'},{n:'100%',l:'Fallback Coverage — Every Stage Has a Pre-Baked Asset'}]
+  }
+};
+
+function openCase(id){
+  const d=caseData[id];
+  if(!d)return;
+  const modal=document.getElementById('case-modal');
+  document.getElementById('case-content').innerHTML=`
+    <div class="case-title">${d.title}</div>
+    <a href="${d.link}" target="_blank" class="case-link">↗ GitHub Repository</a>
+    <div class="case-section"><h3>THE PROBLEM</h3><p>${d.problem}</p></div>
+    <div class="case-section"><h3>ARCHITECTURE</h3><pre class="arch-diagram">${d.arch}</pre></div>
+    <div class="case-section"><h3>RESULTS</h3><div class="case-results">${d.results.map(r=>`<div class="res-box"><span class="res-n">${r.n}</span><span class="res-l">${r.l}</span></div>`).join('')}</div></div>
+  `;
+  modal.classList.add('open');
+  modal.scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+document.getElementById('caseClose').onclick=()=>{
+  document.getElementById('case-modal').classList.remove('open');
+  document.body.style.overflow='';
+};
+
+// ─── POKÉBALL RUN (DINO GAME) ───
+(function(){
+  const overlay=document.getElementById('dinoOverlay');
+  const gc=document.getElementById('dinoCanvas');
+  const ctx=gc.getContext('2d');
+  const W=680,H=190,GY=148;
+  let running=false,started=false,score=0,hi=0,over=false,t=0,speed=4,spawnT=0,spawnI=90;
+  const ball={x:55,y:GY,r:16,vy:0,jumps:0,maxJ:2};
+  let obstacles=[],clouds=[{x:180,y:28},{x:380,y:50},{x:560,y:22}];
+
+  function resetBall(){ball.y=GY;ball.vy=0;ball.jumps=0}
+  function jump(){if(!started)started=true;if(ball.jumps<ball.maxJ){ball.vy=-12.5;ball.jumps++}}
+
+  function draw(){
+    const dark=document.documentElement.getAttribute('data-theme').includes('dark');
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle=dark?'#0a0e1a':'#fef9e7';
+    ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=dark?'#1e3a5f':'#fbbf24';
+    ctx.fillRect(0,GY+ball.r*2+2,W,3);
+    // clouds
+    ctx.fillStyle=dark?'#1e2a40':'#fde68a';
+    clouds.forEach(c=>{ctx.fillRect(c.x,c.y,46,11);ctx.fillRect(c.x+7,c.y-7,32,9)});
+    // score
+    ctx.fillStyle=dark?'#ffcc00':'#d97706';
+    ctx.font='bold 10px "Press Start 2P",monospace';
+    ctx.fillText('SCORE:'+score,W-210,18);
+
+    if(!started&&!over){
+      ctx.fillStyle=dark?'#ffcc00':'#d97706';
+      ctx.font='9px "Press Start 2P",monospace';
+      ctx.textAlign='center';ctx.fillText('PRESS SPACE / TAP TO START',W/2,H/2);ctx.textAlign='left';
+    }
+    if(over){
+      ctx.fillStyle='#ef4444';ctx.font='bold 13px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('GAME OVER',W/2,H/2-14);
+      ctx.fillStyle=dark?'#ffcc00':'#d97706';ctx.font='8px "Press Start 2P",monospace';
+      ctx.fillText('SCORE:'+score+'  PRESS SPACE TO RETRY',W/2,H/2+8);ctx.textAlign='left';
+    }
+
+    // Draw Pokéball
+    const bx=ball.x,by=ball.y,br=ball.r;
+    ctx.fillStyle='rgba(0,0,0,.18)';ctx.beginPath();ctx.ellipse(bx,by+br*2+3,br*.9,4,0,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(bx,by+br,br,Math.PI,0);
+    ctx.fillStyle='#ef4444';ctx.fill();ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.arc(bx,by+br,br,0,Math.PI);
+    ctx.fillStyle='#fff';ctx.fill();ctx.stroke();
+    ctx.fillStyle='#111';ctx.fillRect(bx-br,by+br-2,br*2,4);
+    ctx.beginPath();ctx.arc(bx,by+br,br*.32,0,Math.PI*2);
+    ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle='#333';ctx.lineWidth=1.5;ctx.stroke();
+    ctx.beginPath();ctx.arc(bx,by+br,br*.14,0,Math.PI*2);ctx.fillStyle='#555';ctx.fill();
+
+    // obstacles
+    obstacles.forEach(o=>{
+      ctx.fillStyle='#7c3aed';ctx.fillRect(o.x,o.y,o.w,o.h);
+      ctx.fillStyle='#5b21b6';ctx.fillRect(o.x+2,o.y+2,o.w-4,4);
+      ctx.fillStyle='#ef4444';ctx.fillRect(o.x+3,o.y+8,5,5);ctx.fillRect(o.x+o.w-8,o.y+8,5,5);
+    });
+  }
+
+  function update(){
+    if(!started||over)return;
+    t++;score++;speed=4+Math.floor(score/300)*.55;
+    document.getElementById('dinoScore').textContent=score;
+    ball.vy+=.72;ball.y+=ball.vy;
+    if(ball.y>=GY){ball.y=GY;ball.vy=0;ball.jumps=0}
+    spawnT++;if(spawnT>spawnI){const h=28+Math.random()*32,w=16+Math.random()*12;obstacles.push({x:W+20,y:GY+ball.r*2-h,w,h});spawnT=0;spawnI=Math.max(44,90-Math.floor(score/400)*5)}
+    obstacles=obstacles.filter(o=>o.x>-50);obstacles.forEach(o=>o.x-=speed);
+    clouds.forEach(c=>{c.x-=.9;if(c.x<-55)c.x=W+20});
+    for(const o of obstacles){if(ball.x+4<o.x+o.w&&ball.x+ball.r-4>o.x&&ball.y+2<o.y+o.h&&ball.y+ball.r*2-2>o.y){over=true;if(score>hi){hi=score;document.getElementById('dinoHi').textContent='HI:'+hi}break}}
+  }
+
+  function reset(){score=0;t=0;speed=4;spawnT=0;spawnI=90;obstacles=[];started=false;over=false;resetBall();document.getElementById('dinoScore').textContent='0'}
+  function handleJump(){if(over){reset();return}jump()}
+
+  let loopId;
+  function gameLoop(){loopId=requestAnimationFrame(gameLoop);update();draw()}
+  function startGame(){if(!running){running=true;reset();gameLoop()}}
+  function stopGame(){running=false;cancelAnimationFrame(loopId);loopId=null}
+
+  document.getElementById('dinoBtn').onclick=()=>{overlay.classList.add('open');startGame()};
+  document.getElementById('dinoClose').onclick=()=>{overlay.classList.remove('open');stopGame()};
+  document.addEventListener('keydown',e=>{if(e.code==='Space'&&overlay.classList.contains('open')){e.preventDefault();handleJump()}});
+  gc.addEventListener('click',handleJump);
+  gc.addEventListener('touchstart',e=>{e.preventDefault();handleJump()},{passive:false});
+
+  draw();
+})();
+
+// ─── EKANS SNAKE GAME ───
+(function(){
+  const overlay=document.getElementById('snakeOverlay');
+  const sc=document.getElementById('snakeCanvas');
+  const ctx=sc.getContext('2d');
+  const W=420,H=420,CELL=21,COLS=20,ROWS=20;
+  let snake,dir,nd,food,score,hi=0,over,started,loopId;
+
+  function init(){
+    snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+    dir={x:1,y:0};nd=null;
+    food=rndFood();score=0;over=false;started=false;
+    document.getElementById('snakeScore').textContent='0';
+  }
+
+  function rndFood(){
+    let f;
+    do{f={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)}}
+    while(snake.some(s=>s.x===f.x&&s.y===f.y));
+    return f;
+  }
+
+  function drawCell(x,y,color,stroke){
+    ctx.fillStyle=color;ctx.fillRect(x*CELL+1,y*CELL+1,CELL-2,CELL-2);
+    if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.strokeRect(x*CELL+1,y*CELL+1,CELL-2,CELL-2)}
+  }
+
+  function draw(){
+    const dark=document.documentElement.getAttribute('data-theme').includes('dark');
+    ctx.fillStyle=dark?'#0a0e1a':'#fef9e7';
+    ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle=dark?'rgba(255,255,255,.04)':'rgba(0,0,0,.06)';ctx.lineWidth=.5;
+    for(let i=0;i<=COLS;i++){ctx.beginPath();ctx.moveTo(i*CELL,0);ctx.lineTo(i*CELL,H);ctx.stroke()}
+    for(let i=0;i<=ROWS;i++){ctx.beginPath();ctx.moveTo(0,i*CELL);ctx.lineTo(W,i*CELL);ctx.stroke()}
+
+    const fx=food.x*CELL+CELL/2,fy=food.y*CELL+CELL/2,fr=8;
+    ctx.beginPath();ctx.arc(fx,fy,fr,Math.PI,0);ctx.fillStyle='#ef4444';ctx.fill();
+    ctx.beginPath();ctx.arc(fx,fy,fr,0,Math.PI);ctx.fillStyle='#fff';ctx.fill();
+    ctx.fillStyle='#111';ctx.fillRect(fx-fr,fy-1.5,fr*2,3);
+    ctx.beginPath();ctx.arc(fx,fy,fr*.32,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+    ctx.beginPath();ctx.arc(fx,fy,fr*.32,0,Math.PI*2);ctx.strokeStyle='#333';ctx.lineWidth=1;ctx.stroke();
+
+    snake.forEach((seg,i)=>{
+      if(i===0){
+        drawCell(seg.x,seg.y,'#7c3aed');
+        const hx=seg.x*CELL+CELL/2,hy=seg.y*CELL+CELL/2;
+        const ed=dir.x||dir.y;
+        ctx.fillStyle='#ffd700';
+        ctx.fillRect(hx+dir.y*3-2+dir.x*4,hy-dir.x*3-2+dir.y*4,4,4);
+        ctx.fillRect(hx-dir.y*3-2+dir.x*4,hy+dir.x*3-2+dir.y*4,4,4);
+        ctx.fillStyle='#000';
+        ctx.fillRect(hx+dir.y*3-1+dir.x*4,hy-dir.x*3-1+dir.y*4,2,2);
+        ctx.fillRect(hx-dir.y*3-1+dir.x*4,hy+dir.x*3-1+dir.y*4,2,2);
+        if(Math.floor(Date.now()/300)%2===0){
+          ctx.strokeStyle='#ef4444';ctx.lineWidth=1.5;
+          ctx.beginPath();ctx.moveTo(hx+dir.x*CELL*.55,hy+dir.y*CELL*.55);
+          ctx.lineTo(hx+dir.x*CELL*.75+dir.y*3,hy+dir.y*CELL*.75+dir.x*3);
+          ctx.moveTo(hx+dir.x*CELL*.55,hy+dir.y*CELL*.55);
+          ctx.lineTo(hx+dir.x*CELL*.75-dir.y*3,hy+dir.y*CELL*.75-dir.x*3);
+          ctx.stroke();
+        }
+      } else {
+        const g=i/snake.length;
+        drawCell(seg.x,seg.y,`hsl(262,${70-g*25}%,${45+g*15}%)`);
+      }
+    });
+
+    ctx.fillStyle=dark?'#ffcc00':'#d97706';
+    ctx.font='bold 9px "Press Start 2P",monospace';ctx.fillText('SCORE:'+score,8,16);
+
+    if(!started&&!over){
+      ctx.fillStyle=dark?'#ffcc00':'#d97706';
+      ctx.font='8.5px "Press Start 2P",monospace';ctx.textAlign='center';
+      ctx.fillText('ARROW KEYS / WASD',W/2,H/2-8);ctx.fillText('TO START',W/2,H/2+10);ctx.textAlign='left';
+    }
+    if(over){
+      ctx.fillStyle='rgba(0,0,0,.6)';ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='#ef4444';ctx.font='bold 13px "Press Start 2P",monospace';ctx.textAlign='center';ctx.fillText('GAME OVER',W/2,H/2-16);
+      ctx.fillStyle=dark?'#ffcc00':'#d97706';ctx.font='8px "Press Start 2P",monospace';
+      ctx.fillText('SCORE: '+score,W/2,H/2+4);ctx.fillText('PRESS ARROW TO RETRY',W/2,H/2+22);ctx.textAlign='left';
+    }
+  }
+
+  function step(){
+    if(!started||over){draw();loopId=setTimeout(step,120);return}
+    if(nd)dir=nd,nd=null;
+    const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+    if(head.x<0||head.x>=COLS||head.y<0||head.y>=ROWS||snake.some(s=>s.x===head.x&&s.y===head.y)){
+      over=true;if(score>hi){hi=score;document.getElementById('snakeHi').textContent='HI:'+hi}
+      draw();loopId=setTimeout(step,120);return;
+    }
+    snake.unshift(head);
+    if(head.x===food.x&&head.y===food.y){score++;document.getElementById('snakeScore').textContent=score;food=rndFood()}
+    else snake.pop();
+    draw();
+    loopId=setTimeout(step,Math.max(60,120-score*3));
+  }
+
+  function startGame(){clearTimeout(loopId);init();step()}
+  function stopGame(){clearTimeout(loopId);loopId=null}
+
+  document.getElementById('snakeBtn').onclick=()=>{overlay.classList.add('open');startGame()};
+  document.getElementById('snakeClose').onclick=()=>{overlay.classList.remove('open');stopGame()};
+
+  document.addEventListener('keydown',e=>{
+    if(!overlay.classList.contains('open'))return;
+    const k=e.key;
+    const maps={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},w:{x:0,y:-1},s:{x:0,y:1},a:{x:-1,y:0},d:{x:1,y:0}};
+    if(maps[k]){
+      e.preventDefault();
+      const nd2=maps[k];
+      if(nd2.x===-dir.x&&nd2.y===-dir.y)return; 
+      if(!started)started=true;
+      nd=nd2;
+    }
+    if(k==='Escape'){overlay.classList.remove('open');stopGame()}
+    if(over&&(k.startsWith('Arrow')||'wasd'.includes(k))){init();started=true;if(nd)dir=nd;step()}
+  });
+
+  init();draw();
+})();
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+
+// ─── MOBILE NAV ───
+document.getElementById('menuBtn').onclick=()=>document.getElementById('mobNav').classList.add('open');
+document.getElementById('mobClose').onclick=()=>document.getElementById('mobNav').classList.remove('open');
+document.querySelectorAll('.mob-nav .ml').forEach(l=>l.addEventListener('click',()=>document.getElementById('mobNav').classList.remove('open')));
+
+// ─── SCROLL REVEAL ───
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}}),{threshold:.07,rootMargin:'0px 0px -25px 0px'});
+document.querySelectorAll('.reveal-anim').forEach(el=>ro.observe(el));
+
+// ─── STAGGER ───
+document.querySelectorAll('.proj-grid .proj-card').forEach((c,i)=>c.style.transitionDelay=(i*.06)+'s');
+document.querySelectorAll('.pdx-card,.concept-card,.tool-group').forEach((c,i)=>c.style.transitionDelay=(i*.07)+'s');
+document.querySelectorAll('.sim-card,.res-card').forEach((c,i)=>c.style.transitionDelay=(i*.1)+'s');
+
+// ─── YEAR ───
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// ─── CONTACT FORM ───
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const n=document.getElementById('fname').value,em=document.getElementById('femail').value;
+  const s=document.getElementById('fsubject').value,m=document.getElementById('fmsg').value;
+  window.location.href=`mailto:prashantgagneja0@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent('From: '+n+' ('+em+')\n\n'+m)}`;
+  document.getElementById('form-msg').textContent='▶ OPENING EMAIL CLIENT...';
+});
+
+// ─── COFFEE CUPS ───
+const cta=document.getElementById('coffeeCta');
+document.querySelectorAll('.cup').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.cup').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    cta.textContent='☕ BUY ME A COFFEE ($'+c.dataset.price+')';
+  });
+});
+
+/* ═══════════════════════════════════════
+   PART 1 — THEMED HERO OVERLAYS & RADAR
+═══════════════════════════════════════ */
+(function initHeroOverlays(){
+  const radarC=document.getElementById('radarCanvas');
+  if(!radarC)return;
+  const rctx=radarC.getContext('2d');
+  let rAngle=0;
+  let speedMult = 1;
+  
+  // Accelerate radar on mousemove
+  document.addEventListener('mousemove', () => {
+    speedMult = 2;
+    clearTimeout(radarC._t);
+    radarC._t = setTimeout(() => speedMult = 1, 500);
+  });
+
+  function resizeRadar(){
+    if(radarC.offsetWidth>0)radarC.width=radarC.offsetWidth;
+    else radarC.width=window.innerWidth;
+    if(radarC.offsetHeight>0)radarC.height=radarC.offsetHeight;
+    else radarC.height=window.innerHeight;
+  }
+  window.addEventListener('resize',resizeRadar);
+  setTimeout(resizeRadar,200);
+  setTimeout(resizeRadar,800);
+
+  const radarBlips=Array.from({length:8},()=>({
+    angle:Math.random()*Math.PI*2,
+    dist:.3+Math.random()*.55,
+    life:Math.random(),blinkRate:.008+Math.random()*.012,
+    isRandom: Math.random() > 0.5
+  }));
+
+  function drawRadar(){
+    const W=radarC.width||800,H=radarC.height||600;
+    const cx=W*.78,cy=H*.42;
+    const r=Math.min(W,H)*.2;
+    rctx.clearRect(0,0,W,H);
+
+    const outerGlow=rctx.createRadialGradient(cx,cy,r*.85,cx,cy,r*1.15);
+    outerGlow.addColorStop(0,'rgba(255,204,0,.05)');outerGlow.addColorStop(1,'transparent');
+    rctx.fillStyle=outerGlow;rctx.beginPath();rctx.arc(cx,cy,r*1.15,0,Math.PI*2);rctx.fill();
+
+    for(let i=1;i<=4;i++){
+      rctx.beginPath();rctx.arc(cx,cy,r*(i/4),0,Math.PI*2);
+      rctx.strokeStyle=`rgba(255,204,0,${i===4?.15:.06})`;
+      rctx.lineWidth=i===4?1:.5;rctx.stroke();
+    }
+
+    rctx.strokeStyle='rgba(255,204,0,.08)';rctx.lineWidth=.5;
+    rctx.setLineDash([3,5]);
+    [[cx-r,cy,cx+r,cy],[cx,cy-r,cx,cy+r]].forEach(([x1,y1,x2,y2])=>{
+      rctx.beginPath();rctx.moveTo(x1,y1);rctx.lineTo(x2,y2);rctx.stroke();
+    });
+    const d=r*.7;
+    [[cx-d,cy-d,cx+d,cy+d],[cx+d,cy-d,cx-d,cy+d]].forEach(([x1,y1,x2,y2])=>{
+      rctx.beginPath();rctx.moveTo(x1,y1);rctx.lineTo(x2,y2);rctx.stroke();
+    });
+    rctx.setLineDash([]);
+
+    rctx.save();rctx.translate(cx,cy);rctx.rotate(rAngle);
+    for(let t=0;t<1;t+=.015){
+      const a=-t*.6;
+      rctx.beginPath();rctx.moveTo(0,0);
+      rctx.arc(0,0,r,a-.015,a);rctx.lineTo(0,0);
+      rctx.fillStyle=`rgba(255,${Math.round(200+t*55)},${Math.round(t*60)},${(1-t)*.2})`;
+      rctx.fill();
+    }
+    rctx.beginPath();rctx.moveTo(0,0);rctx.lineTo(r,0);
+    rctx.strokeStyle='rgba(255,220,0,.45)';rctx.lineWidth=1.2;rctx.stroke();
+    rctx.restore();
+
+    radarBlips.forEach(b=>{
+      b.life+=b.blinkRate;
+      if(b.isRandom && Math.random() < 0.005) {
+         b.angle = Math.random()*Math.PI*2;
+         b.dist = 0.2 + Math.random()*0.7;
+      }
+
+      const bx=cx+Math.cos(b.angle)*b.dist*r;
+      const by=cy+Math.sin(b.angle)*b.dist*r;
+      let sweepA=(rAngle%(Math.PI*2))-b.angle;
+      if(sweepA<0)sweepA+=Math.PI*2;
+      const trail=sweepA<.7?((.7-sweepA)/.7):0;
+      const idle=Math.abs(Math.sin(b.life*Math.PI))*.2;
+      const alpha=Math.max(idle,trail*.85);
+      
+      rctx.beginPath();rctx.arc(bx,by,2.5,0,Math.PI*2);
+      rctx.fillStyle=`rgba(255,220,0,${alpha})`;rctx.fill();
+      if(trail>.25){
+        const g=rctx.createRadialGradient(bx,by,0,bx,by,9);
+        g.addColorStop(0,`rgba(255,220,0,${trail*.35})`);g.addColorStop(1,'transparent');
+        rctx.beginPath();rctx.arc(bx,by,9,0,Math.PI*2);rctx.fillStyle=g;rctx.fill();
+        
+        if (b.isRandom && speedMult > 1) {
+            rctx.font=`bold 8px "Press Start 2P"`;
+            rctx.fillStyle=`rgba(255,255,255,${trail})`;
+            rctx.fillText('SCAN', bx + 5, by - 5);
+        }
+      }
+    });
+
+    rctx.beginPath();rctx.arc(cx,cy,3,0,Math.PI*2);
+    rctx.fillStyle='rgba(255,204,0,.55)';rctx.fill();
+
+    const fs=Math.max(7,Math.round(r*.09));
+    rctx.font=`bold ${fs}px "Press Start 2P",monospace`;
+    rctx.fillStyle='rgba(255,204,0,.2)';
+    rctx.textAlign='center';
+    rctx.fillText('SCANNING',cx,cy+r+r*.22);
+    rctx.textAlign='left';
+
+    rAngle+= (0.010 * speedMult);
+  }
+
+  function heroOverlayLoop(){
+    const pOver=document.getElementById('hero-overlay-poke');
+    if(pOver)pOver.style.display='block';
+    drawRadar();
+    requestAnimationFrame(heroOverlayLoop);
+  }
+  heroOverlayLoop();
+
+  // Glow interaction on Name
+  const heroName = document.getElementById('heroNameInteractive');
+  const glow = document.getElementById('hero-focus-glow');
+  if (heroName && glow) {
+      heroName.addEventListener('mousemove', () => glow.style.background = 'radial-gradient(ellipse at 25% 70%, rgba(255,204,0,.15) 0%, rgba(255,204,0,.05) 30%, transparent 60%)');
+      heroName.addEventListener('mouseleave', () => glow.style.background = 'radial-gradient(ellipse at 25% 70%, rgba(255,204,0,.06) 0%, rgba(255,204,0,.02) 30%, transparent 60%)');
+  }
+
+})();
+
+/* ═══════════════════════════════════════
+   PART 2 & 6 — SMART CHATBOT + GLOBAL STATE
+═══════════════════════════════════════ */
+(function initChatbot(){
+  const bubble=document.getElementById('chat-bubble');
+  const win=document.getElementById('chat-window');
+  const form=document.getElementById('chat-form');
+  const inp=document.getElementById('chat-input');
+  const msgs=document.getElementById('chat-msgs');
+  const typing=document.getElementById('chat-typing');
+
+  // Calls the Cloudflare Worker proxy (see API_BASE above) — the worker
+  // attaches the real Groq key server-side, so no secret ever ships to the
+  // browser. See /cloudflare-worker/README.md for deploy steps.
+  const CHAT_ENDPOINT=`${API_BASE}/chat`;
+  const SYSTEM_PROMPT=`You are Prashant Gagneja's Pokédex AI Assistant. Keep answers technical, brief, and Pokémon-themed. Prashant is an AI/ML Engineer.`;
+
+  let history=[];
+
+  const hardcodedResponses = [
+      {
+          match: /who are you/i,
+          reply: "I am Porygon-PG, an advanced Pokédex AI engineered by Prashant Gagneja. My primary directive is to serve data on his ML models, tech stack, and battle stats. Beep boop. 🤖",
+          suggestions: ["Show projects", "View resume"]
+      },
+      {
+          match: /project/i,
+          reply: "Prashant has built an impressive roster. Top picks:\n1. **CICOP**: End-to-end ML platform with A/B testing.\n2. **CodeMentor**: GPT-2 fine-tuned bug detector.\n3. **SentryVision**: YOLOv8 real-time object detection.\nWhich region should we explore?",
+          suggestions: ["Explain SentryVision", "More projects"]
+      },
+      {
+          match: /internship|hire/i,
+          reply: "Scanning... Prashant is highly effective and open to AI/ML internships and research collaborations. He brings PyTorch, React, and a strong problem-solving IV to any team.",
+          suggestions: ["Contact Info", "View resume"]
+      },
+      {
+          match: /are you real/i,
+          reply: "I'm just a few hundred lines of JavaScript calling an LLM API... but I like to think I have a soul. Don't tell Prashant I said that. 🤫",
+          suggestions: ["Who built you?"]
+      }
+  ];
+
+  async function typeText(element, text, speed = 20) {
+    element.innerHTML = '';
+    let i = 0;
+    
+    // Check state for speed adjustment
+    const adjustedSpeed = window.appState.visits > 1 ? speed * 0.5 : speed;
+
+    return new Promise(resolve => {
+      function type() {
+        if (i < text.length) {
+          const char = text.charAt(i);
+          element.innerHTML += char === '\n' ? '<br>' : char;
+          i++;
+          msgs.scrollTop = msgs.scrollHeight;
+          
+          // Slight pause on punctuation
+          let delay = adjustedSpeed;
+          if (char === '.' || char === '!' || char === '?') delay = adjustedSpeed * 10;
+          if (char === ',') delay = adjustedSpeed * 5;
+
+          setTimeout(type, delay);
+        } else {
+          resolve();
+        }
+      }
+      type();
+    });
+  }
+
+  function addSuggestions(suggestions) {
+      if (!suggestions || suggestions.length === 0) return;
+      const div = document.createElement('div');
+      div.className = 'chat-suggestions';
+      suggestions.forEach(text => {
+          const btn = document.createElement('button');
+          btn.className = 'chat-sugg-btn';
+          btn.textContent = text;
+          btn.onclick = () => { inp.value = text; form.dispatchEvent(new Event('submit')); };
+          div.appendChild(btn);
+      });
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  async function appendMsg(text, role, animate = false, suggestions = []){
+    const div=document.createElement('div');
+    div.className=`chat-bubble-msg chat-bubble-${role}`;
+    msgs.appendChild(div);
+    if(animate && role === 'bot') {
+      await typeText(div, text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>'));
+    } else {
+      div.innerHTML=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+    }
+    if (role === 'bot') addSuggestions(suggestions);
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+
+  async function handleMsg(userMsg){
+    userMsg=userMsg.trim();
+    if(!userMsg)return;
+    appendMsg(userMsg,'user');
+    inp.value='';
+    typing.style.display='block';
+    msgs.scrollTop=msgs.scrollHeight;
+    window.appState.interactions++;
+
+    // Context tracking
+    if(userMsg.toLowerCase().includes('intern') || userMsg.toLowerCase().includes('hire')) {
+      window.appState.interests.add('hiring');
+    }
+
+    if(userMsg.toLowerCase() === 'resume' || userMsg.toLowerCase() === 'view resume') {
+      typing.style.display='none';
+      appendMsg("📄 You can view Prashant's resume right here:\n<a href='https://drive.google.com/file/d/1Kg8uG0i0umHXRg0DYnCznH1EBC0HjZZD/view' target='_blank' style='color:var(--accent);'>View Resume ↗</a>", 'bot', true);
+      return;
+    }
+    
+    if(userMsg.toLowerCase() === 'contact info') {
+      typing.style.display='none';
+      appendMsg("📧 Email: prashantgagneja0@gmail.com\n🔗 LinkedIn: /in/prashant-gagneja-208878281", 'bot', true);
+      return;
+    }
+
+    // Hardcoded logic
+    let hc = hardcodedResponses.find(r => r.match.test(userMsg));
+    if (hc) {
+        setTimeout(() => {
+            typing.style.display='none';
+            appendMsg(hc.reply, 'bot', true, hc.suggestions);
+        }, 500);
+        return;
+    }
+
+    try{
+      history.push({role:'user',content:userMsg});
+      // Calls a same-origin proxy — the proxy attaches the real Groq key
+      // server-side, so no secret ever ships to the browser.
+      const response=await fetch(CHAT_ENDPOINT,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'llama3-8b-8192',messages:[{role:'system',content:SYSTEM_PROMPT},...history.slice(-6)],max_tokens:150})
+      });
+      const data=await response.json();
+      const reply=data?.choices?.[0]?.message?.content||'Systems busy. Try again!';
+      typing.style.display='none';
+      history.push({role:'assistant',content:reply});
+      
+      // Dynamic personality based on interactions
+      let finalReply = reply;
+      if (window.appState.interactions > 5 && Math.random() > 0.7) {
+          finalReply += "\n\n(We're chatting quite a bit! You should probably just email him 😄)";
+      }
+
+      await appendMsg(finalReply,'bot', true);
+    }catch(err){
+      typing.style.display='none';
+      await appendMsg('⚠️ Porygon encountered a network error.','bot', true);
+    }
+  }
+
+  bubble.onclick=()=>{
+    const open=win.style.display==='flex';
+    win.style.display=open?'none':'flex';
+    if(!open&&msgs.children.length===0){
+      let greeting = `BZZT! 🤖 Pokédex AI online. Ask me about Prashant's models, tech stack, or battle stats!`;
+      if (window.appState.visits > 1) greeting = `Welcome back, Trainer! Ready to explore more AI models?`;
+      setTimeout(()=>appendMsg(greeting,'bot', true, ["Who are you?", "View resume"]),300);
+    }
+  };
+  document.getElementById('chat-close').onclick=()=>{win.style.display='none'};
+  form.onsubmit=e=>{e.preventDefault();handleMsg(inp.value)};
+})();
+
+/* ═══════════════════════════════════════
+   PART 3 — DOG BREED PREDICTOR (FINAL)
+═══════════════════════════════════════ */
+(function initDogPredictor(){
+  const drop    = document.getElementById('dog-drop');
+  const fileIn  = document.getElementById('dog-file');
+  const preview = document.getElementById('dog-preview');
+  const btn     = document.getElementById('dog-btn');
+  const results = document.getElementById('dog-results');
+  const loading = document.getElementById('dog-loading');
+  const output  = document.getElementById('dog-output');
+  const attBox  = document.getElementById('dog-attention-box');
+  let currentFile = null;
+
+  // Calls the Cloudflare Worker proxy (see API_BASE above) — the worker
+  // attaches the real HF token server-side. See /cloudflare-worker/README.md.
+  const MODEL = `${API_BASE}/dog-breed`;
+
+  async function predictDog(file){
+    const res = await fetch(MODEL, {
+      method : 'POST',
+      body   : file
+    });
+    const data = await res.json();
+    if(!Array.isArray(data)) throw new Error(
+      data?.error?.includes('loading') || data?.error?.includes('Load')
+        ? 'Model is warming up — please wait 15 s and try again ⏳'
+        : `API error: ${JSON.stringify(data).slice(0,120)}`
+    );
+    return data.slice(0, 3);
+  }
+
+  function renderResults(breeds){
+    const colors = ['var(--accent4)', 'var(--accent3)', 'var(--muted)'];
+    
+    // Top result personality
+    const topBreed = breeds[0];
+    const topPct = (topBreed.score * 100).toFixed(1);
+    const topName = topBreed.label.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+    let personalityText = "";
+    if (topPct > 90) personalityText = `Looks like a ${topName}. Pretty sure about this one 🐕!`;
+    else if (topPct > 50) personalityText = `I'm leaning towards ${topName}, but could be a mix!`;
+    else personalityText = `Tough one! Might be a ${topName}, but confidence is low.`;
+
+    let html = `
+      <div style="font-family:var(--font-head,monospace);font-size:.48rem;color:var(--accent4);
+                  letter-spacing:.12em;margin-bottom:1.1rem">🐶 BREED ANALYSIS</div>
+      <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text); margin-bottom: 1.5rem; padding: 0.5rem; border-left: 2px solid var(--accent); background: rgba(0,0,0,0.2);">
+        "${personalityText}"
+      </div>
+    `;
+
+    html += breeds.map((b, i) => {
+        const pct  = (b.score * 100).toFixed(1);
+        const name = b.label.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+        const color  = colors[i] || 'var(--muted)';
+        
+        // CSS handles the width transition
+        setTimeout(() => {
+           const bar = document.getElementById(`breed-bar-${i}`);
+           if(bar) bar.style.width = `${pct}%`;
+        }, 100);
+
+        return `
+          <div style="margin-bottom:1.1rem" class="${i===0 ? 'breed-top-result' : ''}">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem; padding: ${i===0 ? '0.5rem' : '0'}">
+              <div style="font-family:var(--font-head,monospace);font-size:.52rem;color:var(--text)">
+                ${i===0?'★ ':''} ${name}
+              </div>
+              <div style="font-family:var(--font-head,monospace);font-size:.58rem;color:${color};font-weight:700">
+                ${pct}%
+              </div>
+            </div>
+            <div class="breed-bar-wrap">
+              <div id="breed-bar-${i}" class="breed-bar-fill" style="width: 0%; background: ${color}"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      html += `<div style="font-family:var(--font-mono,monospace);font-size:.7rem;color:var(--muted);
+                  margin-top:1rem;padding-top:.8rem;border-top:1px dashed var(--border)">
+        Model: dima806/133_dog_breeds_image_detection
+      </div>`;
+      
+      return html;
+  }
+
+  function setPreview(file){
+    currentFile = file;
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = 'block';
+    document.getElementById('dog-drop-inner').style.display = 'none';
+    btn.style.display = 'inline-flex';
+    results.style.display = 'none';
+    output.style.display = 'none';
+    attBox.style.opacity = '0';
+  }
+
+  fileIn.addEventListener('change', e => { if(e.target.files[0]) setPreview(e.target.files[0]); });
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('drag-over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('drag-over'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('drag-over');
+    if(e.dataTransfer.files[0]) setPreview(e.dataTransfer.files[0]);
+  });
+
+  btn.addEventListener('click', async () => {
+    if(!currentFile) return;
+    results.style.display = 'block';
+    loading.style.display = 'block';
+    output.style.display  = 'none';
+    btn.disabled = true;
+    attBox.style.opacity = '0';
+    
+    // Enhanced Loading Sequence
+    const loadingTexts = ["Warming up neural pathways...", "Extracting feature vectors...", "Running inference..."];
+    let loadStep = 0;
+    const loadLabel = loading.querySelector('div:nth-child(2)');
+    const loadInt = setInterval(() => {
+      loadLabel.textContent = loadingTexts[loadStep % loadingTexts.length];
+      loadStep++;
+    }, 1500);
+
+    btn.textContent = '🔍 ANALYZING...';
+
+    async function attemptPrediction(retries = 1) {
+      try {
+        const breeds = await predictDog(currentFile);
+        clearInterval(loadInt);
+        loading.style.display = 'none';
+        output.style.display  = 'block';
+        output.innerHTML = renderResults(breeds);
+
+        // Fake Model Attention Box for UX
+        setTimeout(() => {
+            const imgRect = preview.getBoundingClientRect();
+            const dropRect = drop.getBoundingClientRect();
+            // Center box roughly over the image
+            const top = (preview.offsetTop) + (preview.offsetHeight * 0.15);
+            const left = (preview.offsetLeft) + (preview.offsetWidth * 0.15);
+            attBox.style.top = top + 'px';
+            attBox.style.left = left + 'px';
+            attBox.style.width = (preview.offsetWidth * 0.7) + 'px';
+            attBox.style.height = (preview.offsetHeight * 0.7) + 'px';
+            attBox.style.opacity = '1';
+        }, 500);
+
+      } catch(err) {
+        if(err.message.includes('warming up') && retries > 0) {
+           loadLabel.textContent = "Model cold start detected. Retrying in 10s...";
+           setTimeout(() => attemptPrediction(retries - 1), 10000);
+        } else {
+          clearInterval(loadInt);
+          loading.style.display = 'none';
+          output.style.display  = 'block';
+          output.innerHTML = `<div style="padding:1rem;border:1px solid var(--accent2);color:var(--accent2);">⚠️ ${err.message}</div>`;
+        }
+      }
+    }
+    
+    await attemptPrediction(1);
+    
+    btn.disabled = false;
+    btn.textContent = '🔍 IDENTIFY BREED';
+  });
+})();
+
+/* ═══════════════════════════════════════
+   PART 4 — LIVE METRICS DASHBOARD
+═══════════════════════════════════════ */
+(function initMetrics(){
+  const reqH=[],latH=[];for(let i=0;i<20;i++){reqH.push(800+Math.random()*400);latH.push(80+Math.random()*60)}
+  let requests=Math.round(800+Math.random()*400);
+  let latency=Math.round(80+Math.random()*60);
+  let users=Math.round(12+Math.random()*8);
+  let accuracy=91+Math.random()*4;
+
+  const evText = document.getElementById('metric-event');
+
+  function animNum(el,target,suffix){
+    const start=parseInt(el.textContent)||0;
+    const diff=target-start,steps=18;let s=0;
+    const t=setInterval(()=>{
+      s++;const v=Math.round(start+diff*(s/steps));
+      el.textContent=v+(suffix||'');
+      if(s>=steps){el.textContent=target+(suffix||'');clearInterval(t)}
+    },30);
+  }
+
+  function updateTrend(id, oldV, newV) {
+      const el = document.getElementById(id);
+      if(!el) return;
+      if (newV > oldV) { el.innerHTML = ' <span class="trend-up">↑</span>'; }
+      else if (newV < oldV) { el.innerHTML = ' <span class="trend-down">↓</span>'; }
+      else { el.innerHTML = ' -'; }
+  }
+
+  function updateBar(id,pct){const el=document.getElementById(id);if(el)el.style.width=Math.min(100,pct)+'%'}
+
+  function drawSparkline(canvasId,data,color){
+    const c=document.getElementById(canvasId);if(!c)return;
+    const ctx=c.getContext('2d');const W=c.width,H=c.height;
+    ctx.clearRect(0,0,W,H);
+    const max=Math.max(...data)*1.1,min=Math.min(...data)*.9;
+    const sx=W/(data.length-1),sy=H/(max-min);
+    ctx.beginPath();
+    data.forEach((v,i)=>{const x=i*sx,y=H-(v-min)*sy;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});
+    ctx.strokeStyle=color||'#ffcc00';ctx.lineWidth=2;ctx.stroke();
+    ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+    ctx.fillStyle=(color||'#ffcc00')+'22';ctx.fill();
+  }
+
+  function updateMetrics(){
+    const oldR = requests, oldL = latency, oldU = users, oldA = accuracy;
+
+    requests=Math.round(requests+(Math.random()-.45)*80);requests=Math.max(500,Math.min(2000,requests));
+    latency=Math.round(latency+(Math.random()-.5)*20);latency=Math.max(40,Math.min(250,latency));
+    users=Math.round(users+(Math.random()-.4)*3);users=Math.max(5,Math.min(50,users));
+    accuracy=parseFloat((accuracy+(Math.random()-.5)*.5).toFixed(1));accuracy=Math.max(88,Math.min(98,accuracy));
+
+    // Random Events
+    if (Math.random() > 0.8) {
+        const evts = ["⚡ Traffic spike detected", "⚠️ Latency fluctuation", "🔄 Data sync complete"];
+        evText.textContent = evts[Math.floor(Math.random() * evts.length)];
+        setTimeout(() => evText.textContent = "", 2000);
+    }
+
+    reqH.push(requests);if(reqH.length>20)reqH.shift();
+    latH.push(latency);if(latH.length>20)latH.shift();
+
+    animNum(document.getElementById('m-requests'),requests.toLocaleString(),'');
+    updateTrend('mt-requests', oldR, requests);
+    
+    animNum(document.getElementById('m-latency'),latency,'');
+    updateTrend('mt-latency', oldL, latency);
+    
+    animNum(document.getElementById('m-users'),users,'');
+    updateTrend('mt-users', oldU, users);
+    
+    const accEl=document.getElementById('m-accuracy');if(accEl)accEl.textContent=accuracy.toFixed(1);
+    updateTrend('mt-accuracy', oldA, accuracy);
+
+    updateBar('mb-requests',requests/2000*100);
+    updateBar('mb-latency',latency/250*100);
+    updateBar('mb-users',users/50*100);
+    updateBar('mb-accuracy',accuracy);
+
+    drawSparkline('sparkRequests',reqH,'#ffcc00');
+    drawSparkline('sparkLatency',latH,'#ef4444');
+  }
+
+  const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){updateMetrics();setInterval(updateMetrics,3000)}},{threshold:.3});
+  const metricsEl=document.getElementById('metrics');if(metricsEl)obs.observe(metricsEl);
+})();
+
+/* ═══════════════════════════════════════
+   PART 8 — POKÉMON THEME ANIMATION ENGINE
+═══════════════════════════════════════ */
+(function initThemeAnimations(){
+  const POKE_IDS=[25,6,94,448,197,149,130,143,53,196,249,250,384,445];
+  let pokeInterval=null;
+
+  function burstParticles(lPct,hero){
+    for(let i=0;i<15;i++){
+      const d=document.createElement('div');
+      d.style.cssText=`position:absolute;width:8px;height:8px;border-radius:50%;
+        background:var(--accent);pointer-events:none;z-index:10;
+        left:${lPct}%;bottom:60px;
+        animation:pokeBurst .6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        --dx:${(Math.random()-.5)*150}px;--dy:${-50-Math.random()*100}px;`;
+      hero.appendChild(d);
+      setTimeout(()=>d.remove(),700);
+    }
+  }
+
+  function spawnPokemon(){
+    const hero=document.getElementById('hero');
+    if(!hero)return;
+    const id=POKE_IDS[Math.floor(Math.random()*POKE_IDS.length)];
+    const img=document.createElement('img');
+    img.src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`;
+    img.className='pokemon-float';
+    img.style.left=(5+Math.random()*80)+'%';
+    img.style.bottom='-80px';
+    img.alt='';
+    img.onerror=()=>img.remove();
+    
+    // Interactive Catch
+    img.addEventListener('click',()=>{
+      img.style.animation='pokeWiggle .4s ease';
+      burstParticles(parseFloat(img.style.left),hero);
+      window.appState.interactions++;
+      
+      // Flash capture
+      const flash = document.createElement('div');
+      flash.style.cssText = `position:absolute; inset:0; background:white; z-index:9; opacity:0; pointer-events:none; animation: blink2 0.3s ease;`;
+      hero.appendChild(flash);
+      
+      setTimeout(() => { img.remove(); flash.remove(); }, 400);
+    });
+    
+    hero.appendChild(img);
+    setTimeout(()=>{if(img.parentNode)img.remove();},11000);
+  }
+
+  function stopAll(){
+    clearInterval(pokeInterval);
+    pokeInterval=null;
+    document.querySelectorAll('.pokemon-float').forEach(e=>e.remove());
+  }
+
+  function startPokeTheme(){
+    stopAll();
+    setTimeout(spawnPokemon,1200);
+    pokeInterval=setInterval(spawnPokemon,4000);
+  }
+
+  function applyThemeAnimations(){
+    const theme=document.documentElement.getAttribute('data-theme')||'pokemon-dark';
+    if(theme.includes('pokemon')) startPokeTheme();
+    else stopAll();
+  }
+
+  const themeObs=new MutationObserver(applyThemeAnimations);
+  themeObs.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  setTimeout(applyThemeAnimations,800);
+})();
+
+/* ══════════════════════════════════════════════════════
+   3D POKÉBALL BACKGROUND RENDERER
+══════════════════════════════════════════════════════ */
+(function initPokeball3D(){
+  const canvas = document.getElementById('pokeball-3d-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W/2, cy = H/2;
+  const R = W * 0.44; 
+
+  let rotY = 0; 
+  let heroVisible = true;
+
+  new IntersectionObserver(([e])=>{ heroVisible = e.isIntersecting; },{threshold:.05})
+    .observe(document.getElementById('hero'));
+
+  const light = { x: -0.4, y: -0.6, z: 0.7 };
+
+  function spherePoint(theta, phi){
+    return {
+      x: R * Math.sin(theta) * Math.cos(phi),
+      y: R * Math.cos(theta),
+      z: R * Math.sin(theta) * Math.sin(phi)
+    };
+  }
+
+  function rotateY(p, a){
+    return {
+      x:  p.x * Math.cos(a) + p.z * Math.sin(a),
+      y:  p.y,
+      z: -p.x * Math.sin(a) + p.z * Math.cos(a)
+    };
+  }
+
+  function project(p){
+    const fov = W * 1.8;
+    const z = p.z + fov;
+    return { x: cx + p.x * fov / z, y: cy + p.y * fov / z, scale: fov / z };
+  }
+
+  function diffuse(nx, ny, nz){
+    const dot = nx*light.x + ny*light.y + nz*light.z;
+    const ambient = 0.18;
+    return Math.max(0, dot) * (1 - ambient) + ambient;
+  }
+
+  function drawSphere(){
+    const steps = 80;
+    const dTheta = Math.PI / steps;
+    const dPhi = Math.PI * 2 / steps;
+
+    for(let i = 0; i < steps; i++){
+      const theta = i * dTheta;
+      const theta1 = theta + dTheta;
+      const sinT = Math.sin(theta), cosT = Math.cos(theta);
+      const sinT1 = Math.sin(theta1), cosT1 = Math.cos(theta1);
+
+      for(let j = 0; j < steps; j++){
+        const phi = j * dPhi + rotY;
+        const phi1 = phi + dPhi;
+
+        const corners = [
+          rotateY({x:R*sinT*Math.cos(phi),  y:R*cosT,  z:R*sinT*Math.sin(phi)},  0),
+          rotateY({x:R*sinT*Math.cos(phi1), y:R*cosT,  z:R*sinT*Math.sin(phi1)}, 0),
+          rotateY({x:R*sinT1*Math.cos(phi1),y:R*cosT1, z:R*sinT1*Math.sin(phi1)},0),
+          rotateY({x:R*sinT1*Math.cos(phi), y:R*cosT1, z:R*sinT1*Math.sin(phi)}, 0),
+        ];
+
+        const avgZ = (corners[0].z+corners[1].z+corners[2].z+corners[3].z)/4;
+        if(avgZ < -R*0.05) continue;
+
+        const nx = sinT*Math.cos(phi+dPhi/2);
+        const ny = cosT;
+        const nz = sinT*Math.sin(phi+dPhi/2);
+        const lit = diffuse(nx, ny, nz);
+
+        const worldPhi = ((phi - rotY) % (Math.PI*2) + Math.PI*2) % (Math.PI*2);
+        const isRed = theta < Math.PI/2 - 0.06;  
+        const isWhite = theta > Math.PI/2 + 0.06;  
+        const isBand = !isRed && !isWhite;           
+
+        let r, g, b;
+        if(isBand){
+          r = 22; g = 22; b = 22;  
+        } else if(isRed){
+          r = Math.round(220 * lit + 30);
+          g = Math.round(30  * lit);
+          b = Math.round(30  * lit);
+        } else {
+          const w = Math.round(240 * lit + 15);
+          r = g = b = w;
+        }
+
+        const pts = corners.map(project);
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pts[0].y);
+        pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fill();
+      }
+    }
+
+    const btnFront = project({x:0, y:0, z:R});
+    if(btnFront.x > 0){ 
+      const btnR = R * 0.14 * btnFront.scale;
+      const outerR = R * 0.25 * btnFront.scale;
+
+      ctx.beginPath();
+      ctx.arc(btnFront.x, btnFront.y, outerR, 0, Math.PI*2);
+      ctx.strokeStyle = 'rgba(22,22,22,0.9)';
+      ctx.lineWidth = outerR * 0.25;
+      ctx.stroke();
+
+      const btnGrad = ctx.createRadialGradient(
+        btnFront.x - btnR*0.3, btnFront.y - btnR*0.3, btnR*0.05,
+        btnFront.x, btnFront.y, btnR
+      );
+      btnGrad.addColorStop(0, '#ffffff');
+      btnGrad.addColorStop(0.6, '#e8e8e8');
+      btnGrad.addColorStop(1, '#aaa');
+      ctx.beginPath();
+      ctx.arc(btnFront.x, btnFront.y, btnR, 0, Math.PI*2);
+      ctx.fillStyle = btnGrad;
+      ctx.fill();
+    }
+
+    const hx = cx - R * 0.28;
+    const hy = cy - R * 0.32;
+    const hGrad = ctx.createRadialGradient(hx, hy, 0, hx, hy, R * 0.28);
+    hGrad.addColorStop(0, 'rgba(255,255,255,.18)');
+    hGrad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI*2);
+    ctx.fillStyle = hGrad;
+    ctx.fill();
+  }
+
+  function frame(){
+    if(!heroVisible){ requestAnimationFrame(frame); return; }
+    ctx.clearRect(0, 0, W, H);
+    drawSphere();
+    rotY += 0.004; 
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  function positionCanvas(){
+    const hero = document.getElementById('hero');
+    if(!hero) return;
+    const isMobile = window.innerWidth < 1100;
+    canvas.style.display = isMobile ? 'none' : 'block';
+    if(!isMobile){
+      const size = Math.min(window.innerHeight * 0.88, window.innerWidth * 0.42);
+      canvas.style.width  = size + 'px';
+      canvas.style.height = size + 'px';
+    }
+  }
+  positionCanvas();
+  window.addEventListener('resize', positionCanvas);
+})();
+
+// ── Pokédex status strip animation ──
+(function initStatusStrip(){
+  const el=document.getElementById('heroStatusStrip');
+  if(!el)return;
+  const states=[
+    'POKÉDEX OS v2.7 · SCANNING · ██████░░░░ 61%',
+    'TRAINER PROFILE LOADED · PRASHANT G. · LVL 3',
+    'SPECIES DETECTED: AI_ENGINEER · HP 999/999',
+    'MOVE SET ANALYSIS: PYTORCH / FASTAPI / REACT',
+    'SIGNAL STRENGTH: ████████░░ 82% · TIET NODE',
+    'DATA SYNC: ████████████ 100% · STAND BY...',
+  ];
+  let i=0;
+  setInterval(()=>{
+    el.style.opacity='0';
+    setTimeout(()=>{
+      i=(i+1)%states.length;
+      el.textContent=states[i];
+      el.style.transition='opacity .5s';
+      el.style.opacity='1';
+    },300);
+  },3000);
+  el.style.animation='dataBlink 3s ease-in-out infinite';
+})();
+
+// ── Konami code easter egg (↑↑↓↓←→←→BA) ──
+(function initKonami(){
+  const seq=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let pos=0;
+  document.addEventListener('keydown',e=>{
+    const key=e.key.length===1?e.key.toLowerCase():e.key;
+    pos=(key===seq[pos])?pos+1:(key===seq[0]?1:0);
+    if(pos===seq.length){
+      pos=0;
+      const overlay=document.getElementById('konami-overlay');
+      if(overlay){overlay.style.display='flex';document.body.style.overflow='hidden';}
+    }
+  });
+})();
+
+// ── Close overlays with ESC (global) ──
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  ['dinoOverlay','snakeOverlay','case-modal','konami-overlay'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    el.classList.remove('open');
+    el.style.removeProperty('display'); // don't leave an inline style that
+                                         // would block a future .open class
+  });
+  document.body.style.overflow='';
+});
+</script>
+
+</body>
+</html>

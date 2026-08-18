@@ -1,0 +1,10 @@
+name = "prashant-portfolio-proxy"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Restricts CORS to your live site. Add more origins if you also test from
+# a different domain (e.g. a Netlify preview). "*" works too, but is looser.
+[vars]
+ALLOWED_ORIGIN = "https://praxshant.github.io"
+
+# GROQ_KEY and HF_KEY are set as secrets, not here — see README.md.
