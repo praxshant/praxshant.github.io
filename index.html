@@ -467,6 +467,19 @@ section{padding:5.5rem 3rem}
 .proj-types{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.9rem;border-top:2px dashed var(--border)}
 .deep-dive-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--surface2);border:2px solid var(--border2);color:var(--text);font-family:var(--font-head);font-size:.38rem;padding:.35rem .7rem;cursor:pointer;transition:all .14s;box-shadow:2px 2px 0 var(--border);letter-spacing:.04em;margin-top:.5rem;align-self:flex-start}
 .deep-dive-btn:hover{border-color:var(--accent3);color:var(--accent3);transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--accent3)}
+.proj-badge{margin-left:1rem;color:var(--accent);border:1px solid var(--accent);padding:.1rem .4rem;border-radius:4px;font-size:.5rem}
+.proj-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.proj-demo{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent4);border:2px solid #000;color:#000;font-family:var(--font-head);font-size:.38rem;padding:.35rem .7rem;text-decoration:none;box-shadow:2px 2px 0 var(--border);letter-spacing:.04em;margin-top:.5rem;transition:all .14s}
+.proj-demo:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--accent3)}
+.proj-private{font-family:var(--font-head);font-size:.36rem;color:var(--muted);border:2px dashed var(--border2);padding:.28rem .48rem;white-space:nowrap}
+.more-wrap{margin-top:2.5rem}
+.more-ttl{font-family:var(--font-head);font-size:.5rem;color:var(--accent);margin-bottom:1rem;letter-spacing:.06em}
+.more-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.8rem}
+.more-item{display:flex;flex-direction:column;gap:.45rem;background:var(--surface);border:2px solid var(--border2);padding:1rem 1.1rem;text-decoration:none;box-shadow:3px 3px 0 var(--border);transition:all .14s}
+.more-item:hover{border-color:var(--accent);transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--accent)}
+.more-name{font-family:var(--font-head);font-size:.42rem;color:var(--text);letter-spacing:.04em}
+.more-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
+.st-done{background:var(--accent4);color:#000}
 
 /* ── CASE STUDY MODAL ── */
 #case-modal{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.92);display:none;overflow-y:auto}
@@ -901,7 +914,7 @@ footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-
 
     <div class="hero-typewriter" id="typewriter">AI/ML ENGINEER_</div>
 
-    <p class="hero-sub">Building intelligent systems that learn, adapt, and solve real problems — from deep learning pipelines to full-stack production deployments. Currently exploring RL for adaptive game systems.</p>
+    <p class="hero-sub">Building AI that works in the real world — from speech-AI reliability research to production ML systems and governed LLM agents. Open to internships from January 2027 in AI/ML engineering, software engineering and AI product roles.</p>
 
     <div class="hero-actions">
       <a href="#projects" class="btn-px btn-yellow">⚔ PROJECTS</a>
@@ -986,9 +999,9 @@ footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-
       <div class="position-banner tilt-card">
         <strong>AI/ML Engineer</strong> focused on building end-to-end intelligent systems — from model training to deployment using <strong>FastAPI, Docker, and React</strong>. Specializing in deep learning pipelines, NLP, and production-grade MLOps.
       </div>
-      <p class="about-p">I'm a <strong>Computer Engineering (AI/ML) student</strong> at Thapar Institute, building data-driven systems and full-stack applications with a focus on measurable impact.</p>
+      <p class="about-p">I'm a <strong>final-year Computer Engineering (AI/ML) student</strong> at Thapar Institute, building data-driven systems and full-stack applications with a focus on measurable impact.</p>
       <p class="about-p">My work spans <strong>deep learning, NLP, computer vision</strong>, and production ML pipelines. I care about clarity, maintainability, and shipping things that actually work with real metrics.</p>
-      <p class="about-p">Currently exploring <strong>reinforcement learning for adaptive game systems</strong> (Cognitive Game Director) and building research frameworks bridging academic rigor with practical deployment.</p>
+      <p class="about-p">Lately I've been focused on <strong>Speech AI, Generative AI and reliable ML systems</strong> — predicting when voice assistants are wrong (VoxIntel-R), shipping monitored forecasting services (PulseOps), and keeping LLM agents inside hard business rules (Aegis). I'm looking for <strong>internships starting January 2027</strong>, ideally with a path to full-time.</p>
       <div class="type-wrap">
         <span class="tb t-elec">PYTORCH</span><span class="tb t-water">FASTAPI</span><span class="tb t-fire">GPT-2</span>
         <span class="tb t-grass">YOLOV8</span><span class="tb t-psy">BERT</span><span class="tb t-steel">DOCKER</span>
@@ -1025,132 +1038,192 @@ footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-
   <div class="sec-hdr reveal"><span class="sec-num">02</span><h2 class="sec-ttl">POKÉDEX — PROJECTS</h2><div class="sec-line"></div></div>
   <div class="proj-grid">
 
-    <div class="proj-card featured reveal tilt-card" data-project="cicop">
-      <div class="proj-num">001 — FEATURED <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 CODE BADGE</span></div>
-      <div class="proj-hdr">
-        <div class="proj-name">CICOP — Customer Intelligence &amp; Campaign Orchestration</div>
-        <a href="https://github.com/praxshant/Customer-Intelligence-Platform" target="_blank" class="proj-link-icon">↗</a>
-      </div>
-      <div class="proj-desc">End-to-end ML platform with FastAPI microservices, Streamlit analytics dashboard, and real-time customer segmentation engine with automated campaign orchestration.</div>
+    <div class="proj-card featured reveal tilt-card" data-project="pulseops">
+      <div class="proj-num">001 — FEATURED <span class="proj-badge">🏆 MLOPS BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">PULSEOPS — Hospital Discharge Forecasting in Production</div><a href="https://github.com/praxshant/PulseOps" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">Next-day hospital discharge forecasting on NHS England operational data, served as a live, monitored API with an interactive dashboard. Built to show the truth: no live accuracy is reported before real outcomes arrive.</div>
       <div class="proj-metrics">
-        <div class="metric-item">Segmented 10K+ customer records using K-means, DBSCAN &amp; hierarchical clustering</div>
-        <div class="metric-item">A/B testing framework improved campaign ROI by ~18% in simulation</div>
-        <div class="metric-item">3 independent FastAPI microservices, each containerized with Docker</div>
-        <div class="metric-item">End-to-end CI/CD pipeline with zero-downtime deployment</div>
+        <div class="metric-item">ExtraTrees test MAE 10.30 vs 20.58 for a “same as yesterday” baseline — ~50% lower error</div>
+        <div class="metric-item">RMSE 15.62 · WAPE 13.44% on 17,958 org-days with 17 engineered features</div>
+        <div class="metric-item">Fixed a ~520 MB model-load spike to run inside a 512 MB container — 15/15 load rounds stable at ~76% of the cap</div>
+        <div class="metric-item">MLflow + DagsHub model registry, prediction logging, PSI feature-drift monitoring, Prometheus metrics</div>
       </div>
-      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-water">STREAMLIT</span><span class="tb t-grass">SCIKIT</span><span class="tb t-steel">DOCKER</span><span class="tb t-elec">CI/CD</span></div>
-      <button class="deep-dive-btn" onclick="openCase('cicop')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-grass">SCIKIT-LEARN</span><span class="tb t-fire">FASTAPI</span><span class="tb t-water">STREAMLIT</span><span class="tb t-steel">DOCKER</span><span class="tb t-elec">MLFLOW</span><span class="tb t-norm">DAGSHUB</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('pulseops')">🔍 DEEP DIVE →</button><a href="https://pulseops-dashboard-uxwqdxuuhxtpnl6dshuaqq.streamlit.app" target="_blank" rel="noopener" class="proj-demo">▶ LIVE DASHBOARD</a><a href="https://pulseops-api-7s5p.onrender.com/docs" target="_blank" rel="noopener" class="proj-demo">⚙ API DOCS</a></div>
     </div>
 
-    <div class="proj-card reveal tilt-card" data-project="codementor">
-      <div class="proj-num">002 <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 MENTOR BADGE</span></div>
-      <div class="proj-hdr"><div class="proj-name">CODEMENTOR</div><a href="https://github.com/praxshant/CodeMentor" target="_blank" class="proj-link-icon">↗</a></div>
-      <div class="proj-desc">Full-stack AI code analysis with fine-tuned GPT-2. Flask REST + React/TypeScript frontend.</div>
+    <div class="proj-card reveal tilt-card" data-project="aegis">
+      <div class="proj-num">002 <span class="proj-badge">🏆 GOVERNANCE BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">AEGIS — Governed AI Commerce Agent</div><a href="https://github.com/praxshant/Aegis" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">An LLM agent that proposes win-back offers, but never decides money on its own: ML models ground every proposal and a deterministic policy gate authorises it before any Razorpay payment link is created.</div>
       <div class="proj-metrics">
-        <div class="metric-item">85% bug detection accuracy on Python test suite</div>
-        <div class="metric-item">Transfer learning reduced false-positive rate vs baseline</div>
-        <div class="metric-item">Sub-2s inference latency on CPU with model optimization</div>
+        <div class="metric-item">Purchase-propensity model ROC-AUC 0.8191 · Lift@10% 3.65× on 71,647 observations / 5,247 customers</div>
+        <div class="metric-item">Next-basket recommender NDCG@10 0.5244 (Instacart)</div>
+        <div class="metric-item">Hard limits outside the LLM: max 25% discount, ₹2,000 per payment, velocity + budget + cooldown checks</div>
+        <div class="metric-item">Prompt-injection defence, JWT-authenticated operators, SHA-256 audit ledger, CI</div>
       </div>
-      <div class="proj-types"><span class="tb t-psy">GPT-2</span><span class="tb t-fire">FLASK</span><span class="tb t-ice">REACT</span><span class="tb t-norm">TAILWIND</span></div>
-      <button class="deep-dive-btn" onclick="openCase('codementor')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-grass">LIGHTGBM</span><span class="tb t-psy">GEMINI</span><span class="tb t-water">RAZORPAY</span><span class="tb t-ice">STREAMLIT</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('aegis')">🔍 DEEP DIVE →</button></div>
     </div>
 
-    <div class="proj-card reveal tilt-card" data-project="sentry">
-      <div class="proj-num">003 <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 VISION BADGE</span></div>
-      <div class="proj-hdr"><div class="proj-name">SENTRYVISION — Critical Region Object Detection</div><a href="https://github.com/praxshant/SentryVision" target="_blank" class="proj-link-icon">↗</a></div>
-      <div class="proj-desc">Advanced real-time system that detects fast-moving thrown objects (stones, tools, sacks) entering a user-defined critical region in live video feeds. Minimizes false positives from birds, animals, and environmental noise. Production-deployed with Gunicorn + Nginx.</div>
+    <div class="proj-card reveal tilt-card" data-project="execinbox">
+      <div class="proj-num">003 <span class="proj-badge">🏆 AGENT BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">EXECINBOX — RL Environment for Email Agents</div><a href="https://github.com/praxshant/exec_inbox_env" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">An OpenEnv-compatible inbox where an AI agent works as an executive assistant: classify, prioritise, reply and archive emails before deadlines expire, with dense step-level rewards.</div>
       <div class="proj-metrics">
-        <div class="metric-item">92% person/object detection accuracy using YOLOv8 + MOG2 background subtraction</div>
-        <div class="metric-item">Reduced false positives 28% via adaptive morphological noise filtering &amp; contour analysis</div>
-        <div class="metric-item">18 FPS processing on CPU — real-time capable on standard hardware</div>
-        <div class="metric-item">Production-ready: Gunicorn (4 workers) + Nginx reverse proxy with sticky sessions</div>
+        <div class="metric-item">Batched LLM triage: 13–25× fewer calls, ~9–16× fewer input tokens, ~22–25× lower latency, zero score loss</div>
+        <div class="metric-item">Hard task: 12,727 → 807 input tokens and 3.77 s → 0.15 s at the same score (0.713)</div>
+        <div class="metric-item">3 graded tasks (5 / 10 / 15 emails) with deadlines and hidden priorities</div>
+        <div class="metric-item">Deployed on Hugging Face Spaces and Azure Container Apps · optional API-key auth · CI tests</div>
       </div>
-      <div class="proj-types"><span class="tb t-elec">YOLOV8</span><span class="tb t-water">OPENCV</span><span class="tb t-fire">FLASK</span><span class="tb t-steel">GUNICORN</span><span class="tb t-norm">NGINX</span><span class="tb t-grass">SQLITE</span></div>
-      <button class="deep-dive-btn" onclick="openCase('sentry')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-psy">OPENENV</span><span class="tb t-elec">LLM</span><span class="tb t-steel">DOCKER</span><span class="tb t-water">AZURE</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('execinbox')">🔍 DEEP DIVE →</button><a href="https://huggingface.co/spaces/praxshant/exec_inbox_env" target="_blank" rel="noopener" class="proj-demo">▶ LIVE ON HF SPACES</a></div>
     </div>
 
-    <div class="proj-card reveal tilt-card" data-project="goemo">
-      <div class="proj-num">004 <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 LANGUAGE BADGE</span></div>
-      <div class="proj-hdr"><div class="proj-name">GOEMOTIONS CLASSIFIER</div><a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a></div>
-      <div class="proj-desc">28-class multi-label NLP emotion classifier on Google's GoEmotions dataset.</div>
+    <div class="proj-card featured reveal tilt-card" data-project="genfx">
+      <div class="proj-num">004 — FEATURED <span class="proj-badge">🏆 GENERATION BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">GENFX AI — Text-to-Editable-3D for Blender</div><span class="proj-private" title="Source code is private">CODE PRIVATE</span></div>
+      <div class="proj-desc">Type a description, get an editable Blender .blend asset in about 25–30 seconds. Chains LLM scene planning, image generation, 3D reconstruction and headless Blender — and keeps working when a provider fails.</div>
       <div class="proj-metrics">
-        <div class="metric-item">TF-IDF (15K features) + SMOTE — addressed severe label imbalance</div>
-        <div class="metric-item">Per-label threshold optimization boosted minority class recall</div>
-        <div class="metric-item">Fully modular ML pipeline — preprocessing → evaluation</div>
+        <div class="metric-item">QualityGate measures each candidate mesh (geometry, watertightness) and keeps the most usable one — not just the fastest</div>
+        <div class="metric-item">Provider fallback chain across hosted 3D models: ~30k-polygon meshes in 15–25 s</div>
+        <div class="metric-item">Exports .blend and GLB · automated Blender rendering and scene assembly</div>
+        <div class="metric-item">117 automated tests · deployed on Google Cloud Run</div>
       </div>
-      <div class="proj-types"><span class="tb t-psy">TF-IDF</span><span class="tb t-drag">SMOTE</span><span class="tb t-norm">NLTK</span></div>
-      <button class="deep-dive-btn" onclick="openCase('goemo')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-grass">BLENDER</span><span class="tb t-water">STREAMLIT</span><span class="tb t-psy">LLM</span><span class="tb t-elec">HUNYUAN3D</span><span class="tb t-steel">CLOUD RUN</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('genfx')">🔍 DEEP DIVE →</button><a href="https://genfx-623327607141.us-central1.run.app" target="_blank" rel="noopener" class="proj-demo">▶ LIVE DEMO (ACCESS ON REQUEST)</a></div>
     </div>
 
-    <div class="proj-card reveal tilt-card" data-project="adaptivetype">
-      <div class="proj-num">005 <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 ADAPTIVE BADGE</span></div>
-      <div class="proj-hdr"><div class="proj-name">ADAPTIVETYPE — Intelligent Typing Engine</div><a href="https://github.com/praxshant/AdaptiveType" target="_blank" class="proj-link-icon">↗</a></div>
-      <div class="proj-desc">A TypeScript-based adaptive typing system that intelligently adjusts text prediction, autocomplete behaviour, and input UX based on user typing patterns and context. Built for developers who want smarter keyboard input without latency overhead.</div>
+    <div class="proj-card reveal tilt-card" data-project="evidencegate">
+      <div class="proj-num">005 <span class="proj-badge">🏆 TRUTH BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">EVIDENCEGATE — RAG That Refuses Without Evidence</div><a href="https://github.com/praxshant/EvidenceGate" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">A research copilot for voice-agent engineers that answers only from version-pinned papers, verifies every citation, and abstains when the evidence is too thin — with admission control for real load.</div>
       <div class="proj-metrics">
-        <div class="metric-item">Real-time keystroke pattern analysis with adaptive model updates</div>
-        <div class="metric-item">Context-aware autocomplete — adapts to per-user typing style over sessions</div>
-        <div class="metric-item">Zero-dependency TypeScript core — embeds in any web or Electron app</div>
-        <div class="metric-item">Sub-5ms prediction latency on standard hardware</div>
+        <div class="metric-item">Retrieval Recall@k 1.000 · MRR 0.9667 on a 20-question benchmark</div>
+        <div class="metric-item">Deterministic citation verifier + 3-way evidence gate (sufficient / partial / insufficient)</div>
+        <div class="metric-item">Load-tested at N=50: 0% drops under steady load; bounded FIFO queue + token-per-minute budget under overload</div>
+        <div class="metric-item">Failure modes reported openly (e.g. gate under-conservatism) · 36 tests</div>
       </div>
-      <div class="proj-types"><span class="tb t-ice">TYPESCRIPT</span><span class="tb t-psy">ADAPTIVE ML</span><span class="tb t-elec">REAL-TIME</span><span class="tb t-water">NLP</span></div>
-      <button class="deep-dive-btn" onclick="openCase('adaptivetype')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-grass">BM25</span><span class="tb t-psy">GROQ</span><span class="tb t-fire">STARLETTE</span><span class="tb t-norm">PYMUPDF</span><span class="tb t-water">ASYNCIO</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('evidencegate')">🔍 DEEP DIVE →</button></div>
+    </div>
+
+    <div class="proj-card reveal tilt-card" data-project="sentrix">
+      <div class="proj-num">006 <span class="proj-badge">🏆 GUARDIAN BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">SENTRIX V2 — Multimodal Edge Security (Capstone)</div><a href="https://github.com/praxshant/SentrixV2" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">Edge-first physical security system that fuses camera, audio, face, re-identification and voice-SOS signals into one Threat Confidence Index and escalates automatically — fully on local hardware.</div>
+      <div class="proj-metrics">
+        <div class="metric-item">XGBoost late-fusion threat score with EMA smoothing — fusion hot path under 5 ms</div>
+        <div class="metric-item">YOLOv8-nano person detection (<10 ms) + DeepSORT tracking + Re-ID gallery</div>
+        <div class="metric-item">AES-256-GCM encrypted evidence bundles, Twilio SMS / call escalation, WebSocket command dashboard</div>
+        <div class="metric-item">Full hardware build: ₹11,880 bill of materials, 2.5 h+ UPS runtime</div>
+      </div>
+      <div class="proj-types"><span class="tb t-elec">YOLOV8</span><span class="tb t-grass">XGBOOST</span><span class="tb t-fire">FASTAPI</span><span class="tb t-psy">VOSK</span><span class="tb t-water">TWILIO</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('sentrix')">🔍 DEEP DIVE →</button></div>
     </div>
 
     <div class="proj-card featured reveal tilt-card" data-project="atlasos">
-      <div class="proj-num">006 — FEATURED <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 SYSTEM BADGE</span></div>
-      <div class="proj-hdr">
-        <div class="proj-name">ATLASOS — Industrial Knowledge Operating System</div>
-        <a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a>
-      </div>
-      <div class="proj-desc">Enterprise-grade IKOS unifying fragmented industrial plants — SOPs, engineering manuals, maintenance logs, regulations — into a high-fidelity digital twin via GraphRAG over a hybrid vector + property-graph store.</div>
+      <div class="proj-num">007 — FEATURED <span class="proj-badge">🏆 SYSTEM BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">ATLASOS — Industrial Knowledge Operating System</div><a href="https://github.com/praxshant/AtlasOS" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">Turns scattered SOPs, engineering manuals, maintenance logs and regulations into one connected knowledge graph — so engineers get cited answers, root-cause trees and compliance checks instead of a document hunt.</div>
       <div class="proj-metrics">
-        <div class="metric-item">Hybrid storage triad: PostgreSQL metastore + Qdrant vectors (BAAI/bge-large-en-v1.5) + Neo4j knowledge graph</div>
-        <div class="metric-item">Multi-hop GraphRAG copilot — intent routing, PageRank centrality scoring, shortest-path context extraction, streamed via SSE</div>
-        <div class="metric-item">Automated Ishikawa root-cause trees + ISO/OSHA compliance audits with Pass/Fail checklists</div>
-        <div class="metric-item">Cross-DB integrity checker + SHA-256 duplicate-hash detection across tenants</div>
+        <div class="metric-item">Hybrid storage triad: PostgreSQL metastore + Qdrant vectors (bge-large) + Neo4j plant-topology graph</div>
+        <div class="metric-item">GraphRAG copilot: semantic + BM25 retrieval, multi-hop graph context, grounded answers with citations, streamed via SSE</div>
+        <div class="metric-item">Agents for compliance audits, Ishikawa root-cause investigation and lessons learned</div>
+        <div class="metric-item">Local-first LLM execution with Ollama and configurable cloud fallbacks · Celery/Redis ingestion</div>
       </div>
-      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-ice">REACT 19</span><span class="tb t-grass">NEO4J</span><span class="tb t-water">QDRANT</span><span class="tb t-steel">POSTGRESQL</span><span class="tb t-elec">CELERY</span></div>
-      <button class="deep-dive-btn" onclick="openCase('atlasos')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-ice">REACT 19</span><span class="tb t-grass">NEO4J</span><span class="tb t-water">QDRANT</span><span class="tb t-steel">POSTGRESQL</span><span class="tb t-psy">OLLAMA</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('atlasos')">🔍 DEEP DIVE →</button></div>
     </div>
 
-    <div class="proj-card reveal tilt-card" data-project="auralis">
-      <div class="proj-num">007 <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 AUDIO BADGE</span></div>
-      <div class="proj-hdr"><div class="proj-name">AURALIS — Music Intelligence Platform</div><a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a></div>
-      <div class="proj-desc">Full-stack music discovery system combining Spotify ingestion, semantic search over track embeddings, DSP-based audio analysis, and contextual playlist generation — an engineering codebase, not a demo.</div>
+    <div class="proj-card reveal tilt-card" data-project="accel">
+      <div class="proj-num">008 <span class="proj-badge">🏆 TEAM BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">ACCEL BIZFLOW — MSME Onboarding Platform (Airtel Sync 2026)</div><a href="https://github.com/praxshant/AccelBizFlow" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">Built with Shashi Kumar for Airtel Sync 2026 (Digital Track, Project Udyam). Case data showed only 368 of 5,000 business leads reached activation, so we built an end-to-end acquisition and onboarding flow instead of another chatbot.</div>
       <div class="proj-metrics">
-        <div class="metric-item">Async FastAPI + SQLAlchemy/Alembic backend with pgvector-backed embedding search</div>
-        <div class="metric-item">Celery/Redis workers isolate ingestion, embedding generation &amp; audio processing from request handling</div>
-        <div class="metric-item">librosa/soundfile DSP pipeline for waveform, BPM, key &amp; energy analysis</div>
-        <div class="metric-item">JWT auth + encrypted OAuth tokens + Redis one-time exchange codes on the Spotify callback</div>
+        <div class="metric-item">Conversational AI advisor + deterministic eligibility engine — the LLM never decides price or eligibility</div>
+        <div class="metric-item">Backend-driven quotation, OCR-based KYC processing and order tracking</div>
+        <div class="metric-item">Separate workspaces for sales, KYC reviewers and operations</div>
+        <div class="metric-item">83 passing backend tests + successful frontend production build</div>
       </div>
-      <div class="proj-types"><span class="tb t-fire">FASTAPI</span><span class="tb t-ice">NEXT.JS</span><span class="tb t-steel">POSTGRESQL</span><span class="tb t-water">PGVECTOR</span><span class="tb t-elec">CELERY</span></div>
-      <button class="deep-dive-btn" onclick="openCase('auralis')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-ice">REACT</span><span class="tb t-water">TYPESCRIPT</span><span class="tb t-fire">FASTAPI</span><span class="tb t-steel">SQLITE</span><span class="tb t-norm">OCR</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('accel')">🔍 DEEP DIVE →</button></div>
     </div>
 
-    <div class="proj-card reveal tilt-card" data-project="genfx">
-      <div class="proj-num">008 <span style="margin-left: 1rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.5rem;">🏆 GENERATION BADGE</span></div>
-      <div class="proj-hdr"><div class="proj-name">GENFX LITE — LLM + Diffusion VFX Pipeline</div><a href="https://github.com/praxshant" target="_blank" class="proj-link-icon">↗</a></div>
-      <div class="proj-desc">Production-style prototype chaining an LLM scene parser, diffusion image generation, and a headless Blender compositor behind a Streamlit UI — inspired by studio VFX pipeline architecture.</div>
+    <div class="proj-card reveal tilt-card" data-project="handsurf">
+      <div class="proj-num">009 <span class="proj-badge">🏆 FUN BADGE</span></div>
+      <div class="proj-hdr"><div class="proj-name">HANDSURF AI — Play Subway Surfers with Your Hands</div><a href="https://github.com/praxshant/HandSurfAI" target="_blank" rel="noopener" class="proj-link-icon" title="Source code">↗</a></div>
+      <div class="proj-desc">A one-day build: real-time hand tracking turns webcam gestures into game controls — tilt to steer, flick to jump or slide, peace sign for the hoverboard.</div>
       <div class="proj-metrics">
-        <div class="metric-item">3-stage pipeline: LLM scene parser → HF diffusion image gen (SD3.5 / FLUX.1-schnell / Hyper-SD fallback chain) → headless Blender Cycles compositor</div>
-        <div class="metric-item">Every stage degrades gracefully to a pre-baked fallback asset — pipeline always completes and produces output</div>
-        <div class="metric-item">22 passing smoke tests requiring zero API keys</div>
-        <div class="metric-item">Modular orchestration (runner/scheduler/worker) + pluggable post-processing (Pillow default, optional OpenCV)</div>
+        <div class="metric-item">MediaPipe hand landmarks tracked live from a webcam</div>
+        <div class="metric-item">5 steering methods (tilt ±16°, point, thumb, swipe, position) + pose-based jump / slide / hoverboard</div>
+        <div class="metric-item">Gestures dispatched as keyboard and mouse input — no game modification needed</div>
       </div>
-      <div class="proj-types"><span class="tb t-psy">STREAMLIT</span><span class="tb t-elec">LLM PARSER</span><span class="tb t-water">DIFFUSION</span><span class="tb t-grass">BLENDER</span></div>
-      <button class="deep-dive-btn" onclick="openCase('genfx')">🔍 DEEP DIVE →</button>
+      <div class="proj-types"><span class="tb t-grass">MEDIAPIPE</span><span class="tb t-water">OPENCV</span><span class="tb t-elec">PYTHON</span></div>
+      <div class="proj-actions"><button class="deep-dive-btn" onclick="openCase('handsurf')">🔍 DEEP DIVE →</button></div>
     </div>
 
   </div>
+  <div class="more-wrap reveal">
+    <div class="more-ttl">MORE IN THE POKÉDEX</div>
+    <div class="more-grid">
+      <a href="https://github.com/praxshant/CICOP---Customer-Intelligence-Campaign-Orchestration-Platform" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">CICOP ↗</span><span class="more-desc">Customer segmentation + 30-day purchase propensity (ROC-AUC 0.8191) on 1M+ transactions</span></a>
+      <a href="https://github.com/praxshant/voxintel-indic" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">VOXINTEL-INDIC ↗</span><span class="more-desc">Noisy, code-mixed Indic speech-to-intent: ASR cascade vs direct audio</span></a>
+      <a href="https://github.com/praxshant/FraudLens-AI" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">FRAUDLENS-AI ↗</span><span class="more-desc">OCR fraud checks for licences and insurance cards with tamper flags</span></a>
+      <a href="https://github.com/praxshant/Auralis" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">AURALIS ↗</span><span class="more-desc">Spotify-synced music search in plain language with pgvector embeddings</span></a>
+      <a href="https://github.com/praxshant/plantvillage" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">PLANTVILLAGE CNN ↗</span><span class="more-desc">Potato leaf disease classifier — 96.47% accuracy, macro F1 94.31%</span></a>
+      <a href="https://github.com/praxshant/GoEmotions" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">GOEMOTIONS ↗</span><span class="more-desc">28-label emotion classification: TF-IDF baseline → fine-tuned DistilBERT</span></a>
+      <a href="https://github.com/praxshant/SentryVision" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">SENTRYVISION ↗</span><span class="more-desc">Detects objects thrown into a user-drawn danger zone in live video</span></a>
+      <a href="https://github.com/praxshant/RailFit-QR" target="_blank" rel="noopener" class="more-item tilt-card"><span class="more-name">RAILFIT-QR ↗</span><span class="more-desc">SIH 2025 team project: QR-marked railway fittings with AI + AR tracking</span></a>
+    </div>
+  </div>
   <div style="margin-top:1.5rem;text-align:right" class="reveal">
-    <a href="https://github.com/praxshant" target="_blank" class="btn-px btn-outline" style="font-size:.42rem">VIEW ALL REPOS ↗</a>
+    <a href="https://github.com/praxshant" target="_blank" rel="noopener" class="btn-px btn-outline" style="font-size:.42rem">VIEW ALL REPOS ↗</a>
   </div>
 </section>
 
 <section id="research">
   <div class="sec-hdr reveal"><span class="sec-num">03</span><h2 class="sec-ttl">RESEARCH WORK</h2><div class="sec-line"></div></div>
-  <div class="research-note reveal">⚠ ALL PROJECTS ONGOING — NOT PUBLISHED YET</div>
+  <div class="research-note reveal">⚠ INDEPENDENT RESEARCH — NOT PEER-REVIEWED YET</div>
   <div class="research-grid">
+
+    <div class="res-card full reveal tilt-card">
+      <span class="res-status st-done">● V1 COMPLETE</span>
+      <div class="res-org">SPEECH &amp; LANGUAGE AI RESEARCH</div>
+      <div class="res-title">VoxIntel-R — Knowing When a Voice Assistant Is Wrong</div>
+      <div class="res-desc">A reference-free reliability layer that predicts, at inference time, when a voice assistant has probably misunderstood the user — so the system can decide to execute, clarify or abstain. Tested across 22 research notebooks and six model families, including a hypothesis that turned out to be wrong: adding ASR-uncertainty features did <em>not</em> beat intent-model uncertainty, and the study reports that honestly.</div>
+      <div class="res-phases" style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem">
+        <div class="res-phase ph-done"><div class="ph-dot"></div>ROC-AUC 0.912 for predicting intent failures on 2,607 frozen SLURP test utterances</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Well calibrated: expected calibration error 0.019</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Selective prediction AURC 0.059 vs 0.083 (intent threshold) and 0.213 (always execute)</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Negative result: intent + ASR 0.875 vs intent-only 0.912 (ΔAUC −0.037, 95% CI [−0.051, −0.025], 0/20 splits)</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>Cross-checked on Fluent Speech Commands + a separate Whisper experiment</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>FastAPI service, risk/coverage dashboard, CPU-only Docker, tests and CI</div>
+        <div class="res-phase ph-wip"><div class="ph-dot"></div>Cross-dataset generalisation and robustness under noise</div>
+        <div class="res-phase ph-todo"><div class="ph-dot"></div>Independent human validation of failure severity</div>
+      </div>
+      <div class="res-stack" style="margin-top:1rem">
+        <span class="res-chip">PYTORCH</span><span class="res-chip">WAV2VEC2</span><span class="res-chip">WHISPER</span><span class="res-chip">DISTILBERT</span><span class="res-chip">XGBOOST</span><span class="res-chip">FASTAPI</span>
+      </div>
+      <a href="https://github.com/praxshant/VoxIntel" target="_blank" rel="noopener" class="proj-demo" style="margin-top:1rem;display:inline-flex">↗ CODE, EXPERIMENTS &amp; REPORTS</a>
+    </div>
+
+    <div class="res-card reveal tilt-card">
+      <span class="res-status st-building">● BUILDING</span>
+      <div class="res-org">INDIC SPEECH AI</div>
+      <div class="res-title">VoxIntel-Indic — Speech-to-Intent for Noisy, Code-Mixed Calls</div>
+      <div class="res-desc">Compares an ASR-first cascade against direct audio-to-intent classification for noisy, code-mixed calls across 7 Indic languages plus English, with a reject gate for out-of-scope requests. Uses synthetic speech data for now.</div>
+      <div class="res-phases">
+        <div class="res-phase ph-done"><div class="ph-dot"></div>14,790-row evaluation pool, noise at 10/20 dB SNR</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>ASR cascade 99.96% robust accuracy vs 69.87% for direct audio</div>
+        <div class="res-phase ph-done"><div class="ph-dot"></div>0% false-accepts on out-of-scope requests (cascade)</div>
+        <div class="res-phase ph-todo"><div class="ph-dot"></div>Validation on real (non-synthetic) call audio</div>
+      </div>
+      <div class="res-stack" style="margin-top:1rem">
+        <span class="res-chip">INDICCONFORMER</span><span class="res-chip">WHISPER</span><span class="res-chip">SARVAM</span><span class="res-chip">SCIKIT-LEARN</span>
+      </div>
+      <a href="https://github.com/praxshant/voxintel-indic" target="_blank" rel="noopener" class="proj-demo" style="margin-top:1rem;display:inline-flex">↗ CODE</a>
+    </div>
 
     <div class="res-card reveal tilt-card">
       <span class="res-status st-building">● BUILDING</span>
@@ -1167,24 +1240,6 @@ footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-
       </div>
       <div class="res-stack" style="margin-top:1rem">
         <span class="res-chip">PYTORCH</span><span class="res-chip">DQN</span><span class="res-chip">GAN</span><span class="res-chip">RAG</span><span class="res-chip">NEO4J</span><span class="res-chip">LLM</span>
-      </div>
-    </div>
-
-    <div class="res-card full reveal tilt-card">
-      <span class="res-status st-building">● BUILDING</span>
-      <div class="res-org">SPEECH &amp; LANGUAGE AI RESEARCH</div>
-      <div class="res-title">VoxIntel — Error-Aware Speech-to-Intent Pipeline</div>
-      <div class="res-desc">Studies how ASR transcription errors propagate into downstream intent classification. Moves past aggregate WER/CER to ask which specific error categories — substitution, deletion, negation, entity, number, location — actually flip predicted intents, using a Wav2Vec2 model fine-tuned on SLURP feeding a DistilBERT intent classifier, wrapped in a production-oriented MLOps stack.</div>
-      <div class="res-phases" style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem">
-        <div class="res-phase ph-done"><div class="ph-dot"></div>Error taxonomy defined — 8 categories (substitution, deletion, negation, entity, number, location, insertion, function word)</div>
-        <div class="res-phase ph-done"><div class="ph-dot"></div>Baseline ASR inference + WER/CER benchmarking on SLURP</div>
-        <div class="res-phase ph-wip"><div class="ph-dot"></div>Wav2Vec2 fine-tuning on SLURP — lazy Dataset pipeline to resolve memory errors on large-scale mapping</div>
-        <div class="res-phase ph-wip"><div class="ph-dot"></div>DistilBERT intent classifier — ground-truth vs. ASR transcript comparison</div>
-        <div class="res-phase ph-todo"><div class="ph-dot"></div>Error-flip sensitivity analysis — intent-flip rate per error category</div>
-        <div class="res-phase ph-todo"><div class="ph-dot"></div>FastAPI inference service + MLflow/DVC MLOps deployment</div>
-      </div>
-      <div class="res-stack" style="margin-top:1rem">
-        <span class="res-chip">PYTORCH</span><span class="res-chip">WAV2VEC2</span><span class="res-chip">DISTILBERT</span><span class="res-chip">MLFLOW</span><span class="res-chip">DVC</span><span class="res-chip">FASTAPI</span>
       </div>
     </div>
 
@@ -1348,7 +1403,7 @@ footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-
       <p class="contact-p">Open to research collaborations, AI/ML internships, and interesting projects. Reach out anytime.</p>
       <div class="contact-rows">
         <a href="mailto:prashantgagneja0@gmail.com" class="c-row tilt-card"><span class="c-ico">EMAIL</span><span class="c-val">prashantgagneja0@gmail.com</span></a>
-        <a href="https://linkedin.com/in/prashant-gagneja-208878281" target="_blank" class="c-row tilt-card"><span class="c-ico">LINKEDIN</span><span class="c-val">prashant-gagneja-208878281</span></a>
+        <a href="https://www.linkedin.com/in/prashant-gagneja-2804a0393/" target="_blank" class="c-row tilt-card"><span class="c-ico">LINKEDIN</span><span class="c-val">prashant-gagneja-2804a0393</span></a>
         <a href="https://github.com/praxshant" target="_blank" class="c-row tilt-card"><span class="c-ico">GITHUB</span><span class="c-val">github.com/praxshant</span></a>
         <a href="tel:+917037770066" class="c-row tilt-card"><span class="c-ico">PHONE</span><span class="c-val">+91 70377 70066</span></a>
       </div>
@@ -1368,7 +1423,7 @@ footer{border-top:2px dashed var(--border);padding:2rem 3rem;display:flex;align-
   <div class="foot-copy">© <span id="yr"></span> PRASHANT GAGNEJA. ALL RIGHTS RESERVED.</div>
   <div class="foot-links">
     <a href="https://github.com/praxshant" target="_blank">GITHUB</a>
-    <a href="https://linkedin.com/in/prashant-gagneja-208878281" target="_blank">LINKEDIN</a>
+    <a href="https://www.linkedin.com/in/prashant-gagneja-2804a0393/" target="_blank">LINKEDIN</a>
     <a href="https://buymeacoffee.com/prashantgaw" target="_blank">☕ COFFEE</a>
     <a href="https://drive.google.com/file/d/1Kg8uG0i0umHXRg0DYnCznH1EBC0HjZZD/view" target="_blank">RÉSUMÉ</a>
   </div>
@@ -1628,61 +1683,78 @@ document.addEventListener('click',e=>{
 
 // ─── CASE STUDY DATA ───
 const caseData={
-  cicop:{
-    title:'CICOP — Customer Intelligence & Campaign Orchestration',
-    link:'https://github.com/praxshant/Customer-Intelligence-Platform',
-    problem:`CICOP addresses a core business problem: enterprises have vast customer data but lack automated tools to segment customers meaningfully, orchestrate personalised campaigns, and measure real ROI — all in real time. The challenge was building an end-to-end ML platform that is both analytically rigorous and production-ready.`,
-    arch:`<span class="ah">┌─────────────────────────────────────────────────────┐</span>\n<span class="ah">│              CICOP ARCHITECTURE                     │</span>\n<span class="ah">└─────────────────────────────────────────────────────┘</span>\n<span class="ab">  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐</span>\n<span class="ab">  │  Segmentation│    │  Campaign    │    │  Analytics   │</span>\n<span class="ab">  │  Service     │    │  Orchestrator│    │  Dashboard   │</span>\n<span class="ab">  │  :8000       │    │  :8001       │    │  Streamlit   │</span>\n<span class="ab">  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘</span>\n         <span class="ac">│                    │                    │</span>\n<span class="ac">  ┌──────▼──────────────▼──────────────▼───────┐</span>\n<span class="ac">  │            FastAPI Gateway :8002             │</span>\n<span class="ac">  └──────────────────┬──────────────────────────┘</span>\n                     <span class="ad">│</span>\n<span class="ad">  ┌──────────────────▼──────────────────────────┐</span>\n<span class="ad">  │  ML Pipeline: K-means / DBSCAN / Hierarchical│</span>\n<span class="ad">  │  A/B Testing Framework + ROI Optimizer       │</span>\n<span class="ad">  └────────────────────────────────────────────── ┘</span>`,
-    results:[{n:'10K+',l:'Customer Records Segmented'},{n:'18%',l:'Campaign ROI Lift (Simulation)'},{n:'3',l:'Independent Microservices'}]
+  pulseops:{
+    title:`PulseOps — Hospital Discharge Forecasting in Production`,
+    link:'https://github.com/praxshant/PulseOps',
+    demos:[{l:'Live dashboard',u:'https://pulseops-dashboard-uxwqdxuuhxtpnl6dshuaqq.streamlit.app'},{l:'API docs',u:'https://pulseops-api-7s5p.onrender.com/docs'}],
+    problem:`Hospitals plan beds around how many patients will be discharged tomorrow. PulseOps forecasts next-day discharges for NHS England trusts — and treats deployment as part of the problem: the model has to fit a free 512 MB container, be observable, and never show a live accuracy number before the real outcomes exist.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  PULSEOPS ARCHITECTURE                                 │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  NHS England operational data (17,958 org-days)</span>\n<span class="ab">       │</span>\n<span class="ac">  Feature pipeline — 17 lag / calendar / trust features</span>\n<span class="ac">       │</span>\n<span class="ac">  Model bake-off: ExtraTrees · RF · HistGB · Ridge</span>\n<span class="ac">  └── champion registered in MLflow (DagsHub)</span>\n<span class="ad">       │</span>\n<span class="ad">  FastAPI on Render (Docker, 512 MB)</span>\n<span class="ad">  ├── /predict  ├── /drift (PSI)  └── /performance</span>\n<span class="ad">  └── prediction log + Prometheus metrics</span>\n<span class="ad">       │</span>\n<span class="ad">  Streamlit dashboard — forecasts, drift, rolling accuracy</span>`,
+    results:[{n:'10.30',l:'Test MAE (baseline 20.58)'},{n:'~50%',l:'Lower Error vs Naive Baseline'},{n:'13.44%',l:'WAPE'},{n:'512 MB',l:'Memory Cap Met, 15/15 Rounds'}]
   },
-  codementor:{
-    title:'CodeMentor — AI Code Analysis Platform',
-    link:'https://github.com/praxshant/CodeMentor',
-    problem:`Developers spend 30–40% of debugging time on bugs that could be caught at code-review stage. CodeMentor uses fine-tuned GPT-2 to automatically flag bugs and suggest fixes — reducing manual review overhead.`,
-    arch:`<span class="ah">┌──────────────────────────────────────────┐</span>\n<span class="ah">│         CODEMENTOR ARCHITECTURE          │</span>\n<span class="ah">└──────────────────────────────────────────┘</span>\n<span class="ab">  React Frontend (TypeScript + Vite)</span>\n       <span class="ab">│ HTTP POST /analyze</span>\n<span class="ac">  Flask REST API (Python)</span>\n       <span class="ac">│</span>\n<span class="ac">  Analyzer Module</span>\n<span class="ac">  ├── GPT-2 (HuggingFace, fine-tuned)</span>\n<span class="ac">  ├── Pattern Detector (regex + AST)</span>\n<span class="ac">  └── Result Formatter</span>\n       <span class="ad">│</span>\n<span class="ad">  Response: bugs[], fixes[], suggestions[]</span>`,
-    results:[{n:'85%',l:'Bug Detection Accuracy'},{n:'<2s',l:'Inference Latency on CPU'},{n:'3+',l:'Languages Supported'}]
+  aegis:{
+    title:`Aegis — Governed AI Commerce Agent`,
+    link:'https://github.com/praxshant/Aegis',
+    demos:[],
+    problem:`Letting an LLM make commercial decisions is risky: it can hallucinate, be prompt-injected, or overspend. Aegis separates the jobs — the LLM only reasons, ML models supply the numbers, a deterministic policy gate authorises, and only then does the system create a payment link.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  AEGIS ARCHITECTURE                                    │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Customer + transaction data</span>\n<span class="ab">       │</span>\n<span class="ac">  ML layer</span>\n<span class="ac">  ├── 30-day purchase propensity (HistGradientBoosting)</span>\n<span class="ac">  └── Next-basket recommender (LightGBM)</span>\n<span class="ac">       │</span>\n<span class="ac">  LLM agent (Gemini / Ollama) — proposes an offer, no tools, no network</span>\n<span class="ad">       │</span>\n<span class="ad">  Deterministic policy gate</span>\n<span class="ad">  ├── max 25% discount · ₹2,000 per payment</span>\n<span class="ad">  └── velocity, budget, cooldown, confidence checks</span>\n<span class="ad">       │</span>\n<span class="ad">  Razorpay payment link  →  SHA-256 audit ledger (SQLite)</span>`,
+    results:[{n:'0.8191',l:'Propensity ROC-AUC'},{n:'0.5244',l:'Next-Basket NDCG@10'},{n:'3.65×',l:'Lift @ Top 10%'},{n:'0',l:'Payments the LLM Can Trigger Alone'}]
   },
-  sentry:{
-    title:'SentryVision — Critical Region Object Throw Detection',
-    link:'https://github.com/praxshant/SentryVision',
-    problem:`Security camera systems are overwhelmed by false alarms — birds, animals, wind-blown debris all trigger dumb motion detectors. SentryVision solves a harder, more specific problem: detecting fast-moving thrown objects (stones, sacks, tools) entering a user-defined critical region in real-time video. It's designed for industrial and facility security where precision matters more than sensitivity. The key challenge: eliminating environmental false positives while maintaining true detection at 18 FPS on standard CPU hardware.`,
-    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│              SENTRYVISION ARCHITECTURE                 │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Input Layer</span>\n<span class="ab">  ├── Webcam  ├── RTSP Stream  └── Video File</span>\n       <span class="ab">│</span>\n<span class="ac">  ROI Manager (roi_manager.py)</span>\n<span class="ac">  └── Interactive region selection + persistence (.npy)</span>\n       <span class="ac">│</span>\n<span class="ac">  Motion Detection Pipeline (motion_detector.py)</span>\n<span class="ac">  ├── MOG2 background subtraction (adaptive learning)</span>\n<span class="ac">  ├── High-speed motion + size filtering</span>\n<span class="ac">  ├── Morphological noise reduction</span>\n<span class="ac">  └── YOLOv8 object detection + contour analysis</span>\n       <span class="ac">│</span>\n<span class="ad">  Alert System (alert_system.py)</span>\n<span class="ad">  ├── Screenshot + metadata capture (auto-save)</span>\n<span class="ad">  ├── SQLite event DB (event_db.py)</span>\n<span class="ad">  └── Real-time Flask web dashboard (app.py)</span>\n       <span class="ad">│</span>\n<span class="ad">  Production Layer</span>\n<span class="ad">  └── Gunicorn (4 workers, eventlet) + Nginx reverse proxy</span>`,
-    results:[{n:'92%',l:'Object Detection Accuracy'},{n:'−28%',l:'False Positive Reduction'},{n:'18 FPS',l:'CPU Real-Time'},{n:'4',l:'Gunicorn Workers'}]
-  },
-  adaptivetype:{
-    title:'AdaptiveType — Intelligent Typing Engine',
-    link:'https://github.com/praxshant/AdaptiveType',
-    problem:`Standard autocomplete and text prediction systems are static — they don't adapt to individual users' typing patterns, domain vocabulary, or error habits. AdaptiveType solves this by building a per-session and per-user model that evolves in real time. The goal: reduce keystrokes, correct frequent personal typos proactively, and surface the right completions based on context — all within a zero-dependency TypeScript package that adds under 5ms latency.`,
-    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│             ADAPTIVETYPE ARCHITECTURE                  │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Input Layer</span>\n<span class="ab">  └── KeystrokeInterceptor — captures raw input events</span>\n       <span class="ab">│</span>\n<span class="ac">  Pattern Analysis Engine</span>\n<span class="ac">  ├── Typing rhythm model (inter-key timing)</span>\n<span class="ac">  ├── Error frequency map (per user)</span>\n<span class="ac">  └── N-gram context window (adaptive vocabulary)</span>\n       <span class="ac">│</span>\n<span class="ac">  Prediction Module</span>\n<span class="ac">  ├── Context-aware autocomplete candidates</span>\n<span class="ac">  ├── Proactive typo correction (before commit)</span>\n<span class="ac">  └── Confidence scoring per suggestion</span>\n       <span class="ad">│</span>\n<span class="ad">  Session Persistence Layer</span>\n<span class="ad">  ├── In-memory model (per session)</span>\n<span class="ad">  └── Optional export / import user profile</span>\n       <span class="ad">│</span>\n<span class="ad">  Integration API (TypeScript)</span>\n<span class="ad">  └── Drop-in &lt;input&gt; / contenteditable wrapper</span>`,
-    results:[{n:'<5ms',l:'Prediction Latency'},{n:'0',l:'External Dependencies'},{n:'TypeScript',l:'Fully Type-Safe'},{n:'Real-Time',l:'Per-User Adaptation'}]
-  },
-  goemo:{
-    title:'GoEmotions — Multi-Label Emotion Classifier',
-    link:'https://github.com/praxshant',
-    problem:`Multi-label emotion classification is hard due to severe class imbalance (28 emotion categories, many with <1% representation). The challenge was building a robust pipeline that handles imbalance without collapsing to majority-class predictions.`,
-    arch:`<span class="ah">┌──────────────────────────────────────────┐</span>\n<span class="ah">│        GOEMOTIONS PIPELINE               │</span>\n<span class="ah">└──────────────────────────────────────────┘</span>\n<span class="ab">  Raw Text (GoEmotions dataset, ~58K rows)</span>\n       <span class="ab">│</span>\n<span class="ac">  Preprocessing: NLTK tokenization, cleaning</span>\n       <span class="ac">│</span>\n<span class="ac">  Feature Extraction</span>\n<span class="ac">  ├── TF-IDF (15K features, unigrams+bigrams)</span>\n<span class="ac">  └── Word2Vec embeddings</span>\n       <span class="ac">│</span>\n<span class="ad">  Imbalance Handling: SMOTE oversampling</span>\n       <span class="ad">│</span>\n<span class="ad">  Random Forest Classifier (Multi-label)</span>\n       <span class="ad">│</span>\n<span class="ad">  Threshold Optimization (per-label PR curve)</span>`,
-    results:[{n:'28',l:'Emotion Classes'},{n:'F1 0.37',l:'Micro F1 Score'},{n:'SMOTE',l:'Imbalance Handling'}]
-  },
-  atlasos:{
-    title:'AtlasOS — Industrial Knowledge Operating System (IKOS)',
-    link:'https://github.com/praxshant',
-    problem:`Industrial plants accumulate fragmented knowledge across SOPs, engineering manuals, maintenance logs, and regulations, with no unified way to query it. AtlasOS couples a dense vector store with a semantic property graph to enable multi-hop GraphRAG reasoning, automated compliance audits, root-cause investigations, and preservation of tribal knowledge before it walks out the door with retiring engineers.`,
-    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│                 ATLASOS ARCHITECTURE                    │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Ingestion Pipeline</span>\n<span class="ab">  └── PyMuPDF / Tesseract — PDF, DOCX, CSV, XLSX, PPTX</span>\n       <span class="ab">│</span>\n<span class="ac">  Hybrid Storage Triad</span>\n<span class="ac">  ├── PostgreSQL — multi-tenant metastore + audit trail</span>\n<span class="ac">  ├── Qdrant — dense vectors (BAAI/bge-large-en-v1.5)</span>\n<span class="ac">  └── Neo4j — plant topology property graph</span>\n       <span class="ac">│</span>\n<span class="ad">  Industrial Agentic GraphRAG Engine</span>\n<span class="ad">  ├── Hybrid Retriever — semantic vectors + BM25</span>\n<span class="ad">  ├── Compliance / Copilot / RCA / Lessons Agents</span>\n<span class="ad">  └── PageRank &amp; centrality graph analytics</span>\n       <span class="ad">│</span>\n<span class="ad">  Unified App Layer — Dashboard, RCA, Compliance</span>`,
-    results:[{n:'3',l:'Hybrid Storage Layers (Postgres + Qdrant + Neo4j)'},{n:'4',l:'LLM Agents (Copilot, RCA, Compliance, Lessons)'},{n:'SSE',l:'Streamed GraphRAG Copilot Chat'}]
-  },
-  auralis:{
-    title:'Auralis — Music Intelligence Platform',
-    link:'https://github.com/praxshant',
-    problem:`Most music-discovery projects are either shallow marketing demos or single-purpose scripts. Auralis was built as a genuine multi-service engineering system — combining Spotify ingestion, catalog normalization, semantic search, and DSP-based audio analysis — to study embeddings, audio features, and retrieval quality end-to-end rather than to showcase a UI.`,
-    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│                 AURALIS ARCHITECTURE                    │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Next.js Frontend (React Query + Zustand)</span>\n       <span class="ab">│</span>\n<span class="ac">  FastAPI Backend — auth / music / search / assistant / audio</span>\n<span class="ac">  ├── Service Layer — ingestion, embeddings, recommendation</span>\n<span class="ac">  └── Repository Layer — SQLAlchemy async sessions</span>\n       <span class="ac">│</span>\n<span class="ad">  Data Layer</span>\n<span class="ad">  ├── PostgreSQL + Alembic migrations</span>\n<span class="ad">  └── pgvector — embedding-backed semantic search</span>\n       <span class="ad">│</span>\n<span class="ad">  Celery + Redis — ingestion / embeddings / audio queues</span>`,
-    results:[{n:'pgvector',l:'Embedding-Backed Semantic Search'},{n:'3',l:'Celery Worker Queues (Ingestion / Embeddings / Audio)'},{n:'JWT',l:'Auth + Encrypted OAuth Token Storage'}]
+  execinbox:{
+    title:`ExecInbox — RL Environment for Email Agents`,
+    link:'https://github.com/praxshant/exec_inbox_env',
+    demos:[{l:'Live on Hugging Face Spaces',u:'https://huggingface.co/spaces/praxshant/exec_inbox_env'}],
+    problem:`Most AI email demos stop at drafting a reply. ExecInbox asks an agent to actually work an inbox like an executive assistant — classify, prioritise, reply and archive before deadlines expire — and scores every step. It then makes the agent cheap enough to run by batching LLM triage.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  EXECINBOX ARCHITECTURE                                │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  OpenEnv API (FastAPI)</span>\n<span class="ab">  ├── reset / step / state</span>\n<span class="ab">  └── tasks: easy (5) · medium (10) · hard (15 emails)</span>\n<span class="ac">       │</span>\n<span class="ac">  Environment</span>\n<span class="ac">  ├── state: inbox, time, pending + completed tasks</span>\n<span class="ac">  ├── actions: classify · prioritize · reply · archive · noop</span>\n<span class="ac">  └── dense reward in [-1, 1], deadlines expire</span>\n<span class="ad">       │</span>\n<span class="ad">  Agent — batched LLM triage (1 call instead of 13–25)</span>\n<span class="ad">       │</span>\n<span class="ad">  Docker → Hugging Face Spaces + Azure Container Apps</span>`,
+    results:[{n:'13–25×',l:'Fewer LLM Calls'},{n:'~22–25×',l:'Lower Latency'},{n:'0',l:'Score Loss'},{n:'2',l:'Live Deployments'}]
   },
   genfx:{
-    title:'GenFX Lite — LLM + Diffusion VFX Pipeline',
-    link:'https://github.com/praxshant',
-    problem:`Studio VFX pipelines chain many fragile stages together, and any single API outage can block a whole demo. GenFX Lite explores how an LLM scene parser, diffusion image generation, and a headless Blender compositor can be orchestrated so that every stage degrades gracefully to a pre-baked fallback asset — the pipeline always completes and always produces output, regardless of API availability.`,
-    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│                 GENFX LITE PIPELINE                     │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  User Prompt (natural language)</span>\n       <span class="ab">│</span>\n<span class="ac">  LLM Parser — GPT-4o-mini / HF Mixtral → Scene JSON</span>\n       <span class="ac">│</span>\n<span class="ac">  Image Gen — HF Inference API</span>\n<span class="ac">  └── SD 3.5 → FLUX.1-schnell → Hyper-SD fallback chain</span>\n       <span class="ad">│</span>\n<span class="ad">  Blender — headless Cycles compositor (image-plane comp)</span>\n       <span class="ad">│</span>\n<span class="ad">  Streamlit UI — 3-column output + pipeline status</span>`,
-    results:[{n:'3',l:'Chained Pipeline Stages (LLM → Diffusion → Blender)'},{n:'22',l:'Passing Smoke Tests, Zero API Keys Required'},{n:'100%',l:'Fallback Coverage — Every Stage Has a Pre-Baked Asset'}]
+    title:`GenFX AI — Text-to-Editable-3D for Blender`,
+    link:'https://genfx-623327607141.us-central1.run.app',
+    linkLabel:`↗ Live demo (access on request) · source code private`,
+    demos:[],
+    problem:`A successful AI generation is not always a usable result. Creators don't want a pretty picture or a broken mesh — they want an asset they can open and edit in Blender. GenFX defines what a good result means (a QualityGate over the geometry) and designs for failure, so a provider outage still ends in a clean, editable .blend file.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  GENFX AI ARCHITECTURE                                 │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Text prompt</span>\n<span class="ab">       │</span>\n<span class="ac">  LLM scene planner → structured scene spec</span>\n<span class="ac">       │</span>\n<span class="ac">  Image generation → 3D reconstruction</span>\n<span class="ac">  └── provider fallback chain across hosted 3D models</span>\n<span class="ad">       │</span>\n<span class="ad">  QualityGate — scores geometry, watertightness; keeps the best mesh</span>\n<span class="ad">       │</span>\n<span class="ad">  Headless Blender — scene assembly + render</span>\n<span class="ad">  └── exports .blend + GLB</span>\n<span class="ad">       │</span>\n<span class="ad">  Streamlit UI on Google Cloud Run</span>`,
+    results:[{n:'~25–30s',l:'Prompt to Editable .blend'},{n:'117',l:'Automated Tests'},{n:'~30k',l:'Polygons per Mesh'},{n:'2',l:'Export Formats (.blend, GLB)'}]
+  },
+  evidencegate:{
+    title:`EvidenceGate — RAG That Refuses Without Evidence`,
+    link:'https://github.com/praxshant/EvidenceGate',
+    demos:[],
+    problem:`A research assistant that confidently cites the wrong paper is worse than none. EvidenceGate answers engineering questions strictly from three version-pinned papers, checks every citation deterministically, and abstains when retrieval can't support an answer — while staying stable under concurrent load and API rate limits.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  EVIDENCEGATE ARCHITECTURE                             │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Request</span>\n<span class="ab">       │</span>\n<span class="ac">  Admission controller — concurrency cap, bounded FIFO queue, TPM budget</span>\n<span class="ac">       │</span>\n<span class="ac">  BM25 passage retrieval (3 chunking settings, optional rerank)</span>\n<span class="ac">       │</span>\n<span class="ad">  Evidence gate — sufficient | partial | insufficient</span>\n<span class="ad">  ├── insufficient → fast abstention</span>\n<span class="ad">  └── otherwise → LLM (Groq gpt-oss-20b, streamed)</span>\n<span class="ad">       │</span>\n<span class="ad">  Citation verifier — page/section + term grounding, abstain on unverified claims</span>`,
+    results:[{n:'1.000',l:'Retrieval Recall@k'},{n:'0.9667',l:'MRR'},{n:'0%',l:'Drops Under Steady Load (N=50)'},{n:'36',l:'Tests'}]
+  },
+  sentrix:{
+    title:`Sentrix V2 — Multimodal Edge Security (Capstone)`,
+    link:'https://github.com/praxshant/SentrixV2',
+    demos:[],
+    problem:`Single-sensor security systems either miss real threats or drown people in false alarms. Sentrix fuses many weak signals — people, sounds, faces, movement, voice SOS — into one Threat Confidence Index on local hardware, and escalates automatically with encrypted evidence when the score crosses a threshold.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  SENTRIX V2 ARCHITECTURE                               │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Sensors: multi-camera video · microphone · voice SOS</span>\n<span class="ab">       │</span>\n<span class="ac">  Perception</span>\n<span class="ac">  ├── YOLOv8-nano person detection + DeepSORT tracking</span>\n<span class="ac">  ├── face recognition + Re-ID gallery</span>\n<span class="ac">  └── acoustic events (VOSK)</span>\n<span class="ac">       │</span>\n<span class="ad">  XGBoost late fusion → Threat Confidence Index (EMA smoothed)</span>\n<span class="ad">       │</span>\n<span class="ad">  Escalation: siren · Twilio SMS/call · AES-256-GCM evidence bundle</span>\n<span class="ad">  └── WebSocket command dashboard</span>`,
+    results:[{n:'<10ms',l:'YOLOv8-nano Inference'},{n:'<5ms',l:'Threat Fusion Hot Path'},{n:'₹11,880',l:'Hardware BOM'},{n:'2.5h+',l:'UPS Runtime'}]
+  },
+  atlasos:{
+    title:`AtlasOS — Industrial Knowledge Operating System`,
+    link:'https://github.com/praxshant/AtlasOS',
+    demos:[],
+    problem:`When a machine breaks down, the answer is often buried in an old maintenance report, a manual, or a procedure nobody can find. AtlasOS connects equipment, incidents, procedures and regulations into one knowledge graph, so engineers get grounded, cited answers and structured root-cause investigations instead of a document hunt.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  ATLASOS ARCHITECTURE                                  │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Ingestion — PDF, DOCX, CSV, XLSX, PPTX (PyMuPDF / Tesseract OCR)</span>\n<span class="ab">  └── entity extraction + embeddings (Celery / Redis)</span>\n<span class="ac">       │</span>\n<span class="ac">  Hybrid storage triad</span>\n<span class="ac">  ├── PostgreSQL — multi-tenant metastore + audit trail</span>\n<span class="ac">  ├── Qdrant — dense vectors (bge-large-en-v1.5)</span>\n<span class="ac">  └── Neo4j — plant topology property graph</span>\n<span class="ac">       │</span>\n<span class="ad">  GraphRAG engine — semantic + BM25 retrieval, multi-hop graph context</span>\n<span class="ad">  ├── Copilot · RCA (Ishikawa) · Compliance · Lessons agents</span>\n<span class="ad">  └── Ollama local-first, cloud LLM fallbacks</span>\n<span class="ad">       │</span>\n<span class="ad">  React 19 app — dashboard, RCA, compliance, knowledge graph explorer</span>`,
+    results:[{n:'3',l:'Storage Layers (Postgres + Qdrant + Neo4j)'},{n:'4',l:'Specialised Agents'},{n:'SSE',l:'Streamed, Cited Copilot Answers'}]
+  },
+  accel:{
+    title:`Accel BizFlow — MSME Onboarding Platform (Airtel Sync 2026)`,
+    link:'https://github.com/praxshant/AccelBizFlow',
+    demos:[],
+    problem:`In the Project Udyam case data, only 368 of 5,000 simulated business leads reached activation, with a big drop-off at the quotation stage (pricing concerns, complexity, delays). Built with teammate Shashi Kumar, Accel BizFlow replaces a long, fragmented sales process with one guided flow from discovery to activation.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  ACCEL BIZFLOW ARCHITECTURE                            │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  React + TypeScript frontend</span>\n<span class="ab">  └── workspaces: customer · sales · KYC reviewer · operations</span>\n<span class="ac">       │</span>\n<span class="ac">  FastAPI backend (deterministic)</span>\n<span class="ac">  ├── conversational advisor — understands the business (LLM)</span>\n<span class="ac">  ├── eligibility engine — product rules (no LLM)</span>\n<span class="ac">  ├── pricing + quotation generation</span>\n<span class="ac">  └── OCR-based KYC processing</span>\n<span class="ad">       │</span>\n<span class="ad">  Orders + fulfilment tracking  →  SQLite (Alembic migrations)</span>\n<span class="ad">  Humans handle cases that need judgement</span>`,
+    results:[{n:'368 / 5,000',l:'Leads Reaching Activation (Case Data)'},{n:'83',l:'Passing Backend Tests'},{n:'4',l:'Role-Based Workspaces'}]
+  },
+  handsurf:{
+    title:`HandSurf AI — Play Subway Surfers with Your Hands`,
+    link:'https://github.com/praxshant/HandSurfAI',
+    demos:[],
+    problem:`A Sunday build to turn a simple computer-vision idea into something you can actually play: real-time hand tracking replaces the keyboard, so steering, jumping and sliding in Subway Surfers all come from gestures in front of a webcam.`,
+    arch:`<span class="ah">┌────────────────────────────────────────────────────────┐</span>\n<span class="ah">│  HANDSURF AI ARCHITECTURE                              │</span>\n<span class="ah">└────────────────────────────────────────────────────────┘</span>\n<span class="ab">  Webcam frames (OpenCV)</span>\n<span class="ab">       │</span>\n<span class="ac">  MediaPipe hand landmarks</span>\n<span class="ac">       │</span>\n<span class="ac">  Gesture recognizer</span>\n<span class="ac">  ├── steering: tilt ±16° · point · thumb · swipe · position</span>\n<span class="ac">  └── actions: 1 finger = jump · fist = slide · peace = hoverboard</span>\n<span class="ad">       │</span>\n<span class="ad">  Input dispatcher → arrow keys / WASD / space / mouse</span>`,
+    results:[{n:'5',l:'Ways to Steer'},{n:'3',l:'Pose-Based Actions'},{n:'1 day',l:'Build Time'}]
   }
 };
 
@@ -1692,7 +1764,7 @@ function openCase(id){
   const modal=document.getElementById('case-modal');
   document.getElementById('case-content').innerHTML=`
     <div class="case-title">${d.title}</div>
-    <a href="${d.link}" target="_blank" class="case-link">↗ GitHub Repository</a>
+    <a href="${d.link}" target="_blank" rel="noopener" class="case-link">${d.linkLabel||'↗ GitHub Repository'}</a>${(d.demos||[]).map(x=>`<a href="${x.u}" target="_blank" rel="noopener" class="case-link" style="margin-left:1.5rem">▶ ${x.l}</a>`).join('')}
     <div class="case-section"><h3>THE PROBLEM</h3><p>${d.problem}</p></div>
     <div class="case-section"><h3>ARCHITECTURE</h3><pre class="arch-diagram">${d.arch}</pre></div>
     <div class="case-section"><h3>RESULTS</h3><div class="case-results">${d.results.map(r=>`<div class="res-box"><span class="res-n">${r.n}</span><span class="res-l">${r.l}</span></div>`).join('')}</div></div>
@@ -2142,7 +2214,7 @@ document.querySelectorAll('.cup').forEach(c=>{
   // attaches the real Groq key server-side, so no secret ever ships to the
   // browser. See /cloudflare-worker/README.md for deploy steps.
   const CHAT_ENDPOINT=`${API_BASE}/chat`;
-  const SYSTEM_PROMPT=`You are Prashant Gagneja's Pokédex AI Assistant. Keep answers technical, brief, and Pokémon-themed. Prashant is an AI/ML Engineer.`;
+  const SYSTEM_PROMPT=`You are Prashant Gagneja's Pokédex AI Assistant. Keep answers technical, brief, and Pokémon-themed. Prashant is a final-year Computer Engineering (AI/ML) student at Thapar Institute, open to internships from January 2027. Key projects: VoxIntel-R (voice-assistant intent-failure prediction, ROC-AUC 0.912 on SLURP), PulseOps (live NHS discharge forecasting, MAE 10.30 vs 20.58 baseline), Aegis (governed LLM commerce agent, propensity ROC-AUC 0.8191), ExecInbox (RL environment for email agents, 13–25x fewer LLM calls), GenFX AI (text to editable Blender 3D), EvidenceGate (citation-verified RAG, MRR 0.9667), AtlasOS (industrial GraphRAG), Sentrix V2 (multimodal edge security capstone), Accel BizFlow (Airtel Sync 2026), HandSurf AI (gesture-controlled Subway Surfers). Never invent numbers.`;
 
   let history=[];
 
@@ -2154,8 +2226,8 @@ document.querySelectorAll('.cup').forEach(c=>{
       },
       {
           match: /project/i,
-          reply: "Prashant has built an impressive roster. Top picks:\n1. **CICOP**: End-to-end ML platform with A/B testing.\n2. **CodeMentor**: GPT-2 fine-tuned bug detector.\n3. **SentryVision**: YOLOv8 real-time object detection.\nWhich region should we explore?",
-          suggestions: ["Explain SentryVision", "More projects"]
+          reply: "Prashant has built an impressive roster. Top picks:\n1. **VoxIntel-R**: predicts voice-assistant intent failures (ROC-AUC 0.912).\n2. **PulseOps**: live hospital discharge forecasting (MAE 10.30 vs 20.58 baseline).\n3. **Aegis**: LLM commerce agent behind a deterministic policy gate.\nWhich region should we explore?",
+          suggestions: ["Explain PulseOps", "More projects"]
       },
       {
           match: /internship|hire/i,
@@ -2248,7 +2320,7 @@ document.querySelectorAll('.cup').forEach(c=>{
     
     if(userMsg.toLowerCase() === 'contact info') {
       typing.style.display='none';
-      appendMsg("📧 Email: prashantgagneja0@gmail.com\n🔗 LinkedIn: /in/prashant-gagneja-208878281", 'bot', true);
+      appendMsg("📧 Email: prashantgagneja0@gmail.com\n🔗 LinkedIn: /in/prashant-gagneja-2804a0393", 'bot', true);
       return;
     }
 
